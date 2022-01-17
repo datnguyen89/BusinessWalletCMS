@@ -2,11 +2,6 @@ import React, { useEffect } from 'react'
 import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
 import { DefaultLayoutWrapper } from './DefaultLayoutStyled'
-import MainSideBar from '../../components/MainSideBar'
-import MainContent from '../../components/MainContent/MainContent'
-import MainHeader from '../../components/MainHeader'
-import MainBody from '../../components/MainBody'
-import MainFooter from '../../components/MainFooter'
 import { useLocation } from 'react-router-dom'
 import { PAGES } from '../../utils/constant'
 
@@ -26,14 +21,7 @@ const DefaultLayout = props => {
 
   return (
     <DefaultLayoutWrapper color={commonStore.appTheme.solidColor}>
-      <MainHeader />
-      <MainContent>
-        <MainSideBar />
-        <MainBody>
-          {children}
-        </MainBody>
-      </MainContent>
-      <MainFooter />
+      {children}
     </DefaultLayoutWrapper>
   )
 }

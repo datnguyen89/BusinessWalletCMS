@@ -9,7 +9,7 @@ const AuthHeader = props => {
   return (
     <AuthHeaderWrapper>
       <img src={IMAGES.AUTH_LOGO} alt={''} height={66} width={86} />
-      <SubTitleLogo color={commonStore.appTheme.fontColor}>MobiFone Pay Doanh Nghiệp</SubTitleLogo>
+      <SubTitleLogo color={commonStore.appTheme.solidColor}>CMS</SubTitleLogo>
     </AuthHeaderWrapper>
   )
 }
