@@ -9,7 +9,7 @@ import { ConfigProvider } from 'antd'
 
 const ThemeProvider = props => {
   const { commonStore, children } = props
-  const { isCollapse } = commonStore
+
   const { i18n } = useTranslation()
 
   const isDesktop = useMediaQuery({ minWidth: 1024 })

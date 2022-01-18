@@ -30,7 +30,6 @@ export const GlobalStyle = createGlobalStyle`
 
   /** Button */  
   .ant-btn {
-    border-radius: 4px !important;
     &:hover, &:focus {
       color: ${props => props.theme.solidColor} !important;
       border-color: ${props => props.theme.solidColor} !important;

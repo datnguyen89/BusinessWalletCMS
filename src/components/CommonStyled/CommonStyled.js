@@ -98,3 +98,11 @@ export const HeaderDropdownItem = styled.div`
 export const ColorLink = styled(Link)`
   color: ${props => props.color};
 `
+export const HeaderBackground = styled.h1`
+  background-color: ${props => props.backgroundColor};
+  padding: ${props => props.padding || '16px'};
+
+  svg, img {
+    margin-right: 8px;
+  }
+`

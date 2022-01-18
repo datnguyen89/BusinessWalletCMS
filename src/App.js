@@ -24,6 +24,10 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import NotPermissionPage from './pages/NotPermissionPage'
 import NotFoundPage from './pages/NotFoundPage'
+import CustomerProfilePage from './pages/CustomerProfilePage'
+import UserManagerPage from './pages/UserManagerPage'
+import DepartmentPage from './pages/DepartmentPage'
+import ApproveCompanyPage from './pages/ApproveCompanyPage'
 
 
 const history = createBrowserHistory()
@@ -96,8 +100,12 @@ const App = () => {
       <ThemeProvider>
         <Router history={history}>
           <Switch>
-            <Route exact path={PAGES.HOME.PATH} component={HomePage} />
             <Route exact path={PAGES.LOGIN.PATH} component={LoginPage} /> {/*Đăng nhập*/}
+            <Route exact path={PAGES.HOME.PATH} component={HomePage} />
+            <Route exact path={PAGES.CUSTOMER_PROFILE.PATH} component={CustomerProfilePage} />
+            <Route exact path={PAGES.USER_MANAGER.PATH} component={UserManagerPage} />
+            <Route exact path={PAGES.DEPARTMENT.PATH} component={DepartmentPage} />
+            <Route exact path={PAGES.APPROVE_COMPANY.PATH} component={ApproveCompanyPage} />
             <Route exact path={PAGES.NOT_PERMISSION.PATH} component={NotPermissionPage} /> {/*Không có quyền truy cập*/}
             <Route component={NotFoundPage} />
           </Switch>
