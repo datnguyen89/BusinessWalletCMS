@@ -9,4 +9,5 @@ export const AuthLayoutWrapper = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-color: #f0f2f5;
 `

@@ -46,7 +46,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-moment.locale('vi', {
+moment.updateLocale('vi', {
   week: {
     dow: 1,
   },

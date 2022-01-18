@@ -1,51 +1,61 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
 import AuthLayout from '../../layouts/AuthLayout'
-import { Form, message } from 'antd'
-import { LoginPageWrapper } from './LoginPageStyled'
-import { useHistory } from 'react-router-dom'
+import { Button, Checkbox, Col, Divider, Form, Input, message, Row } from 'antd'
+import { FormLoginWrapper, LoginDescription, LoginPageWrapper, LoginTitle } from './LoginPageStyled'
+import { Link, useHistory } from 'react-router-dom'
 import * as forge from 'node-forge'
 import { PUBLIC_KEY } from '../../utils/constant'
 import stringUtils from '../../utils/stringUtils'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
+import { ColorLink } from '../../components/CommonStyled/CommonStyled'
 
 const LoginPage = props => {
   const { commonStore, authenticationStore } = props
   const history = useHistory()
   const [formLogin] = Form.useForm()
-  const [visibleOtp, setVisibleOtp] = useState(false)
 
-  const onFinish = (formCollection) => {
-    setVisibleOtp(true)
-    var rsa = forge.pki.publicKeyFromPem(PUBLIC_KEY);
-    formCollection.password = window.btoa(rsa.encrypt(formCollection.password));
 
-    authenticationStore.userLogin(formCollection);
-    console.log('Success:', formCollection)
-  }
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo)
-  }
-
-  const handleSubmitOtp = (otp) => {
-    if (otp === '123456') {
-      history.push(PAGES.HOME.PATH)
-    } else {
-      message.error('Mã OTP không đúng')
-    }
-  }
-
-  const handleChangeUsername = (e) => {
-    let inputText = e.currentTarget.value.trim().replaceAll(' ','');
-    if (inputText.length === 0) return
-    inputText = stringUtils.removeVietnameseCharMark(inputText)
-    formLogin.setFieldsValue({
-      username: inputText
-    })
+  const onFinish = (collectionForm) => {
+    console.log(collectionForm)
+    history.push('/')
   }
 
   return (
     <AuthLayout>
       <LoginPageWrapper>
+        <LoginTitle color={commonStore.appTheme.solidColor}>CMS doanh nghiệp</LoginTitle>
+        <LoginDescription>Đăng nhập hệ thống quản lý ví doanh nghiệp</LoginDescription>
+        <FormLoginWrapper>
+          <Form form={formLogin}
+                onFinish={onFinish}
+                size={'large'}
+                colon={false}
+                labelAlign={'left'}
+                labelCol={{ span: 8 }}
+                wrapperCol={{ span: 16 }}>
+            <Form.Item label={'Tên đăng nhập'} name={'username'}>
+              <Input prefix={<UserOutlined />} placeholder={'Tên đăng nhập'} />
+            </Form.Item>
+            <Form.Item label={'Mật khẩu'} name={'password'}>
+              <Input.Password prefix={<LockOutlined />} placeholder={'Mật khẩu'} />
+            </Form.Item>
+            <Divider />
+            <Row>
+              <Col span={12}>
+                <Form.Item name='remember' valuePropName='checked' wrapperCol={{ offset: 0, span: 24 }}>
+                  <Checkbox>Lưu thông tin</Checkbox>
+                </Form.Item>
+              </Col>
+              <Col span={12}>
+                <Form.Item wrapperCol={{ offset: 0, span: 24 }} style={{ textAlign: 'right' }}>
+                  <ColorLink color={commonStore.appTheme.solidColor} to={'#'}>Quên mật khẩu ?</ColorLink>
+                </Form.Item>
+              </Col>
+            </Row>
+            <Button block type={'primary'} htmlType={'submit'}>Đăng nhập</Button>
+          </Form>
+        </FormLoginWrapper>
 
       </LoginPageWrapper>
     </AuthLayout>

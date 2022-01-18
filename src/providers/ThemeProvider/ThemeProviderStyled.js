@@ -154,22 +154,7 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /** Password input */
-  .ant-input-password {
-    padding: 0;
-
-    input {
-      padding: 5px 50px 5px 11px !important;
-    }
-
-    .ant-input-suffix {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  }
-
+ 
   /** Select */
   .ant-select {
     .ant-select-selector {

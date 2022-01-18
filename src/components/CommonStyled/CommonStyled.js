@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const AuthShadowBox = styled.div`
   background: #FFFFFF;
@@ -94,6 +95,6 @@ export const HeaderDropdownItem = styled.div`
     }
   }
 `
-export const LastItemScroll = styled.div`
-  min-width: 700px;
+export const ColorLink = styled(Link)`
+  color: ${props => props.color};
 `
