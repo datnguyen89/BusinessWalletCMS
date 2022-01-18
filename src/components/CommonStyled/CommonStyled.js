@@ -18,7 +18,13 @@ export const PaginationLabel = styled.span`
     margin-bottom: 16px;
   }
 `
-
+export const RowCenterDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: ${props => props.margin || 0};
+  padding: ${props => props.padding || 0};
+`
 export const RowFlexEndDiv = styled.div`
   display: flex;
   justify-content: flex-end;
