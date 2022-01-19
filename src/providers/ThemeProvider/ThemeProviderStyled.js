@@ -126,6 +126,18 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   //form
+  .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after, .custom-required::after {
+    display: inline-block;
+    margin-left: 4px;
+    color: #ff4d4f;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: '*';
+  }
+  .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+    display: none !important;
+  }
   .ant-form-inline .ant-form-item {
     @media only screen and (max-width: 1024px) {
       margin: 8px !important;

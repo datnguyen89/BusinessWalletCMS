@@ -12,7 +12,7 @@ const ConditionRender = props => {
 }
 
 ConditionRender.propTypes = {
-  visible: PropTypes.bool.isRequired,
+  visible: PropTypes.bool,
 }
 
 export default ConditionRender

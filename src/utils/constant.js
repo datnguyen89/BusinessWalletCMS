@@ -96,3 +96,10 @@ export const THEME_LIST = [
     lightShadowColor: '0 2px 4px rgba(0, 0, 0, 0.22), 0 4px 8px rgba(0, 0, 0, 0.04)',
   },
 ]
+export const ACTION = {
+  INSERT: 1,
+  UPDATE: 2,
+  DELETE: 3,
+  ACTIVE: 4,
+  INACTIVE: 5
+}

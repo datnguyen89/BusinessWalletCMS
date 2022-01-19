@@ -9,12 +9,12 @@ import { PUBLIC_KEY } from '../../utils/constant'
 import stringUtils from '../../utils/stringUtils'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { ColorLink } from '../../components/CommonStyled/CommonStyled'
+import helper from '../../utils/helper'
 
 const LoginPage = props => {
   const { commonStore, authenticationStore } = props
   const history = useHistory()
   const [formLogin] = Form.useForm()
-
 
   const onFinish = (collectionForm) => {
     console.log(collectionForm)

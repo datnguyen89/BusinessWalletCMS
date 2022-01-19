@@ -46,9 +46,10 @@ const validator = {
   },
 
   validateEmail: (rule, value, callback) => {
-    const regex = /^[A-Za-z][A-Za-z0-9-_\.]{1,32}(\+?[0-9]){0,5}@[A-Za-z0-9_-]{2,}(\.[A-Za-z0-9]{2,4}){1,2}$/gm
+    // const regex = /^[A-Za-z][A-Za-z0-9-_\.]{1,32}(\+?[0-9]){0,5}@[A-Za-z0-9_-]{2,}(\.[A-Za-z0-9]{2,4}){1,2}$/gm
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (value && !regex.test(value)) {
-      callback('Incorrect email format!')
+      callback('Email không đúng định dạng')
     } else {
       callback()
     }
@@ -89,14 +90,6 @@ const validator = {
     }
   },
 
-  validateUsernameFormat: (rule, value, callback) => {
-    const regex = /^(?=[a-zA-Z0-9._]{4,20}$)(?!.*[_.]{2})[^_.].*[^_.]$/g
-    if (value && !regex.test(value)) {
-      callback('Incorrect username format!')
-    } else {
-      callback()
-    }
-  },
 
   validateVietnameseIdNumber: (rule, value, callback) => {
     const regex = /[0-9]{9,}/g
@@ -127,10 +120,10 @@ const validator = {
     }
   },
   validatePhoneNumber: (rule, value, callback) => {
-    // const regex = /^(0|\+84|84|)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/g
-    const regex = /(84|\+84|0[35789])+([0-9]{8,9})\b/g
+    // const regex = /(84|\+84|0[35789])+([0-9]{8,9})\b/g
+    const regex = /(0[35789])+([0-9]{8})\b/g
     if (value && (!regex.test(value) || value.length > 12)) {
-      callback(profileStore?.appLanguage === 'en' ? 'Phone number is not in the correct format' : 'Số điện thoại không đúng định dạng')
+      callback('Số điện thoại không đúng định dạng')
     } else {
       callback()
     }
