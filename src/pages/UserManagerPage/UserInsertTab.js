@@ -24,7 +24,6 @@ import validator from '../../validator'
 import moment from 'moment'
 import helper from '../../utils/helper'
 import { ACTION } from '../../utils/constant'
-import LoadingOverLay from '../../components/LoadingOverLay/LoadingOverLay'
 
 const { Search } = Input
 const { Option } = Select
@@ -207,7 +206,7 @@ const UserInsertTab = props => {
         </Col>
       </Row>
 
-      <ConditionRender visible={true}>
+      <ConditionRender visible={visible}>
         <Divider />
         <Descriptions
           labelStyle={{ width: '15%' }}
