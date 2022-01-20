@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { UserInsertTabWrapper } from './UserManagerPageStyled'
 import {
-  Button,
+  Button, Checkbox,
   Col,
   DatePicker,
   Descriptions,
@@ -179,6 +179,12 @@ const UserInsertTab = props => {
     }
   }
 
+  // const options = [
+  //   { label: 'Apple', value: '1' },
+  //   { label: 'Pear', value: '2' },
+  //   { label: 'Orange', value: '3' },
+  // ];
+
   return (
     <UserInsertTabWrapper>
       <HeaderBackground backgroundColor={appTheme.solidLightColor}>
@@ -238,6 +244,15 @@ const UserInsertTab = props => {
           requiredMark={true}
           form={formInsertUser}>
           <Row justify={'center'} gutter={[64, 16]}>
+            {/*<Col span={9}>*/}
+            {/*  <Form.Item*/}
+            {/*    name={'checTest'}*/}
+            {/*    rules={[{ required: true, message: 'Vui lòng chọn' }]}*/}
+            {/*    label={'test'}*/}
+            {/*  >*/}
+            {/*    <Checkbox.Group options={options} defaultValue={['1']} />*/}
+            {/*  </Form.Item>*/}
+            {/*</Col>*/}
             <Col span={9}>
               <Form.Item
                 name={'fullName'}
