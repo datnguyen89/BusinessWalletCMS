@@ -27,7 +27,13 @@ export const GlobalStyle = createGlobalStyle`
       padding: 8px !important;
     }
   }
-
+  /** Tabs */
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: ${props => props.theme.solidColor} !important;
+  }
+  .ant-tabs-ink-bar {
+    background: ${props => props.theme.solidColor} !important;
+  }
   /** Button */  
   .ant-btn {
     &:hover, &:focus {
