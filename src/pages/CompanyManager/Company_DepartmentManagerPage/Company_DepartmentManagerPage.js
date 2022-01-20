@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
 
-const HomePage = props => {
+const Company_DepartmentManagerPage = props => {
   const { commonStore } = props
 
   return (
     <DefaultLayout>
       <Helmet>
-        <title>Trang chủ</title>
+        <title>Quản lý phòng ban</title>
       </Helmet>
-         HOME PAGE
+      Quản lý phòng ban
     </DefaultLayout>
   )
 }
 
-HomePage.propTypes = {}
+Company_DepartmentManagerPage.propTypes = {}
 
-export default inject('commonStore')(observer(HomePage))
+export default inject('commonStore')(observer(Company_DepartmentManagerPage))

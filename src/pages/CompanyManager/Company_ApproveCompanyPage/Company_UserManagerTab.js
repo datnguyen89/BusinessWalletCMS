@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { CompanyUserManagerTabWrapper } from './ApproveCompanyPageStyled'
+import { CompanyUserManagerTabWrapper } from './Company_ApproveCompanyPageStyled'
 import { Col, Form, Row, DatePicker, Input } from 'antd'
 
 const { RangePicker } = DatePicker
 
-const CompanyUserManagerTab = props => {
+const Company_UserManagerTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
 
@@ -50,5 +50,5 @@ const CompanyUserManagerTab = props => {
   )
 }
 
-CompanyUserManagerTab.propTypes = {}
-export default inject('commonStore')(observer(CompanyUserManagerTab))
+Company_UserManagerTab.propTypes = {}
+export default inject('commonStore')(observer(Company_UserManagerTab))

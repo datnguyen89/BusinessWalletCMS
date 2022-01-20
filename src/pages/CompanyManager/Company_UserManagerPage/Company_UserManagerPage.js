@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
-import { UserManagerPageWrapper } from './UserManagerPageStyled'
+import { UserManagerPageWrapper } from './Company_UserManagerPageStyled'
 import { Tabs } from 'antd'
-import UserInsertTab from './UserInsertTab'
-import UserListRequestTab from './UserListRequestTab'
+import UserInsertTab from './Company_UserInsertTab'
+import Company_UserListRequestTab from './Company_UserListRequestTab'
 const { TabPane } = Tabs;
 
-const UserManagerPage = props => {
+const Company_UserManagerPage = props => {
   const { commonStore } = props
 
   return (
@@ -23,7 +23,7 @@ const UserManagerPage = props => {
             <UserInsertTab />
           </TabPane>
           <TabPane tab="Danh sách lập lệnh" key="2">
-            <UserListRequestTab />
+            <Company_UserListRequestTab />
           </TabPane>
         </Tabs>
       </UserManagerPageWrapper>
@@ -31,6 +31,6 @@ const UserManagerPage = props => {
   )
 }
 
-UserManagerPage.propTypes = {}
+Company_UserManagerPage.propTypes = {}
 
-export default inject('commonStore')(observer(UserManagerPage))
+export default inject('commonStore')(observer(Company_UserManagerPage))

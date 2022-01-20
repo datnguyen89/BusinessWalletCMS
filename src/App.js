@@ -20,14 +20,17 @@ import moment from 'moment'
 import 'moment/locale/vi'
 import { PAGES } from './utils/constant'
 // Pages
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import NotPermissionPage from './pages/NotPermissionPage'
-import NotFoundPage from './pages/NotFoundPage'
-import CustomerProfilePage from './pages/CustomerProfilePage'
-import UserManagerPage from './pages/UserManagerPage'
-import DepartmentPage from './pages/DepartmentPage'
-import ApproveCompanyPage from './pages/ApproveCompanyPage'
+import HomePage from './pages/WebApp/HomePage'
+import LoginPage from './pages/WebApp/LoginPage'
+import NotPermissionPage from './pages/WebApp/NotPermissionPage'
+import NotFoundPage from './pages/WebApp/NotFoundPage'
+import Company_CustomerProfilePage from './pages/CompanyManager/Company_CustomerProfilePage'
+import Company_UserManagerPage from './pages/CompanyManager/Company_UserManagerPage'
+import Company_DepartmentManagerPage from './pages/CompanyManager/Company_DepartmentManagerPage'
+import Company_ApproveCompanyPage from './pages/CompanyManager/Company_ApproveCompanyPage'
+import Customer_CreateCustomerPage from './pages/CustomerManager/Customer_CreateCustomerPage'
+import Customer_CreateUserCompanyPage from './pages/CustomerManager/Customer_CreateUserCompanyPage'
+import Customer_ApproveCompanyPage from './pages/CustomerManager/Customer_ApproveCompanyPage'
 
 
 const history = createBrowserHistory()
@@ -102,10 +105,18 @@ const App = () => {
           <Switch>
             <Route exact path={PAGES.LOGIN.PATH} component={LoginPage} /> {/*Đăng nhập*/}
             <Route exact path={PAGES.HOME.PATH} component={HomePage} />
-            <Route exact path={PAGES.CUSTOMER_PROFILE.PATH} component={CustomerProfilePage} />
-            <Route exact path={PAGES.USER_MANAGER.PATH} component={UserManagerPage} />
-            <Route exact path={PAGES.DEPARTMENT.PATH} component={DepartmentPage} />
-            <Route exact path={PAGES.APPROVE_COMPANY.PATH} component={ApproveCompanyPage} />
+            
+            <Route exact path={PAGES.COMPANY_CUSTOMER_PROFILE.PATH} component={Company_CustomerProfilePage} />
+            <Route exact path={PAGES.COMPANY_USER_MANAGER.PATH} component={Company_UserManagerPage} />
+            <Route exact path={PAGES.COMPANY_DEPARTMENT.PATH} component={Company_DepartmentManagerPage} />
+            <Route exact path={PAGES.COMPANY_APPROVE_COMPANY.PATH} component={Company_ApproveCompanyPage} />
+            
+            <Route exact path={PAGES.CUSTOMER_CREATE_CUSTOMER.PATH} component={Customer_CreateCustomerPage} />
+            <Route exact path={PAGES.CUSTOMER_CREATE_USER_COMPANY.PATH} component={Customer_CreateUserCompanyPage} />
+            <Route exact path={PAGES.CUSTOMER_APPROVE_COMPANY.PATH} component={Customer_ApproveCompanyPage} />
+
+
+
             <Route exact path={PAGES.NOT_PERMISSION.PATH} component={NotPermissionPage} /> {/*Không có quyền truy cập*/}
             <Route component={NotFoundPage} />
           </Switch>

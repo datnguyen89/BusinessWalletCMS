@@ -13,21 +13,33 @@ export const PAGES = {
     NAME: 'not-permission',
     PATH: '/not-permission',
   },
-  CUSTOMER_PROFILE: {
-    NAME: 'customer-profile',
-    PATH: '/customer-profile',
+  COMPANY_CUSTOMER_PROFILE: {
+    NAME: 'company-customer-profile',
+    PATH: '/company-customer-profile',
   },
-  USER_MANAGER: {
-    NAME: 'user-manager',
-    PATH: '/user-manager',
+  COMPANY_USER_MANAGER: {
+    NAME: 'company-user-manager',
+    PATH: '/company-user-manager',
   },
-  DEPARTMENT: {
-    NAME: 'department',
-    PATH: '/department',
+  COMPANY_DEPARTMENT: {
+    NAME: 'company-department',
+    PATH: '/company-department',
   },
-  APPROVE_COMPANY: {
-    NAME: 'approve-company',
-    PATH: '/approve-company',
+  COMPANY_APPROVE_COMPANY: {
+    NAME: 'company-approve-company',
+    PATH: '/company-approve-company',
+  },
+  CUSTOMER_CREATE_CUSTOMER: {
+    NAME: 'customer-create-customer-company',
+    PATH: '/customer-create-customer-company',
+  },
+  CUSTOMER_CREATE_USER_COMPANY: {
+    NAME: 'customer-create-user-company',
+    PATH: '/customer-create-user-company',
+  },
+  CUSTOMER_APPROVE_COMPANY: {
+    NAME: 'customer-approve-company',
+    PATH: '/customer-approve-company',
   },
 }
 
@@ -101,5 +113,5 @@ export const ACTION = {
   UPDATE: 2,
   DELETE: 3,
   ACTIVE: 4,
-  INACTIVE: 5
+  INACTIVE: 5,
 }

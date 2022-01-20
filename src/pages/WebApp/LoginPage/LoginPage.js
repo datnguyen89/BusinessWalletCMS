@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
-import AuthLayout from '../../layouts/AuthLayout'
+import AuthLayout from '../../../layouts/AuthLayout'
 import { Button, Checkbox, Col, Divider, Form, Input, message, Row } from 'antd'
 import { FormLoginWrapper, LoginDescription, LoginPageWrapper, LoginTitle } from './LoginPageStyled'
 import { Link, useHistory } from 'react-router-dom'
 import * as forge from 'node-forge'
-import { PUBLIC_KEY } from '../../utils/constant'
-import stringUtils from '../../utils/stringUtils'
+import { PUBLIC_KEY } from '../../../utils/constant'
+import stringUtils from '../../../utils/stringUtils'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
-import { ColorLink } from '../../components/CommonStyled/CommonStyled'
-import helper from '../../utils/helper'
+import { ColorLink } from '../../../components/CommonStyled/CommonStyled'
+import helper from '../../../utils/helper'
 
 const LoginPage = props => {
   const { commonStore, authenticationStore } = props

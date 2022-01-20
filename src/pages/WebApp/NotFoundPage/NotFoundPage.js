@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet/es/Helmet'
-import DefaultLayout from '../../layouts/DefaultLayout/DefaultLayout'
+import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Button, Result } from 'antd'
 import {useHistory} from 'react-router-dom'
 

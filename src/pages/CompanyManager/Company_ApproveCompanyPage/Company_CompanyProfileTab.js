@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { CompanyProfileTabWrapper } from './ApproveCompanyPageStyled'
+import { CompanyProfileTabWrapper } from './Company_ApproveCompanyPageStyled'
 
-const CompanyProfileTab = props => {
+const Company_CompanyProfileTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
   return (
@@ -13,6 +13,6 @@ const CompanyProfileTab = props => {
   )
 }
 
-CompanyProfileTab.propTypes = {}
+Company_CompanyProfileTab.propTypes = {}
 
-export default inject('commonStore')(observer(CompanyProfileTab))
+export default inject('commonStore')(observer(Company_CompanyProfileTab))

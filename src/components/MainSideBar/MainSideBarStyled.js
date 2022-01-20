@@ -54,5 +54,4 @@ export const MenuSidebarItem = styled.li`
 export const GroupMenuTitle = styled.h1`
   text-align: left;
   margin: 8px;
-  color: ${props => props.color};
 `

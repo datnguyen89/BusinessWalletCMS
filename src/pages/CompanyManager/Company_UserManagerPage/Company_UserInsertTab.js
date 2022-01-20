@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { UserInsertTabWrapper } from './UserManagerPageStyled'
+import { UserInsertTabWrapper } from './Company_UserManagerPageStyled'
 import {
   Button, Checkbox,
   Col,
@@ -17,18 +17,18 @@ import {
   Space,
   Table,
 } from 'antd'
-import { HeaderBackground, RowCenterDiv } from '../../components/CommonStyled/CommonStyled'
+import { HeaderBackground, RowCenterDiv } from '../../../components/CommonStyled/CommonStyled'
 import { EditOutlined, SaveOutlined, SearchOutlined, UpCircleFilled, UpCircleOutlined } from '@ant-design/icons'
-import ConditionRender from '../../components/ConditionRender'
-import validator from '../../validator'
+import ConditionRender from '../../../components/ConditionRender'
+import validator from '../../../validator'
 import moment from 'moment'
-import helper from '../../utils/helper'
-import { ACTION } from '../../utils/constant'
+import helper from '../../../utils/helper'
+import { ACTION } from '../../../utils/constant'
 
 const { Search } = Input
 const { Option } = Select
 
-const UserInsertTab = props => {
+const Company_UserInsertTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
   const [formInsertUser] = Form.useForm()
@@ -403,6 +403,6 @@ const UserInsertTab = props => {
   )
 }
 
-UserInsertTab.propTypes = {}
+Company_UserInsertTab.propTypes = {}
 
-export default inject('commonStore')(observer(UserInsertTab))
+export default inject('commonStore')(observer(Company_UserInsertTab))

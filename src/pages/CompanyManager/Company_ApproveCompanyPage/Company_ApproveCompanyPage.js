@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
-import { ApproveCompanyPageWrapper } from './ApproveCompanyPageStyled'
+import { ApproveCompanyPageWrapper } from './Company_ApproveCompanyPageStyled'
 import { Tabs } from 'antd'
-import CompanyProfileTab from './CompanyProfileTab'
-import CompanyUserManagerTab from './CompanyUserManagerTab'
+import CompanyProfileTab from './Company_CompanyProfileTab'
+import CompanyUserManagerTab from './Company_UserManagerTab'
 const { TabPane } = Tabs;
 
-const ApproveCompanyPage = props => {
+const Company_ApproveCompanyPage = props => {
   const { commonStore } = props
 
   return (
@@ -31,6 +31,6 @@ const ApproveCompanyPage = props => {
   )
 }
 
-ApproveCompanyPage.propTypes = {}
+Company_ApproveCompanyPage.propTypes = {}
 
-export default inject('commonStore')(observer(ApproveCompanyPage))
+export default inject('commonStore')(observer(Company_ApproveCompanyPage))

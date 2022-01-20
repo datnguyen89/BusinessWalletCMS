@@ -40,41 +40,67 @@ const MainSideBar = props => {
       display={device === DEVICE.MOBILE ? 'none' : 'flex'}
       width={isCollapse ? SIDEBAR_WIDTH_COLLAPSE : SIDEBAR_WIDTH_EXPAND}>
       <MenuSidebarArea>
-        <GroupMenuTitle color={appTheme.solidColor}>{commonStore.isCollapse ? '' : 'Quản lý doanh nghiệp'}</GroupMenuTitle>
+        <GroupMenuTitle>{commonStore.isCollapse ? '' : 'Quản lý doanh nghiệp'}</GroupMenuTitle>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_PROFILE.PATH)}
-          className={pageName === PAGES.CUSTOMER_PROFILE.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.COMPANY_CUSTOMER_PROFILE.PATH)}
+          className={pageName === PAGES.COMPANY_CUSTOMER_PROFILE.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <BookOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Hồ sơ khách hàng</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.USER_MANAGER.PATH)}
-          className={pageName === PAGES.USER_MANAGER.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.COMPANY_USER_MANAGER.PATH)}
+          className={pageName === PAGES.COMPANY_USER_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <UserOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Người dùng</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.DEPARTMENT.PATH)}
-          className={pageName === PAGES.DEPARTMENT.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.COMPANY_DEPARTMENT.PATH)}
+          className={pageName === PAGES.COMPANY_DEPARTMENT.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <ApartmentOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.APPROVE_COMPANY.PATH)}
-          className={pageName === PAGES.APPROVE_COMPANY.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.COMPANY_APPROVE_COMPANY.PATH)}
+          className={pageName === PAGES.COMPANY_APPROVE_COMPANY.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <AuditOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Duyệt thông tin DN</span>
         </MenuSidebarItem>
-      </MenuSidebarArea>
 
+        <GroupMenuTitle>{commonStore.isCollapse ? '' : 'Quản lý khách hàng'}</GroupMenuTitle>
+        <MenuSidebarItem
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_CUSTOMER.PATH)}
+          className={pageName === PAGES.CUSTOMER_CREATE_CUSTOMER.NAME ? 'active' : ''}
+          color={appTheme.solidColor}>
+          <AuditOutlined />
+          <span className={'menu-sidebar-label'}
+                style={{ display: isCollapse ? 'none' : 'block' }}>Tạo KH doanh nghiệp</span>
+        </MenuSidebarItem>
+        <MenuSidebarItem
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_USER_COMPANY.PATH)}
+          className={pageName === PAGES.CUSTOMER_CREATE_USER_COMPANY.NAME ? 'active' : ''}
+          color={appTheme.solidColor}>
+          <AuditOutlined />
+          <span className={'menu-sidebar-label'}
+                style={{ display: isCollapse ? 'none' : 'block' }}>Tạo User doanh nghiệp</span>
+        </MenuSidebarItem>
+        <MenuSidebarItem
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_COMPANY.PATH)}
+          className={pageName === PAGES.CUSTOMER_APPROVE_COMPANY.NAME ? 'active' : ''}
+          color={appTheme.solidColor}>
+          <AuditOutlined />
+          <span className={'menu-sidebar-label'}
+                style={{ display: isCollapse ? 'none' : 'block' }}>Duyệt thông tin DN</span>
+        </MenuSidebarItem>
+
+      </MenuSidebarArea>
     </MainSideBarWrapper>
   )
 }
