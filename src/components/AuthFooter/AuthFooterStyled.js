@@ -40,7 +40,7 @@ export const AuthFooterRight = styled.div`
     text-align: center;
   }
 `
-export const AuthFooterRightCompany = styled.h1`
+export const AuthFooterRightBusiness = styled.h1`
   color: ${props => props.color};
   font-size: 1.4rem;
   font-weight: 700;

@@ -39,7 +39,7 @@ export const MainFooterLeftInfo = styled.div`
     color: #999999;
   }
 `
-export const CompanyName = styled.h1`
+export const BusinessName = styled.h1`
   margin: 0;
   color: ${props => props.color}
 `

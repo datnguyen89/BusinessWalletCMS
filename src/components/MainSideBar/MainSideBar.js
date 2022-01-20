@@ -42,32 +42,32 @@ const MainSideBar = props => {
       <MenuSidebarArea>
         <GroupMenuTitle>{commonStore.isCollapse ? '' : 'Quản lý doanh nghiệp'}</GroupMenuTitle>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.COMPANY_CUSTOMER_PROFILE.PATH)}
-          className={pageName === PAGES.COMPANY_CUSTOMER_PROFILE.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_CUSTOMER_PROFILE.PATH)}
+          className={pageName === PAGES.BUSINESS_CUSTOMER_PROFILE.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <BookOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Hồ sơ khách hàng</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.COMPANY_USER_MANAGER.PATH)}
-          className={pageName === PAGES.COMPANY_USER_MANAGER.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_USER_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_USER_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <UserOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Người dùng</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.COMPANY_DEPARTMENT.PATH)}
-          className={pageName === PAGES.COMPANY_DEPARTMENT.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_DEPARTMENT.PATH)}
+          className={pageName === PAGES.BUSINESS_DEPARTMENT.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <ApartmentOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.COMPANY_APPROVE_COMPANY.PATH)}
-          className={pageName === PAGES.COMPANY_APPROVE_COMPANY.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_APPROVE_BUSINESS.PATH)}
+          className={pageName === PAGES.BUSINESS_APPROVE_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <AuditOutlined />
           <span className={'menu-sidebar-label'}
@@ -84,16 +84,16 @@ const MainSideBar = props => {
                 style={{ display: isCollapse ? 'none' : 'block' }}>Tạo KH doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_USER_COMPANY.PATH)}
-          className={pageName === PAGES.CUSTOMER_CREATE_USER_COMPANY.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH)}
+          className={pageName === PAGES.CUSTOMER_CREATE_USER_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <AuditOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Tạo User doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_COMPANY.PATH)}
-          className={pageName === PAGES.CUSTOMER_APPROVE_COMPANY.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_BUSINESS.PATH)}
+          className={pageName === PAGES.CUSTOMER_APPROVE_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <AuditOutlined />
           <span className={'menu-sidebar-label'}

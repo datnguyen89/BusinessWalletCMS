@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CreateUserCompanyPageWrapper } from './Customer_CreateUserCompanyPageStyled'
+import { CreateUserBusinessPageWrapper } from './Customer_CreateUserBusinessPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 
-const Customer_CreateUserCompanyPage = props => {
+const Customer_CreateUserBusinessPage = props => {
   return (
     <DefaultLayout>
       <Helmet>
         <title>Tạo User doanh nghiệp</title>
       </Helmet>
-      <CreateUserCompanyPageWrapper>
+      <CreateUserBusinessPageWrapper>
 
-      </CreateUserCompanyPageWrapper>
+      </CreateUserBusinessPageWrapper>
     </DefaultLayout>
 
   )
 }
 
-Customer_CreateUserCompanyPage.propTypes = {
+Customer_CreateUserBusinessPage.propTypes = {
 
 }
 
-export default Customer_CreateUserCompanyPage
+export default Customer_CreateUserBusinessPage

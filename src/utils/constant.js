@@ -13,33 +13,33 @@ export const PAGES = {
     NAME: 'not-permission',
     PATH: '/not-permission',
   },
-  COMPANY_CUSTOMER_PROFILE: {
-    NAME: 'company-customer-profile',
-    PATH: '/company-customer-profile',
+  BUSINESS_CUSTOMER_PROFILE: {
+    NAME: 'business-customer-profile',
+    PATH: '/business-customer-profile',
   },
-  COMPANY_USER_MANAGER: {
-    NAME: 'company-user-manager',
-    PATH: '/company-user-manager',
+  BUSINESS_USER_MANAGER: {
+    NAME: 'business-user-manager',
+    PATH: '/business-user-manager',
   },
-  COMPANY_DEPARTMENT: {
-    NAME: 'company-department',
-    PATH: '/company-department',
+  BUSINESS_DEPARTMENT: {
+    NAME: 'business-department',
+    PATH: '/business-department',
   },
-  COMPANY_APPROVE_COMPANY: {
-    NAME: 'company-approve-company',
-    PATH: '/company-approve-company',
+  BUSINESS_APPROVE_BUSINESS: {
+    NAME: 'business-approve-business',
+    PATH: '/business-approve-business',
   },
   CUSTOMER_CREATE_CUSTOMER: {
-    NAME: 'customer-create-customer-company',
-    PATH: '/customer-create-customer-company',
+    NAME: 'customer-create-customer-business',
+    PATH: '/customer-create-customer-business',
   },
-  CUSTOMER_CREATE_USER_COMPANY: {
-    NAME: 'customer-create-user-company',
-    PATH: '/customer-create-user-company',
+  CUSTOMER_CREATE_USER_BUSINESS: {
+    NAME: 'customer-create-user-business',
+    PATH: '/customer-create-user-business',
   },
-  CUSTOMER_APPROVE_COMPANY: {
-    NAME: 'customer-approve-company',
-    PATH: '/customer-approve-company',
+  CUSTOMER_APPROVE_BUSINESS: {
+    NAME: 'customer-approve-business',
+    PATH: '/customer-approve-business',
   },
 }
 

@@ -4,19 +4,19 @@ import { inject, observer } from 'mobx-react'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
 
-const Company_DepartmentManagerPage = props => {
+const Business_CustomerProfilePage = props => {
   const { commonStore } = props
 
   return (
     <DefaultLayout>
       <Helmet>
-        <title>Quản lý phòng ban</title>
+        <title>Hồ sơ khách hàng</title>
       </Helmet>
-      Quản lý phòng ban
+      CustomerProfilePage
     </DefaultLayout>
   )
 }
 
-Company_DepartmentManagerPage.propTypes = {}
+Business_CustomerProfilePage.propTypes = {}
 
-export default inject('commonStore')(observer(Company_DepartmentManagerPage))
+export default inject('commonStore')(observer(Business_CustomerProfilePage))

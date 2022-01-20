@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPhoneVolume } from '@fortawesome/free-solid-svg-icons'
 import {
-  CompanyName, FooterRightMenu, FooterRightMenuItem, FooterRightPhone,
+  BusinessName, FooterRightMenu, FooterRightMenuItem, FooterRightPhone,
   MainFooterLeft,
   MainFooterLeftInfo,
   MainFooterRight,
@@ -25,7 +25,7 @@ const MainFooter = props => {
           <img src={IMAGES.AUTH_LOGO} alt={''} height={48} />
         </Link>
         <MainFooterLeftInfo>
-          <CompanyName color={appTheme.solidColor}>Tổng công ty Viễn Thông MobiFone </CompanyName>
+          <BusinessName color={appTheme.solidColor}>Tổng công ty Viễn Thông MobiFone </BusinessName>
           <p>Số 01 phố Phạm Văn Bạch, Yên Hòa, Cầu Giấy, Hà Nội</p>
           <TelsArea>
             <a href={'tel:84243781800'}>

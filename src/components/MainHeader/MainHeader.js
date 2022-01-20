@@ -16,7 +16,7 @@ import HeaderUserArea from '../HeaderUserArea'
 import { useHistory } from 'react-router-dom'
 import { DEVICE, PAGES, SIDEBAR_WIDTH_EXPAND } from '../../utils/constant'
 import DrawerSideBar from '../DrawerSideBar'
-import { MenuOutlined } from '@ant-design/icons'
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 
 const MainHeader = props => {
   const { commonStore } = props
@@ -38,7 +38,13 @@ const MainHeader = props => {
       <HeaderLogoArea width={commonStore.isCollapse ? 'auto' : '220px'}>
         <img src={IMAGES.AUTH_LOGO} alt={''} style={{ cursor: 'pointer' }} height={48}
              onClick={() => history.push(PAGES.HOME.PATH)} />
-        <MenuOutlined onClick={handleToggleSideBar} />
+        {
+          commonStore.isCollapse
+          ?
+            <MenuUnfoldOutlined onClick={handleToggleSideBar} />
+            :
+            <MenuFoldOutlined onClick={handleToggleSideBar} />
+        }
         <FontAwesomeIcon
           onClick={() => setVisibleMobileDrawerLeft(true)}
           icon={faList}

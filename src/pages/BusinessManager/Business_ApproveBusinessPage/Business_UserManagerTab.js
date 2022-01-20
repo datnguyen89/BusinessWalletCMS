@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { CompanyUserManagerTabWrapper } from './Company_ApproveCompanyPageStyled'
+import { BusinessUserManagerTabWrapper } from './Business_ApproveBusinessPageStyled'
 import { Col, Form, Row, DatePicker, Input } from 'antd'
 
 const { RangePicker } = DatePicker
 
-const Company_UserManagerTab = props => {
+const Business_UserManagerTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
 
-  const [formFilterCompanyUser] = Form.useForm()
+  const [formFilterBusinessUser] = Form.useForm()
 
   const onFinish = (formCollection) => {
     console.log(formCollection)
   }
   return (
-    <CompanyUserManagerTabWrapper>
+    <BusinessUserManagerTabWrapper>
       <Form
         labelAlign={'left'}
         labelCol={{ span: 6 }}
         colon={false}
         onFinish={onFinish}
-        form={formFilterCompanyUser}>
+        form={formFilterBusinessUser}>
         <Row justify={'space-between'} gutter={[16, 16]}>
           <Col span={8}>
             <Form.Item label={'Thời gian tạo'} name={'dateRangeCreated'}>
@@ -46,9 +46,9 @@ const Company_UserManagerTab = props => {
           </Col>
         </Row>
       </Form>
-    </CompanyUserManagerTabWrapper>
+    </BusinessUserManagerTabWrapper>
   )
 }
 
-Company_UserManagerTab.propTypes = {}
-export default inject('commonStore')(observer(Company_UserManagerTab))
+Business_UserManagerTab.propTypes = {}
+export default inject('commonStore')(observer(Business_UserManagerTab))

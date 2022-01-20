@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
-import { ApproveCompanyPageWrapper } from './Company_ApproveCompanyPageStyled'
+import { ApproveBusinessPageWrapper } from './Business_ApproveBusinessPageStyled'
 import { Tabs } from 'antd'
-import CompanyProfileTab from './Company_CompanyProfileTab'
-import CompanyUserManagerTab from './Company_UserManagerTab'
+import BusinessProfileTab from './Business_BusinessProfileTab'
+import BusinessUserManagerTab from './Business_UserManagerTab'
 const { TabPane } = Tabs;
 
-const Company_ApproveCompanyPage = props => {
+const Business_ApproveBusinessPage = props => {
   const { commonStore } = props
 
   return (
@@ -17,20 +17,20 @@ const Company_ApproveCompanyPage = props => {
       <Helmet>
         <title>Duyệt thông tin DN</title>
       </Helmet>
-      <ApproveCompanyPageWrapper>
+      <ApproveBusinessPageWrapper>
         <Tabs defaultActiveKey="2">
           <TabPane tab="Hồ sơ doanh nghiệp" key="1">
-            <CompanyProfileTab />
+            <BusinessProfileTab />
           </TabPane>
           <TabPane tab="User doanh nghiệp" key="2">
-            <CompanyUserManagerTab />
+            <BusinessUserManagerTab />
           </TabPane>
         </Tabs>
-      </ApproveCompanyPageWrapper>
+      </ApproveBusinessPageWrapper>
     </DefaultLayout>
   )
 }
 
-Company_ApproveCompanyPage.propTypes = {}
+Business_ApproveBusinessPage.propTypes = {}
 
-export default inject('commonStore')(observer(Company_ApproveCompanyPage))
+export default inject('commonStore')(observer(Business_ApproveBusinessPage))
