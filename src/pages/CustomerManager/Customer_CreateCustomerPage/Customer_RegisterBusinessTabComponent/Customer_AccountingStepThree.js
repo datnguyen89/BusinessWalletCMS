@@ -17,6 +17,8 @@ const CustomerAccountingStepThree = props => {
   const [fileToPreview1, setFileToPreview1] = useState(null)
   const [fileToUpload2, setFileToUpload2] = useState(null)
   const [fileToPreview2, setFileToPreview2] = useState(null)
+  const [fileToUpload3, setFileToUpload3] = useState(null)
+  const [fileToPreview3, setFileToPreview3] = useState(null)
 
   const [dkkdLength, setDkkdLength] = useState(0)
   const [maSoThueLength, setMaSoThueLength] = useState(0)
@@ -372,7 +374,7 @@ const CustomerAccountingStepThree = props => {
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={24}>
-            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={'Ảnh ĐKKD/GPTL'}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={<span className={'custom-required'}>Ảnh giấy tờ mặt trước</span>}>
               <UploadModule
                 uploadButton={
                   <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
@@ -381,8 +383,6 @@ const CustomerAccountingStepThree = props => {
                 callbackFileCropped={e => setFileToUpload1(e)}
                 callbackFileSrcPreview={e => setFileToPreview1(e)}
               />
-
-
             </Form.Item>
             {
               fileToUpload1?.type === 'application/pdf'
@@ -401,7 +401,7 @@ const CustomerAccountingStepThree = props => {
             }
           </Col>
           <Col span={24}>
-            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={'Bản scan hợp đồng'}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={<span className={'custom-required'}>Ảnh giấy tờ mặt sau</span>}>
               <UploadModule
                 uploadButton={
                   <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
@@ -425,6 +425,33 @@ const CustomerAccountingStepThree = props => {
                 :
                 fileToPreview2
                 && <img className={'previewImg'} src={fileToPreview2} alt={''} />
+            }
+          </Col>
+          <Col span={24}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={<span className={'custom-required'}>Quyết định bổ nhiệm</span>}>
+              <UploadModule
+                uploadButton={
+                  <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
+                    Vui lòng chọn tệp
+                  </Button>}
+                callbackFileCropped={e => setFileToUpload3(e)}
+                callbackFileSrcPreview={e => setFileToPreview3(e)} />
+
+            </Form.Item>
+            {
+              fileToUpload3?.type === 'application/pdf'
+                ?
+                <embed
+                  src={fileToPreview3}
+                  type='application/pdf'
+                  frameBorder='0'
+                  scrolling='auto'
+                  height='900px'
+                  width='100%'
+                />
+                :
+                fileToPreview3
+                && <img className={'previewImg'} src={fileToPreview3} alt={''} />
             }
           </Col>
         </Row>

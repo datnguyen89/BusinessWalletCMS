@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
-import { Button, Col, DatePicker, Divider, Form, Input, Row, Select } from 'antd'
+import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select } from 'antd'
 import { CustomerRepresentationStepTwoWrapper } from '../Customer_CreateCustomerPageStyled'
 import moment from 'moment'
 import UploadModule from '../../../../components/UploadModule'
@@ -17,6 +17,8 @@ const CustomerRepresentationStepTwo = props => {
   const [fileToPreview1, setFileToPreview1] = useState(null)
   const [fileToUpload2, setFileToUpload2] = useState(null)
   const [fileToPreview2, setFileToPreview2] = useState(null)
+  const [fileToUpload3, setFileToUpload3] = useState(null)
+  const [fileToPreview3, setFileToPreview3] = useState(null)
 
   const [dkkdLength, setDkkdLength] = useState(0)
   const [maSoThueLength, setMaSoThueLength] = useState(0)
@@ -46,7 +48,7 @@ const CustomerRepresentationStepTwo = props => {
 
   const resetFormBusinessInfo = () => {
     formBusinessInfo.setFieldsValue({
-      representation_dkkd: '',
+      representation_soGiayTo: '',
       representation_maSoThue: '',
       representation_tenDoanhNghiep: '',
       representation_tenVietTat: '',
@@ -98,8 +100,8 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số ĐKKD' }]}
-              label={'Số ĐKKD'} name={'representation_dkkd'}>
+              rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
+              label={'Số giấy tờ'} name={'representation_soGiayTo'}>
               <Input.Search maxLength={20} placeholder={'Nhập nội dung'} suffix={`${dkkdLength}/20`} enterButton
                             onSearch={handleSearchDKKD}
                             onChange={e => setDkkdLength(e.currentTarget.value.length)} />
@@ -107,12 +109,23 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}
-              label={'Mã số thuế'} name={'representation_maSoThue'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${maSoThueLength}/20`}
-                     onChange={e => setMaSoThueLength(e.currentTarget.value.length)} />
+              rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
+              labelCol={{ span: 0 }} wrapperCol={{ span: 24 }}
+              label={''} name={'representation_hinhThucDaiDien'}>
+              <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
+                <Radio value={'1'}>Đại diện theo pháp luật</Radio>
+                <Radio value={'2'}>Đại diện ủy quyền</Radio>
+              </Radio.Group>
             </Form.Item>
           </Col>
+          {/*<Col span={10}>*/}
+          {/*  <Form.Item*/}
+          {/*    rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}*/}
+          {/*    label={'Mã số thuế'} name={'representation_maSoThue'}>*/}
+          {/*    <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${maSoThueLength}/20`}*/}
+          {/*           onChange={e => setMaSoThueLength(e.currentTarget.value.length)} />*/}
+          {/*  </Form.Item>*/}
+          {/*</Col>*/}
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
@@ -157,8 +170,9 @@ const CustomerRepresentationStepTwo = props => {
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Loại giấy tờ'} name={'representation_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
-                <Select.Option value={'1'}>ĐKKD</Select.Option>
-                <Select.Option value={'2'}>GPTL</Select.Option>
+                <Select.Option value={'1'}>Căn cước công dân</Select.Option>
+                <Select.Option value={'2'}>Chứng minh nhân dân</Select.Option>
+                <Select.Option value={'3'}>Hộ chiếu</Select.Option>
               </Select>
             </Form.Item>
           </Col>
@@ -372,7 +386,8 @@ const CustomerRepresentationStepTwo = props => {
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={24}>
-            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={'Ảnh ĐKKD/GPTL'}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }}
+                       label={<span className={'custom-required'}>Ảnh giấy tờ mặt trước</span>}>
               <UploadModule
                 uploadButton={
                   <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
@@ -381,8 +396,6 @@ const CustomerRepresentationStepTwo = props => {
                 callbackFileCropped={e => setFileToUpload1(e)}
                 callbackFileSrcPreview={e => setFileToPreview1(e)}
               />
-
-
             </Form.Item>
             {
               fileToUpload1?.type === 'application/pdf'
@@ -401,7 +414,8 @@ const CustomerRepresentationStepTwo = props => {
             }
           </Col>
           <Col span={24}>
-            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }} label={'Bản scan hợp đồng'}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }}
+                       label={<span className={'custom-required'}>Ảnh giấy tờ mặt sau</span>}>
               <UploadModule
                 uploadButton={
                   <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
@@ -425,6 +439,34 @@ const CustomerRepresentationStepTwo = props => {
                 :
                 fileToPreview2
                 && <img className={'previewImg'} src={fileToPreview2} alt={''} />
+            }
+          </Col>
+          <Col span={24}>
+            <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }}
+                       label={<span className={'custom-required'}>Văn bản ủy quyền</span>}>
+              <UploadModule
+                uploadButton={
+                  <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
+                    Vui lòng chọn tệp
+                  </Button>}
+                callbackFileCropped={e => setFileToUpload3(e)}
+                callbackFileSrcPreview={e => setFileToPreview3(e)} />
+
+            </Form.Item>
+            {
+              fileToUpload3?.type === 'application/pdf'
+                ?
+                <embed
+                  src={fileToPreview3}
+                  type='application/pdf'
+                  frameBorder='0'
+                  scrolling='auto'
+                  height='900px'
+                  width='100%'
+                />
+                :
+                fileToPreview3
+                && <img className={'previewImg'} src={fileToPreview3} alt={''} />
             }
           </Col>
         </Row>
