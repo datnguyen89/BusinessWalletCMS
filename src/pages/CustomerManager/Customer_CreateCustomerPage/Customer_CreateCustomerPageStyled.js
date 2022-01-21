@@ -9,6 +9,11 @@ export const CustomerRegisterBusinessTabWrapper = styled.div`
 
 `
 export const CustomerBusinessInfoStepOneWrapper = styled.div`
+  .customSkeImage {
+    width: 100% !important;
+    height: 320px;
+  }
+  
 `
 export const CustomerRepresentationStepTwoWrapper = styled.div`
 `

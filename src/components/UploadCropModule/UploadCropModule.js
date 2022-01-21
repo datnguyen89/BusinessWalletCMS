@@ -70,6 +70,7 @@ const UploadCropModule = props => {
         beforeCrop={handleBeforeCrop}
         rotate={rotate}
         shape={shape || 'rect'}
+        aspect={16/9}
         modalOk={modalOk || 'Xác nhận'}
         modalCancel={modalCancel || 'Hủy'}>
         <Upload

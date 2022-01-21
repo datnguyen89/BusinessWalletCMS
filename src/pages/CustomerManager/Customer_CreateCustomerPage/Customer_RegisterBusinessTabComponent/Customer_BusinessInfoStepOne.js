@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { message, Button, Col, DatePicker, Divider, Form, Input, Row, Select, Upload } from 'antd'
+import { message, Button, Col, DatePicker, Divider, Form, Input, Row, Select, Upload, Skeleton } from 'antd'
 import { CustomerBusinessInfoStepOneWrapper } from '../Customer_CreateCustomerPageStyled'
 import ImgCrop from 'antd-img-crop'
 import { CloudUploadOutlined } from '@ant-design/icons'
@@ -14,8 +14,10 @@ const CustomerBusinessInfoStepOne = props => {
   const { appTheme } = commonStore
   const [formBusinessInfo] = Form.useForm()
 
-  const [fileToUpload, setFileToUpload] = useState(null)
-  const [fileToPreview, setFileToPreview] = useState(null)
+  const [fileToUpload1, setFileToUpload1] = useState(null)
+  const [fileToPreview1, setFileToPreview1] = useState(null)
+  const [fileToUpload2, setFileToUpload2] = useState(null)
+  const [fileToPreview2, setFileToPreview2] = useState(null)
 
   return (
     <CustomerBusinessInfoStepOneWrapper>
@@ -284,16 +286,37 @@ const CustomerBusinessInfoStepOne = props => {
             </Form.Item>
           </Col>
         </Row>
-        <Row>
-          <img src={fileToPreview} />
+        <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={12}>
-            <UploadCropModule
-              callbackFileCropped={e => setFileToUpload(e)}
-              callbackFileSrcPreview={e => setFileToPreview(e)}
-              grid={true} rotate={true} />
+            <Form.Item labelCol={{ span: 5 }} wrapperCol={{ span: 19 }} label={'Ảnh ĐKKD/GPTL'}>
+              <UploadCropModule
+                uploadButton={<Button type={'link'} className={'mb-16'}><CloudUploadOutlined /> Vui lòng chọn
+                  tệp</Button>}
+                callbackFileCropped={e => setFileToUpload1(e)}
+                callbackFileSrcPreview={e => setFileToPreview1(e)}
+                grid={true} rotate={true} />
+              {
+                fileToPreview1
+                && <img src={fileToPreview1} alt={''} height={320} />
+
+              }
+            </Form.Item>
+
           </Col>
           <Col span={12}>
+            <Form.Item labelCol={{ span: 5 }} wrapperCol={{ span: 19 }} label={'Bản scan hợp đồng'}>
+              <UploadCropModule
+                uploadButton={<Button type={'link'} className={'mb-16'}><CloudUploadOutlined /> Vui lòng chọn
+                  tệp</Button>}
+                callbackFileCropped={e => setFileToUpload2(e)}
+                callbackFileSrcPreview={e => setFileToPreview2(e)}
+                grid={true} rotate={true} />
+              {
+                fileToPreview2
+                && <img src={fileToPreview2} alt={''} height={320} />
 
+              }
+            </Form.Item>
           </Col>
         </Row>
       </Form>
