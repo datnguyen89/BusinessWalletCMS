@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { Button, Col, DatePicker, Divider, Form, Input, Row, Select } from 'antd'
+import { message, Button, Col, DatePicker, Divider, Form, Input, Row, Select, Upload } from 'antd'
 import { CustomerBusinessInfoStepOneWrapper } from '../Customer_CreateCustomerPageStyled'
+import ImgCrop from 'antd-img-crop'
+import { CloudUploadOutlined } from '@ant-design/icons'
+import 'antd/dist/antd.css'
+import UploadCropModule from '../../../../components/UploadCropModule'
+import UploadModule from '../../../../components/UploadModule'
 
 const CustomerBusinessInfoStepOne = props => {
   const { commonStore, nextStep } = props
   const { appTheme } = commonStore
   const [formBusinessInfo] = Form.useForm()
+
+  const [fileToUpload, setFileToUpload] = useState(null)
+  const [fileToPreview, setFileToPreview] = useState(null)
 
   return (
     <CustomerBusinessInfoStepOneWrapper>
@@ -274,6 +282,18 @@ const CustomerBusinessInfoStepOne = props => {
                 <Select.Option value={'2'}>Loại 2</Select.Option>
               </Select>
             </Form.Item>
+          </Col>
+        </Row>
+        <Row>
+          <img src={fileToPreview} />
+          <Col span={12}>
+            <UploadCropModule
+              callbackFileCropped={e => setFileToUpload(e)}
+              callbackFileSrcPreview={e => setFileToPreview(e)}
+              grid={true} rotate={true} />
+          </Col>
+          <Col span={12}>
+
           </Col>
         </Row>
       </Form>
