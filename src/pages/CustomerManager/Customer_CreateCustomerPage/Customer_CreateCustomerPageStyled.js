@@ -13,7 +13,11 @@ export const CustomerBusinessInfoStepOneWrapper = styled.div`
     width: 100% !important;
     height: 320px;
   }
-  
+  .previewImg {
+    max-height: 768px;
+    width: 100%;
+    object-fit: contain;
+  }
 `
 export const CustomerRepresentationStepTwoWrapper = styled.div`
 `

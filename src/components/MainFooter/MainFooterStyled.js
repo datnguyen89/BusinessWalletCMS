@@ -7,7 +7,7 @@ export const MainFooterWrapper = styled.footer`
   left: 0;
   width: 100%;
   height: 64px;
-  z-index: 1;
+  z-index: 9;
   border-top: 1px solid #ededed;
   background: #FFF;
   display: flex;

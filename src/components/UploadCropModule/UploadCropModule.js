@@ -22,7 +22,7 @@ const UploadCropModule = props => {
   const [fileSrcCropped, setFileSrcCropped] = useState(null)
 
   const handleBeforeCrop = (file) => {
-    console.log(file.size)
+    console.log(file.type)
     const acceptType = [
       'image/jpeg',
       'image/jpg',
@@ -33,7 +33,7 @@ const UploadCropModule = props => {
       message.error('Vui lòng chọn ảnh định dạng jpg/jpeg/png')
       return false
     }
-    if (file.size > 6291456) {
+    if (file.size > 5242880) {
       message.error('Dung lượng ảnh phải nhỏ hơn 6MB')
       return false
     }

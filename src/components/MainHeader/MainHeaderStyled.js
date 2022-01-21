@@ -12,7 +12,7 @@ export const MainHeaderWrapper = styled.header`
   left: 0;
   width: 100%;
   background: linear-gradient(270deg, #6634E0 -8.83%, #0465B0 74.3%);
-  z-index: 1;
+  z-index: 9;
 `
 export const HeaderLogoArea = styled.div`
   display: flex;

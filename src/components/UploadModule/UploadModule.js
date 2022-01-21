@@ -17,6 +17,23 @@ const UploadModule = props => {
 
   const handleBeforeUpload = (file) => {
     if (file) {
+
+      const acceptType = [
+        'image/jpeg',
+        'image/jpg',
+        'image/png',
+        'application/pdf'
+      ]
+      let isAcceptType = acceptType.includes(file.type)
+      if (!isAcceptType) {
+        message.error('Vui lòng chọn file định dạng jpg/jpeg/png/pdf')
+        return
+      }
+      if (file.size > 5242880) {
+        message.error('Dung lượng ảnh phải nhỏ hơn 6MB')
+        return
+      }
+
       const objectUrl = URL.createObjectURL(file)
       callbackFileCropped(file)
       callbackFileSrcPreview(objectUrl)
