@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { CustomerRegisterBusinessTabWrapper } from './Customer_CreateCustomerPageStyled'
-import ConditionDisplay from '../../../components/ConditionDisplay'
-import Customer_BusinessInfoStepOne from './Customer_RegisterBusinessTabComponent/Customer_BusinessInfoStepOne'
-import Customer_RepresentationStepTwo from './Customer_RegisterBusinessTabComponent/Customer_RepresentationStepTwo'
-import Customer_AccountingStepThree from './Customer_RegisterBusinessTabComponent/Customer_AccountingStepThree'
+import { CustomerRegisterBusinessTabWrapper } from '../Customer_CreateCustomerPageStyled'
+import ConditionDisplay from '../../../../components/ConditionDisplay'
+import Customer_BusinessInfoStepOne from './Customer_BusinessInfoStepOne'
+import Customer_RepresentationStepTwo from './Customer_RepresentationStepTwo'
+import Customer_AccountingStepThree from './Customer_AccountingStepThree'
 
 const CustomerRegisterBusinessTab = props => {
   const [processStep, setProcessStep] = useState(0)

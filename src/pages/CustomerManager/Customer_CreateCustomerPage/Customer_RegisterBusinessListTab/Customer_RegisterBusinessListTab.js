@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CustomerRegisterBusinessListTabWrapper } from './Customer_CreateCustomerPageStyled'
+import { CustomerRegisterBusinessListTabWrapper } from '../Customer_CreateCustomerPageStyled'
 
 const CustomerRegisterBusinessListTab = props => {
   return (

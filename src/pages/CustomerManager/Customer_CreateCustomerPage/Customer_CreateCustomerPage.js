@@ -4,8 +4,8 @@ import { CreateCustomerPageWrapper } from './Customer_CreateCustomerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
-import Customer_RegisterBusinessTab from './Customer_RegisterBusinessTab'
-import Customer_RegisterBusinessListTab from './Customer_RegisterBusinessListTab'
+import Customer_RegisterBusinessTab from './Customer_RegisterBusinessTab/Customer_RegisterBusinessTab'
+import Customer_RegisterBusinessListTab from './Customer_RegisterBusinessListTab/Customer_RegisterBusinessListTab'
 const { TabPane } = Tabs;
 
 const Customer_CreateCustomerPage = props => {
