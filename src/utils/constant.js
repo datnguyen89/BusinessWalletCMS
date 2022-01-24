@@ -1,4 +1,3 @@
-import ICONS from '../icons'
 
 export const PAGES = {
   HOME: {
