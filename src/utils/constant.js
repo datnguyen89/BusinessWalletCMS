@@ -4,6 +4,10 @@ export const PAGES = {
     NAME: 'home',
     PATH: '/',
   },
+  TEST: {
+    NAME: 'test',
+    PATH: '/test',
+  },
   LOGIN: {
     NAME: 'login',
     PATH: '/login',

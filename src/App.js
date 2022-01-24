@@ -7,6 +7,8 @@ const publicIp = require('public-ip')
 // Styling
 import './App.less'
 import ThemeProvider from './providers/ThemeProvider'
+import 'antd/es/modal/style';
+import 'antd/es/slider/style';
 // React Router
 import { Redirect, Route, Router, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -31,6 +33,7 @@ import Business_ApproveBusinessPage from './pages/BusinessManager/Business_Appro
 import Customer_CreateCustomerPage from './pages/CustomerManager/Customer_CreateCustomerPage'
 import Customer_CreateUserBusinessPage from './pages/CustomerManager/Customer_CreateUserBusinessPage'
 import Customer_ApproveBusinessPage from './pages/CustomerManager/Customer_ApproveBusinessPage'
+import TestPage from './pages/WebApp/TestPage'
 
 
 const history = createBrowserHistory()
@@ -114,6 +117,7 @@ const App = () => {
             <Route exact path={PAGES.CUSTOMER_CREATE_CUSTOMER.PATH} component={Customer_CreateCustomerPage} />
             <Route exact path={PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH} component={Customer_CreateUserBusinessPage} />
             <Route exact path={PAGES.CUSTOMER_APPROVE_BUSINESS.PATH} component={Customer_ApproveBusinessPage} />
+            <Route exact path={PAGES.TEST.PATH} component={TestPage} />
 
 
 
