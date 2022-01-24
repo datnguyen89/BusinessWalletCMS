@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   CustomerApproveBusinessCustomerTabWrapper,
@@ -6,6 +6,7 @@ import {
 import { Button, Col, Row, DatePicker, Form, Input, Select, Divider, Table, Pagination } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
+import CustomerApproveBusinessCustomerModal from './Customer_ApproveBusinessCustomerModal'
 
 const { RangePicker } = DatePicker
 
@@ -62,6 +63,7 @@ const testData = [
 
 const CustomerApproveBusinessCustomerTab = props => {
   const [formApproveBusinessCustomer] = Form.useForm()
+  const [visibleApproveBusinessCustomerModal, setVisibleApproveBusinessCustomerModal] = useState(false)
 
   const columns = [
     {
@@ -109,9 +111,16 @@ const CustomerApproveBusinessCustomerTab = props => {
     {
       title: 'Thao tác',
       align: 'center',
-      render: (item, row, index) => <SettingOutlined />,
+      render: (item, row, index) =>
+        <SettingOutlined
+          style={{ cursor: 'pointer' }}
+          onClick={() => handleClickShowDetailRequest(item.id)} />,
     },
   ]
+
+  const handleClickShowDetailRequest = (id) => {
+    setVisibleApproveBusinessCustomerModal(true)
+  }
 
   const handleChangePagination = (pageIndex, pageSize) => {
     console.log(pageIndex, pageSize)
@@ -171,25 +180,26 @@ const CustomerApproveBusinessCustomerTab = props => {
             </RowFlexEndDiv>
           </Col>
         </Row>
-        <Divider />
-        <RowFlexEndDiv>
-          <Button><CloudDownloadOutlined /> Xuất dữ liệu</Button>
-        </RowFlexEndDiv>
-        <Table
-          className={'mt-16'}
-          bordered={true}
-          dataSource={testData}
-          columns={columns}
-          rowKey={record => record.id}
-          pagination={false} />
-        <RowSpaceBetweenDiv margin={'16px 0'}>
-          <PaginationLabel>
-            Hiển thị từ 1 đến 10 trên tổng số 200 bản ghi
-          </PaginationLabel>
-          <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
-        </RowSpaceBetweenDiv>
-
       </Form>
+      <Divider />
+      <RowFlexEndDiv margin={'0 0 24px 0'}>
+        <Button><CloudDownloadOutlined /> Xuất dữ liệu</Button>
+      </RowFlexEndDiv>
+      <Table
+        bordered={true}
+        dataSource={testData}
+        columns={columns}
+        rowKey={record => record.id}
+        pagination={false} />
+      <RowSpaceBetweenDiv margin={'16px 0'}>
+        <PaginationLabel>
+          Hiển thị từ 1 đến 10 trên tổng số 200 bản ghi
+        </PaginationLabel>
+        <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
+      </RowSpaceBetweenDiv>
+      <CustomerApproveBusinessCustomerModal
+        visible={visibleApproveBusinessCustomerModal}
+        onClose={() => setVisibleApproveBusinessCustomerModal(false)} />
     </CustomerApproveBusinessCustomerTabWrapper>
   )
 }

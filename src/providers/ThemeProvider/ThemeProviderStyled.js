@@ -475,4 +475,26 @@ export const GlobalStyle = createGlobalStyle`
   .ant-drawer-body {
     padding: 0 !important;
   }
+  
+  //Slick carousel
+  .slick-slider.slick-initialized {
+    padding-bottom: 32px;
+  }
+  .slick-prev:before, .slick-next:before {
+    color: #ccc;
+  }
+  .slick-arrow.slick-next {
+    z-index: 1;
+    right: 0;
+  }
+  .slick-arrow.slick-prev {
+    z-index: 1;
+    left: 0;
+  }
+  .slick-list {
+    margin: 0 32px;
+  }
+  .slick-dots {
+    bottom: 0;
+  }
 `
