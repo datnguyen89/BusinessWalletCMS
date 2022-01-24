@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { CustomerApproveBusinessCustomerModalWrapper, ImgWrapper } from '../Customer_ApproveBusinessPageStyled'
-import { Button, Descriptions, Divider, Form, Input, Modal, Tabs } from 'antd'
+import { Button, Col, Descriptions, Divider, Form, Input, Modal, Row, Tabs } from 'antd'
 import { RowCenterDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, StopOutlined } from '@ant-design/icons'
 import Slider from 'react-slick'
@@ -77,13 +77,14 @@ const CustomerApproveBusinessCustomerModal = props => {
         </Tabs>
         <Divider>Thông tin phê duyệt</Divider>
         <Form
-          ali
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 16 }}
           colon={false}>
-          <Form.Item label={'Lý do'}>
-            <Input.TextArea rows={4} />
-          </Form.Item>
+          <Row justify={'center'}>
+            <Col span={18}>
+              <Form.Item label={''}>
+                <Input.TextArea placeholder={'Lý do'} rows={4} />
+              </Form.Item>
+            </Col>
+          </Row>
           <RowCenterDiv>
             <Button className={'mr-16'}><StopOutlined /> Từ chối</Button>
             <Button type={'primary'}><CheckSquareOutlined /> Phê duyệt</Button>
