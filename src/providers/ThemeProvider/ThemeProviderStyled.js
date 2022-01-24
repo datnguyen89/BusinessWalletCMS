@@ -141,6 +141,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
     content: '*';
   }
+
   .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
     display: none !important;
   }

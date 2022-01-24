@@ -7,18 +7,18 @@ import Customer_RepresentationStepTwo from './Customer_RegisterBusinessTabCompon
 import Customer_AccountingStepThree from './Customer_RegisterBusinessTabComponent/Customer_AccountingStepThree'
 
 const CustomerRegisterBusinessTab = props => {
-  const [processStep, setProcessStep] = useState(2)
+  const [processStep, setProcessStep] = useState(0)
 
   return (
     <CustomerRegisterBusinessTabWrapper>
+      <ConditionDisplay visible={processStep === 0}>
+        <Customer_BusinessInfoStepOne nextStep={() => setProcessStep(1)} />
+      </ConditionDisplay>
       <ConditionDisplay visible={processStep === 1}>
-        <Customer_BusinessInfoStepOne nextStep={() => setProcessStep(2)} />
+        <Customer_RepresentationStepTwo prevStep={() => setProcessStep(0)} nextStep={() => setProcessStep(2)} />
       </ConditionDisplay>
       <ConditionDisplay visible={processStep === 2}>
-        <Customer_RepresentationStepTwo prevStep={() => setProcessStep(1)} nextStep={() => setProcessStep(3)} />
-      </ConditionDisplay>
-      <ConditionDisplay visible={processStep === 3}>
-        <Customer_AccountingStepThree prevStep={() => setProcessStep(2)} />
+        <Customer_AccountingStepThree prevStep={() => setProcessStep(1)} />
       </ConditionDisplay>
     </CustomerRegisterBusinessTabWrapper>
   )

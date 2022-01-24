@@ -11,7 +11,7 @@ import { RowCenterDiv, RowFlexEndDiv } from '../../../../components/CommonStyled
 const CustomerRepresentationStepTwo = props => {
   const { commonStore, nextStep, prevStep } = props
   const { appTheme } = commonStore
-  const [formBusinessInfo] = Form.useForm()
+  const [formRepresentationInfo] = Form.useForm()
 
   const [fileToUpload1, setFileToUpload1] = useState(null)
   const [fileToPreview1, setFileToPreview1] = useState(null)
@@ -20,17 +20,17 @@ const CustomerRepresentationStepTwo = props => {
   const [fileToUpload3, setFileToUpload3] = useState(null)
   const [fileToPreview3, setFileToPreview3] = useState(null)
 
-  const [dkkdLength, setDkkdLength] = useState(0)
-  const [maSoThueLength, setMaSoThueLength] = useState(0)
-  const [tenDoanhNghiepLength, setTenDoanhNghiepLength] = useState(0)
-  const [tenVietTatLength, setTenVietTatLength] = useState(0)
+  const [soGiayToLength, setSoGiayToLength] = useState(0)
+  const [hoVaTenLength, setHoVaTenLength] = useState(0)
   const [noiCapLength, setNoiCapLength] = useState(0)
   const [diDongLength, setDiDongLength] = useState(0)
   const [emailLength, setEmailLength] = useState(0)
   const [dtCoDinhLength, setDtCoDinhLength] = useState(0)
-  const [faxLength, setFaxLength] = useState(0)
-  const [diaChiDKKDLength, setDiaChiDKKDLength] = useState(0)
-  const [diaChiGiaoDichLength, setDiaChiGiaoDichLength] = useState(0)
+  const [chucVuLength, setChucVuLength] = useState(0)
+  const [diaChiThuongTruLength, setDiaChiThuongTruLength] = useState(0)
+  const [diaChiHienTaiLength, setDiaChiHienTaiLength] = useState(0)
+  const [ngheNgiepLength, setNgheNgiepLength] = useState(0)
+  const [danTocLength, setDanTocLength] = useState(0)
 
   const onFinish = (formCollection) => {
     console.log(formCollection)
@@ -46,43 +46,43 @@ const CustomerRepresentationStepTwo = props => {
     console.log(value)
   }
 
-  const resetFormBusinessInfo = () => {
-    formBusinessInfo.setFieldsValue({
-      representation_soGiayTo: '',
-      representation_maSoThue: '',
-      representation_tenDoanhNghiep: '',
-      representation_tenVietTat: '',
-      representation_ngayThanhLap: undefined,
-      representation_quocGia: '1',
+  const resetFormRepresentationInfo = () => {
+    formRepresentationInfo.setFieldsValue({
+      representation_soGiayTo: undefined,
+      representation_hinhThucDaiDien: undefined,
+      representation_hoVaTen: undefined,
+      representation_gioiTinh: undefined,
+      representation_ngaySinh: undefined,
+      representation_quocTich: '1',
       representation_loaiGiayTo: '1',
       representation_ngayCap: undefined,
-      representation_noiCap: '',
+      representation_noiCap: undefined,
       representation_ngayHetHan: undefined,
-      representation_diDong: '',
-      representation_email: '',
-      representation_dtCoDinh: '',
-      representation_fax: '',
-      representation_loaiHinhDoanhNghiep: undefined,
-      representation_linhVucKinhDoanh: undefined,
-      representation_nhomKhachHang: undefined,
-      representation_chiNhanhMoHD: '0',
-      representation_diaChiDKKD: '',
-      representation_cityDKKD: undefined,
-      representation_districtDKKD: undefined,
-      representation_wardsDKKD: undefined,
-      representation_diaChiGiaoDich: '',
-      representation_cityGiaoDich: undefined,
-      representation_districtGiaoDich: undefined,
-      representation_wardsGiaoDich: undefined,
+      representation_diDong: undefined,
+      representation_email: undefined,
+      representation_dtCoDinh: undefined,
+      representation_chucVu: undefined,
+      representation_ngheNghiep: undefined,
+      representation_danToc: undefined,
+      representation_diaChiThuongTru: undefined,
+      representation_cityThuongTru: undefined,
+      representation_districtThuongTru: undefined,
+      representation_wardsThuongTru: undefined,
+      representation_diaChiHienTai: undefined,
+      representation_cityHienTai: undefined,
+      representation_districtHienTai: undefined,
+      representation_wardsHienTai: undefined,
     })
     setFileToUpload1(null)
     setFileToPreview1(null)
     setFileToUpload2(null)
     setFileToPreview2(null)
+    setFileToUpload3(null)
+    setFileToPreview3(null)
   }
 
   useEffect(() => {
-    resetFormBusinessInfo()
+    resetFormRepresentationInfo()
   }, [])
   return (
     <CustomerRepresentationStepTwoWrapper>
@@ -96,68 +96,63 @@ const CustomerRepresentationStepTwo = props => {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         colon={false}
-        form={formBusinessInfo}>
+        form={formRepresentationInfo}>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'representation_soGiayTo'}>
-              <Input.Search maxLength={20} placeholder={'Nhập nội dung'} suffix={`${dkkdLength}/20`} enterButton
+              <Input.Search maxLength={20} placeholder={'Nhập nội dung'} suffix={`${soGiayToLength}/20`} enterButton
                             onSearch={handleSearchDKKD}
-                            onChange={e => setDkkdLength(e.currentTarget.value.length)} />
+                            onChange={e => setSoGiayToLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
+              requiredMark={false}
               rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
-              labelCol={{ span: 0 }} wrapperCol={{ span: 24 }}
-              label={''} name={'representation_hinhThucDaiDien'}>
+              label={'Đại diện'} name={'representation_hinhThucDaiDien'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
                 <Radio value={'1'}>Đại diện theo pháp luật</Radio>
                 <Radio value={'2'}>Đại diện ủy quyền</Radio>
               </Radio.Group>
             </Form.Item>
           </Col>
-          {/*<Col span={10}>*/}
-          {/*  <Form.Item*/}
-          {/*    rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}*/}
-          {/*    label={'Mã số thuế'} name={'representation_maSoThue'}>*/}
-          {/*    <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${maSoThueLength}/20`}*/}
-          {/*           onChange={e => setMaSoThueLength(e.currentTarget.value.length)} />*/}
-          {/*  </Form.Item>*/}
-          {/*</Col>*/}
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập tên doanh nghiệp' }]}
-              label={'Tên doanh nghiệp'} name={'representation_tenDoanhNghiep'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${tenDoanhNghiepLength}/100`}
-                     onChange={e => setTenDoanhNghiepLength(e.currentTarget.value.length)} />
+              rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
+              label={'Họ và tên'} name={'representation_hoVaTen'}>
+              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${hoVaTenLength}/100`}
+                     onChange={e => setHoVaTenLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
+
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
-              label={'Tên viết tắt'} name={'representation_tenVietTat'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${tenVietTatLength}/20`}
-                     onChange={e => setTenVietTatLength(e.currentTarget.value.length)} />
+              rules={[{ required: true, message: 'Vui lòng chọn giới tính' }]}
+              label={'Giới tính'} name={'representation_gioiTinh'}>
+              <Select placeholder={'Vui lòng chọn'}>
+                <Select.Option value={'1'}>Nam</Select.Option>
+                <Select.Option value={'0'}>Nữ</Select.Option>
+              </Select>
             </Form.Item>
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
-              label={'Ngày thành lập'} name={'representation_ngayThanhLap'}>
+              rules={[{ required: true, message: 'Vui lòng chọn ngày sinh' }]}
+              label={'Ngày sinh'} name={'representation_ngaySinh'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Quốc gia'} name={'representation_quocGia'}>
-              <Select placeholder={'Chọn quốc gia'}>
+              rules={[{ required: true, message: 'Vui lòng chọn quốc tịch' }]}
+              label={'Quốc tịch'} name={'representation_quocTich'}>
+              <Select placeholder={'Chọn quốc tịch'}>
                 <Select.Option value={'1'}>Việt Nam</Select.Option>
                 <Select.Option value={'2'}>Lào</Select.Option>
               </Select>
@@ -167,7 +162,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              rules={[{ required: true, message: 'Vui lòng chọn' }]}
               label={'Loại giấy tờ'} name={'representation_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
                 <Select.Option value={'1'}>Căn cước công dân</Select.Option>
@@ -178,7 +173,7 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
               label={'Ngày cấp'} name={'representation_ngayCap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
@@ -187,7 +182,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
               label={'Nơi cấp'} name={'representation_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${noiCapLength}/100`}
                      onChange={e => setNoiCapLength(e.currentTarget.value.length)} />
@@ -203,7 +198,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
               label={'Di động'} name={'representation_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${diDongLength}/20`}
                      onChange={e => setDiDongLength(e.currentTarget.value.length)} />
@@ -227,84 +222,47 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              label={'Fax'} name={'representation_fax'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${faxLength}/20`}
-                     onChange={e => setFaxLength(e.currentTarget.value.length)} />
+              label={'Chức vụ'} name={'representation_chucVu'}>
+              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${chucVuLength}/20`}
+                     onChange={e => setChucVuLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn loại hình doanh nghiệp' }]}
-              label={'Loại hình doanh nghiệp'} name={'representation_loaiHinhDoanhNghiep'}>
-              <Select placeholder={'Vui lòng chọn'}>
-                <Select.Option value={'1'}>Doanh nghiệp tư nhân</Select.Option>
-                <Select.Option value={'2'}>Doanh nghiệp nhà nước</Select.Option>
-                <Select.Option value={'3'}>Công ty TNHH</Select.Option>
-                <Select.Option value={'4'}>Công ty cổ phần</Select.Option>
-                <Select.Option value={'5'}>Công ty hợp danh</Select.Option>
-                <Select.Option value={'6'}>Hợp tác xã</Select.Option>
-                <Select.Option value={'7'}>Khác</Select.Option>
-              </Select>
+              rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
+              label={'Nghề nghiệp'} name={'representation_ngheNghiep'}>
+              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${ngheNgiepLength}/100`}
+                     onChange={e => setNgheNgiepLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Lĩnh vực kinh doanh'} name={'representation_linhVucKinhDoanh'}>
-              <Select placeholder={'Vui lòng chọn'}>
-                <Select.Option value={'1'}>Kinh doanh tài chính</Select.Option>
-                <Select.Option value={'2'}>Thông tin, tức tức, giải trí</Select.Option>
-                <Select.Option value={'3'}>Nông nghiệp lâm nghiệp & khai thác mỏ</Select.Option>
-                <Select.Option value={'4'}>Vận tải</Select.Option>
-                <Select.Option value={'5'}>Bán lẻ & phân phối</Select.Option>
-                <Select.Option value={'6'}>Bất động sản</Select.Option>
-                <Select.Option value={'7'}>Kinh doanh dịch vụ</Select.Option>
-                <Select.Option value={'8'}>Sản xuất</Select.Option>
-                <Select.Option value={'9'}>Dịch vụ công cộng</Select.Option>
-              </Select>
+              rules={[{ required: true, message: 'Vui lòng nhập dân tộc' }]}
+              label={'Dân tộc'} name={'representation_danToc'}>
+              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${danTocLength}/100`}
+                     onChange={e => setDanTocLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
-        </Row>
-        <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
-            <Form.Item
-              label={'Nhóm khách hàng'} name={'representation_nhomKhachHang'}>
-              <Select placeholder={'Vui lòng chọn'}>
-                <Select.Option value={'1'}>Nội bộ</Select.Option>
-                <Select.Option value={'2'}>Khách hàng ngoài</Select.Option>
-              </Select>
-            </Form.Item>
-          </Col>
-          <Col span={10}>
-            <Form.Item
-              label={'Chi nhánh mở HĐ'} name={'representation_chiNhanhMoHD'}>
-              <Select placeholder={'Chọn chi nhánh mở HĐ'}>
-                <Select.Option value={'0'}>Hội sở Mobifone</Select.Option>
-                <Select.Option value={'1'}>Chi nhánh 1</Select.Option>
-                <Select.Option value={'2'}>Chi nhánh 2</Select.Option>
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
+        </Row>        
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Địa chỉ ĐKKD'} name={'representation_diaChiDKKD'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiDKKDLength}/100`}
-                     onChange={e => setDiaChiDKKDLength(e.currentTarget.value.length)} />
+              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ thường trú' }]}
+              label={'Địa chỉ thường trú'} name={'representation_diaChiThuongTru'}>
+              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiThuongTruLength}/100`}
+                     onChange={e => setDiaChiThuongTruLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={4}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_cityDKKD'}>
+              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              label={''} name={'representation_cityThuongTru'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -316,7 +274,7 @@ const CustomerRepresentationStepTwo = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_districtDKKD'}>
+              label={''} name={'representation_districtThuongTru'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -328,7 +286,7 @@ const CustomerRepresentationStepTwo = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_wardsDKKD'}>
+              label={''} name={'representation_wardsThuongTru'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -341,10 +299,10 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Địa chỉ giao dịch'} name={'representation_diaChiGiaoDich'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiGiaoDichLength}/100`}
-                     onChange={e => setDiaChiGiaoDichLength(e.currentTarget.value.length)} />
+              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ hiện tại' }]}
+              label={'Địa chỉ hiện tại'} name={'representation_diaChiHienTai'}>
+              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiHienTaiLength}/100`}
+                     onChange={e => setDiaChiHienTaiLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={4}>
@@ -352,7 +310,7 @@ const CustomerRepresentationStepTwo = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_cityGiaoDich'}>
+              label={''} name={'representation_cityHienTai'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -364,7 +322,7 @@ const CustomerRepresentationStepTwo = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_districtGiaoDich'}>
+              label={''} name={'representation_districtHienTai'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -376,7 +334,7 @@ const CustomerRepresentationStepTwo = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'representation_wardsGiaoDich'}>
+              label={''} name={'representation_wardsHienTai'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -476,13 +434,13 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col span={8}>
             <RowCenterDiv>
-              <Button type={'default'} onClick={() => resetFormBusinessInfo()}><RetweetOutlined /> Làm rỗng</Button>
+              <Button type={'default'} onClick={() => resetFormRepresentationInfo()}><RetweetOutlined /> Làm rỗng</Button>
             </RowCenterDiv>
           </Col>
           <Col span={8}>
             <RowFlexEndDiv>
-              {/*<Button type={'primary'} htmlType={'submit'}>Tiếp tục</Button>*/}
-              <Button type={'primary'} onClick={() => nextStep()}><DoubleRightOutlined /> Tiếp tục</Button>
+              <Button type={'primary'} htmlType={'submit'}><DoubleRightOutlined /> Tiếp tục</Button>
+              {/*<Button type={'primary'} onClick={() => nextStep()}><DoubleRightOutlined /> Tiếp tục1</Button>*/}
             </RowFlexEndDiv>
           </Col>
         </Row>
