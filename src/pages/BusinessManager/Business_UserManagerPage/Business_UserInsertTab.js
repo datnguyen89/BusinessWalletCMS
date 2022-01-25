@@ -38,14 +38,14 @@ const Business_UserInsertTab = props => {
   const [userNameLength, setUserNameLength] = useState(0)
   const [emailLength, setEmailLength] = useState(0)
   const [positionLength, setPositionLength] = useState(0)
+  const [disabledChooseAccount, setDisabledChooseAccount] = useState(true)
 
   const onSearch = value => {
+    resetFormInsertUser()
     if (value) {
       setVisible(true)
-      resetFormInsertUser()
     } else {
       setVisible(false)
-      resetFormInsertUser()
     }
   }
   const mockupData = [
@@ -56,7 +56,7 @@ const Business_UserInsertTab = props => {
       phone: '0987654322',
       email: 'user@gmail.com',
       userName: 'userName1',
-      userRole: ['Tạo lập'],
+      userRole: 'Tạo lập',
       status: 'Hoạt động',
     },
     {
@@ -66,7 +66,7 @@ const Business_UserInsertTab = props => {
       phone: '0987654323',
       email: 'user2@gmail.com',
       userName: 'userName1',
-      userRole: ['Phê duyệt'],
+      userRole: 'Phê duyệt',
       status: 'Tạm dừng',
     },
 
@@ -183,16 +183,44 @@ const Business_UserInsertTab = props => {
     }
   }
 
+  const handleChangeRole = (role) => {
+    // Nếu role là tạo lập thì bỏ disable chọn tài
+    console.log(role)
+    if (role === '1') {
+      setDisabledChooseAccount(false)
+    } else {
+      setDisabledChooseAccount(true)
+      formInsertUser.setFieldsValue({
+        account: undefined,
+      })
+    }
+  }
+
   const resetFormInsertUser = () => {
     formInsertUser.setFieldsValue({
       id: 0,
+      fullName: undefined,
+      department: undefined,
+      userName: undefined,
+      role: undefined,
+      phoneNumber: undefined,
+      email: undefined,
       secure: '1',
+      position: undefined,
+      birth: undefined,
+      gender: undefined,
+      account: undefined,
+      module: undefined,
     })
   }
 
   useEffect(() => {
     resetFormInsertUser()
   }, [])
+
+  useEffect(() => {
+    console.log(disabledChooseAccount)
+  }, [disabledChooseAccount])
 
   return (
     <UserInsertTabWrapper>
@@ -297,7 +325,7 @@ const Business_UserInsertTab = props => {
                 rules={[{ required: true, message: 'Vui lòng chọn vai trò' }]}
                 label={'Vai trò'}
               >
-                <Select placeholder={'Chọn vai trò'} mode={'multiple'}>
+                <Select placeholder={'Chọn vai trò'} onChange={handleChangeRole}>
                   <Option value='1'>Tạo lập</Option>
                   <Option value='2'>Kiểm soát</Option>
                   <Option value='3'>Phê duyệt</Option>
@@ -349,6 +377,7 @@ const Business_UserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
+                name={'birth'}
                 label={'Ngày sinh'}
               >
                 <DatePicker disabledDate={disabledDate} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
@@ -356,6 +385,7 @@ const Business_UserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
+                name={'gender'}
                 label={'Giới tính'}
               >
                 <Select placeholder={'Vui lòng chọn'}>
@@ -371,7 +401,7 @@ const Business_UserInsertTab = props => {
                   <span className={'custom-required'}>Tài khoản sử dụng</span>
                 }
               >
-                <Select placeholder={'Tất cả'} mode='multiple' optionLabelProp='label'>
+                <Select placeholder={'Tất cả'} disabled={disabledChooseAccount} mode='multiple' optionLabelProp='label'>
                   <Option value='1' label={'Tài khoản 1'}>Tài khoản 11</Option>
                   <Option value='2' label={'Tài khoản 2'}>Tài khoản 22</Option>
                 </Select>
