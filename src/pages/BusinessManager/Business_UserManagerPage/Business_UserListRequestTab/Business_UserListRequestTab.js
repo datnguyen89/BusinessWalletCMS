@@ -106,14 +106,14 @@ const Business_UserListRequestTab = props => {
       render: (item, row, index) => item.ngayTao,
     },
    
-    {
-      title: 'Thao tác',
-      align: 'center',
-      render: (item, row, index) =>
-        <SettingOutlined
-          style={{ cursor: 'pointer' }}
-          onClick={() => handleClickShowDetailRequest(item.id)} />,
-    },
+    // {
+    //   title: 'Thao tác',
+    //   align: 'center',
+    //   render: (item, row, index) =>
+    //     <SettingOutlined
+    //       style={{ cursor: 'pointer' }}
+    //       onClick={() => handleClickShowDetailRequest(item.id)} />,
+    // },
   ]
 
   const handleClickShowDetailRequest = (id) => {

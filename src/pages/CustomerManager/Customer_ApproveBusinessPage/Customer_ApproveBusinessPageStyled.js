@@ -19,3 +19,6 @@ export const ImgWrapper = styled.div`
     object-position: center;
   }  
 `
+
+export const BusinessUserManagerModalWrapper = styled.div`
+`

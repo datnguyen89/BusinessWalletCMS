@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { BusinessUserManagerTabWrapper } from '../Business_ApproveBusinessPageStyled'
-import { Col, Form, Row, DatePicker, Input, Select, Button, Divider, Table, Pagination } from 'antd'
+import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
-import BusinessDetailUserRequestModal
-  from '../../Business_UserManagerPage/Business_UserListRequestTab/Business_DetailUserRequestModal'
+
 import BusinessUserManagerModal from './Business_UserManagerModal'
 
 const { RangePicker } = DatePicker
