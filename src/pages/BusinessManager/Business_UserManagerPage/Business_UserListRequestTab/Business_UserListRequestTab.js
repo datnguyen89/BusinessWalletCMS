@@ -1,69 +1,66 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import {
-  CustomerApproveBusinessCustomerTabWrapper,
-} from '../Customer_ApproveBusinessPageStyled'
-import CustomerApproveBusinessCustomerModal from './Customer_ApproveBusinessCustomerModal'
-import { Button, Col, Row, DatePicker, Form, Input, Select, Divider, Table, Pagination } from 'antd'
+import { UserListRequestTabWrapper } from '../Business_UserManagerPageStyled'
+import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
+import BusinessDetailUserRequestModal from './Business_DetailUserRequestModal'
 
 const { RangePicker } = DatePicker
 
 const testData = [
   {
     id: 1,
-    soGiayTo: 'SGT112323232333',
-    tenKhachHang: 'TNHH Đống Đa',
-    loaiKhachHang: 'Doanh nghiệp',
-    nhomKhachHang: 'Nội bộ',
-    maSoThue: 'MST1231123123',
-    soDienThoai: '0987654321',
-    thoiGianTao: '20/01/2022',
+    hoVaTen: 'Nguyễn Văn A',
+    tenDoanhNghiep: 'TNHH Đống Đa',
+    phongBan: 'Kinh doanh',
+    UserName: 'username1',
+    vaiTro: 'Tạo lập',
+    noiDung: 'Thêm mới',
+    ngayTao: '20/01/2022',
     nguoiTao: 'hant',
     trangThai: 'Chờ duyệt',
   },
   {
     id: 2,
-    soGiayTo: 'SGT112323232333',
-    tenKhachHang: 'TNHH Đống Đa',
-    loaiKhachHang: 'Doanh nghiệp',
-    nhomKhachHang: 'Nội bộ',
-    maSoThue: 'MST1231123123',
-    soDienThoai: '0987654321',
-    thoiGianTao: '20/01/2022',
+    hoVaTen: 'Nguyễn Văn B',
+    tenDoanhNghiep: 'TNHH Đống Đa',
+    phongBan: 'Kinh doanh',
+    UserName: 'username1',
+    vaiTro: 'Tạo lập',
+    noiDung: 'Thêm mới',
+    ngayTao: '20/01/2022',
     nguoiTao: 'hant',
     trangThai: 'Chờ duyệt',
   },
   {
     id: 3,
-    soGiayTo: 'SGT112323232333',
-    tenKhachHang: 'TNHH Đống Đa',
-    loaiKhachHang: 'Doanh nghiệp',
-    nhomKhachHang: 'Nội bộ',
-    maSoThue: 'MST1231123123',
-    soDienThoai: '0987654321',
-    thoiGianTao: '20/01/2022',
+    hoVaTen: 'Nguyễn Văn C',
+    tenDoanhNghiep: 'TNHH Đống Đa',
+    phongBan: 'Kinh doanh',
+    UserName: 'username1',
+    vaiTro: 'Tạo lập',
+    noiDung: 'Thêm mới',
+    ngayTao: '20/01/2022',
     nguoiTao: 'hant',
     trangThai: 'Chờ duyệt',
   },
   {
     id: 4,
-    soGiayTo: 'SGT112323232333',
-    tenKhachHang: 'TNHH Đống Đa',
-    loaiKhachHang: 'Doanh nghiệp',
-    nhomKhachHang: 'Nội bộ',
-    maSoThue: 'MST1231123123',
-    soDienThoai: '0987654321',
-    thoiGianTao: '20/01/2022',
+    hoVaTen: 'Nguyễn Văn D',
+    tenDoanhNghiep: 'TNHH Đống Đa',
+    phongBan: 'Kinh doanh',
+    UserName: 'username1',
+    vaiTro: 'Tạo lập',
+    noiDung: 'Thêm mới',
+    ngayTao: '20/01/2022',
     nguoiTao: 'hant',
     trangThai: 'Chờ duyệt',
   },
 ]
 
-const CustomerApproveBusinessCustomerTab = props => {
-  const [formApproveBusinessCustomer] = Form.useForm()
-  const [visibleApproveBusinessCustomerModal, setVisibleApproveBusinessCustomerModal] = useState(false)
+const Business_UserListRequestTab = props => {
+  const [formApproveBusinessUser] = Form.useForm()
+  const [visibleApproveBusinessUserModal, setVisibleApproveBusinessUserModal] = useState(false)
 
   const columns = [
     {
@@ -73,41 +70,42 @@ const CustomerApproveBusinessCustomerTab = props => {
       render: (item, row, index) => index + 1,
     },
     {
-      title: 'Số giấy tờ',
-      render: (item, row, index) => item.soGiayTo,
+      title: 'Họ và tên',
+      render: (item, row, index) => item.hoVaTen,
     },
     {
-      title: 'Tên khách hàng',
-      render: (item, row, index) => item.tenKhachHang,
+      title: 'Tên doanh nghiệp',
+      render: (item, row, index) => item.tenDoanhNghiep,
     },
     {
-      title: 'Loại khách hàng',
-      render: (item, row, index) => item.loaiKhachHang,
+      title: 'Phòng ban',
+      render: (item, row, index) => item.phongBan,
     },
     {
-      title: 'Nhóm khách hàng',
-      render: (item, row, index) => item.nhomKhachHang,
+      title: 'Username',
+      render: (item, row, index) => item.UserName,
     },
     {
-      title: 'Mã số thuế',
-      render: (item, row, index) => item.maSoThue,
+      title: 'Vai trò',
+      render: (item, row, index) => item.vaiTro,
     },
     {
-      title: 'Số điện thoại',
-      render: (item, row, index) => item.soDienThoai,
+      title: 'Nội dung',
+      render: (item, row, index) => item.noiDung,
     },
     {
-      title: 'Thời gian tạo',
-      render: (item, row, index) => item.thoiGianTao,
+      title: 'Trạng thái',
+      render: (item, row, index) => item.trangThai,
     },
     {
       title: 'Người tạo',
       render: (item, row, index) => item.nguoiTao,
     },
     {
-      title: 'Trạng thái',
-      render: (item, row, index) => item.trangThai,
+      title: 'Thời gian tạo',
+      render: (item, row, index) => item.ngayTao,
     },
+   
     {
       title: 'Thao tác',
       align: 'center',
@@ -119,7 +117,7 @@ const CustomerApproveBusinessCustomerTab = props => {
   ]
 
   const handleClickShowDetailRequest = (id) => {
-    setVisibleApproveBusinessCustomerModal(true)
+    setVisibleApproveBusinessUserModal(true)
   }
 
   const handleChangePagination = (pageIndex, pageSize) => {
@@ -127,12 +125,12 @@ const CustomerApproveBusinessCustomerTab = props => {
   }
 
   return (
-    <CustomerApproveBusinessCustomerTabWrapper>
+    <UserListRequestTabWrapper>
       <Form
         labelAlign={'left'}
         labelCol={{ span: 6 }}
         wrapperCol={{ span: 18 }}
-        form={formApproveBusinessCustomer}
+        form={formApproveBusinessUser}
         colon={false}>
         <Row gutter={[32, 32]} justify={'space-between'}>
           <Col span={8}>
@@ -146,7 +144,7 @@ const CustomerApproveBusinessCustomerTab = props => {
           <Col span={8}>
             <Form.Item
               label={'Số giấy tờ'}
-              name={'soGiayTo'}>
+              name={'hoVaTen'}>
               <Input placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
@@ -167,7 +165,7 @@ const CustomerApproveBusinessCustomerTab = props => {
           <Col span={8}>
             <Form.Item
               label={'Trạng thái'}
-              name={'trangThai'}>
+              name={'hoTenKh'}>
               <Select placeholder={'Trạng thái'}>
                 <Select.Option value={'1'}>Hoạt động</Select.Option>
                 <Select.Option value={'2'}>Ngừng hoạt động</Select.Option>
@@ -197,13 +195,13 @@ const CustomerApproveBusinessCustomerTab = props => {
         </PaginationLabel>
         <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
       </RowSpaceBetweenDiv>
-      <CustomerApproveBusinessCustomerModal
-        visible={visibleApproveBusinessCustomerModal}
-        onClose={() => setVisibleApproveBusinessCustomerModal(false)} />
-    </CustomerApproveBusinessCustomerTabWrapper>
+      <BusinessDetailUserRequestModal
+        visible={visibleApproveBusinessUserModal}
+        onClose={() => setVisibleApproveBusinessUserModal(false)} />
+    </UserListRequestTabWrapper>
   )
 }
 
-CustomerApproveBusinessCustomerTab.propTypes = {}
+Business_UserListRequestTab.propTypes = {}
 
-export default CustomerApproveBusinessCustomerTab
+export default Business_UserListRequestTab

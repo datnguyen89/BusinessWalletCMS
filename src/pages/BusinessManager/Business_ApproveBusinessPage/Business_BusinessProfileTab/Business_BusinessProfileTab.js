@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { BusinessProfileTabWrapper } from './Business_ApproveBusinessPageStyled'
+import { BusinessProfileTabWrapper } from '../Business_ApproveBusinessPageStyled'
 
 const Business_BusinessProfileTab = props => {
   const { commonStore } = props

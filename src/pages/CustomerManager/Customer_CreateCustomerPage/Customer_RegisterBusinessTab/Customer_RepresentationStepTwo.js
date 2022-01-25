@@ -109,7 +109,6 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              requiredMark={false}
               rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
               label={'Đại diện'} name={'representation_hinhThucDaiDien'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>

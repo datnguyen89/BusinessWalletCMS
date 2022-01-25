@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { UserInsertTabWrapper } from './Business_UserManagerPageStyled'
+import { UserInsertTabWrapper } from '../Business_UserManagerPageStyled'
 import {
   Button, Checkbox,
   Col,
@@ -17,14 +17,14 @@ import {
   Space,
   Table,
 } from 'antd'
-import { HeaderBackground, RowCenterDiv } from '../../../components/CommonStyled/CommonStyled'
+import { HeaderBackground, RowCenterDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { EditOutlined, SaveOutlined, SearchOutlined, UpCircleFilled, UpCircleOutlined } from '@ant-design/icons'
-import ConditionRender from '../../../components/ConditionRender'
-import validator from '../../../validator'
+import ConditionRender from '../../../../components/ConditionRender'
+import validator from '../../../../validator'
 import moment from 'moment'
-import helper from '../../../utils/helper'
-import { ACTION } from '../../../utils/constant'
-import ConditionDisplay from '../../../components/ConditionDisplay'
+import helper from '../../../../utils/helper'
+import { ACTION } from '../../../../utils/constant'
+import ConditionDisplay from '../../../../components/ConditionDisplay'
 
 const { Search } = Input
 const { Option } = Select
@@ -249,7 +249,7 @@ const Business_UserInsertTab = props => {
         <Descriptions
           labelStyle={{ width: '15%' }}
           bordered
-          column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+          column={2}
           size={'small'}>
           <Descriptions.Item label={'Công ty'}>Công ty MBF</Descriptions.Item>
           <Descriptions.Item label={'Mã số thuế'}>12343212312313</Descriptions.Item>
@@ -278,7 +278,6 @@ const Business_UserInsertTab = props => {
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           colon={false}
-          requiredMark={true}
           form={formInsertUser}>
           <Form.Item className={'hidden'} name={'id'}>
             <Input />

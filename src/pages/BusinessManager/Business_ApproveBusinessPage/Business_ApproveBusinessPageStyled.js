@@ -11,3 +11,6 @@ export const BusinessUserManagerTabWrapper = styled.div`
 export const BusinessProfileTabWrapper = styled.div`
 
 `
+
+export const BusinessUserManagerModalWrapper = styled.div`
+`

@@ -5,8 +5,8 @@ import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
 import { ApproveBusinessPageWrapper } from './Business_ApproveBusinessPageStyled'
 import { Tabs } from 'antd'
-import BusinessProfileTab from './Business_BusinessProfileTab'
-import BusinessUserManagerTab from './Business_UserManagerTab'
+import BusinessProfileTab from './Business_BusinessProfileTab/Business_BusinessProfileTab'
+import BusinessUserManagerTab from './Business_UserManagerTab/Business_UserManagerTab'
 const { TabPane } = Tabs;
 
 const Business_ApproveBusinessPage = props => {
@@ -18,7 +18,7 @@ const Business_ApproveBusinessPage = props => {
         <title>Duyệt thông tin DN</title>
       </Helmet>
       <ApproveBusinessPageWrapper>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <TabPane tab="Hồ sơ doanh nghiệp" key="1">
             <BusinessProfileTab />
           </TabPane>

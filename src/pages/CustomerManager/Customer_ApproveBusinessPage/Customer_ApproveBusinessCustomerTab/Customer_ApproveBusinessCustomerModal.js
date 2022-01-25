@@ -20,6 +20,7 @@ const CustomerApproveBusinessCustomerModal = props => {
     <CustomerApproveBusinessCustomerModalWrapper>
       <Modal
         width={'90%'}
+        style={{ top: '50px' }}
         maskClosable={false}
         onCancel={() => onClose()}
         footer={null}
@@ -31,7 +32,7 @@ const CustomerApproveBusinessCustomerModal = props => {
               className={'mt-16 mb-16'}
               labelStyle={{ width: '15%' }}
               bordered
-              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+              column={2}
               size={'small'}>
               <Descriptions.Item label={'Số ĐKKD'}>0123456789</Descriptions.Item>
               <Descriptions.Item label={'Mã số thuế'}>9876543210</Descriptions.Item>
@@ -81,7 +82,7 @@ const CustomerApproveBusinessCustomerModal = props => {
               className={'mt-16 mb-16'}
               labelStyle={{ width: '15%' }}
               bordered
-              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+              column={2}
               size={'small'}>
               <Descriptions.Item label={'Số giấy tờ'}>0123456789</Descriptions.Item>
               <Descriptions.Item label={'Đại diện'}>Đại diện theo pháp luật</Descriptions.Item>
@@ -129,7 +130,7 @@ const CustomerApproveBusinessCustomerModal = props => {
               className={'mt-16 mb-16'}
               labelStyle={{ width: '15%' }}
               bordered
-              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+              column={2}
               size={'small'}>
               <Descriptions.Item label={'Số giấy tờ'}>0123456789</Descriptions.Item>
               <Descriptions.Item label={'Vai trò'}>Kế toán trưởng</Descriptions.Item>
