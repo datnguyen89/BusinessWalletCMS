@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ApproveBusinessPageWrapper = styled.div`
-  padding: 16px;
+  padding: 32px;
   background-color: #fff;
   height: 100%;
 `

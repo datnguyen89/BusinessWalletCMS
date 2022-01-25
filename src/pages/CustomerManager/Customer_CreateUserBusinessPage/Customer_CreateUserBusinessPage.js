@@ -8,10 +8,10 @@ const Customer_CreateUserBusinessPage = props => {
   return (
     <DefaultLayout>
       <Helmet>
-        <title>Tạo User doanh nghiệp</title>
+        <title>User doanh nghiệp</title>
       </Helmet>
       <CreateUserBusinessPageWrapper>
-
+        User doanh nghiệp
       </CreateUserBusinessPageWrapper>
     </DefaultLayout>
 

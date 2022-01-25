@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
+import { BusinessCustomerProfilePageWrapper } from './Business_CustomerProfilePageStyled'
 
 const Business_CustomerProfilePage = props => {
   const { commonStore } = props
@@ -12,7 +13,9 @@ const Business_CustomerProfilePage = props => {
       <Helmet>
         <title>Hồ sơ khách hàng</title>
       </Helmet>
-      CustomerProfilePage
+      <BusinessCustomerProfilePageWrapper>
+        CustomerProfilePage
+      </BusinessCustomerProfilePageWrapper>
     </DefaultLayout>
   )
 }
