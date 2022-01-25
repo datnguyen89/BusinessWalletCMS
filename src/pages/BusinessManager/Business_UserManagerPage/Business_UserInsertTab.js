@@ -243,6 +243,7 @@ const Business_UserInsertTab = props => {
         </HeaderBackground>
 
         <Form
+          validateTrigger={false}
           onFinish={onFinish}
           style={{ marginTop: 24 }}
           labelAlign={'left'}
