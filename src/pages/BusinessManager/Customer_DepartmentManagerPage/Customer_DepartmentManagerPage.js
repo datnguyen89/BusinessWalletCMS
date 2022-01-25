@@ -11,7 +11,7 @@ const CustomerDepartmentManagerPage = props => {
         <title>Phòng ban doanh nghiệp</title>
       </Helmet>
       <CustomerDepartmentManagerPageWrapper>
-        Quản lý phòng ban doanh nghiệp
+        Quản lý phòng ban doanh nghiệp1
       </CustomerDepartmentManagerPageWrapper>
     </DefaultLayout>
 

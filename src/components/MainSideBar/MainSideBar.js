@@ -37,8 +37,8 @@ const MainSideBar = props => {
             : 'Quản lý doanh nghiệp'}
         </GroupMenuTitle>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_CUSTOMER.PATH)}
-          className={pageName === PAGES.CUSTOMER_CREATE_CUSTOMER.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_PROFILE_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_PROFILE_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <FontAwesomeIcon icon={faUserTie} />
           <span className={'menu-sidebar-label'}
@@ -53,16 +53,16 @@ const MainSideBar = props => {
                 style={{ display: isCollapse ? 'none' : 'block' }}>User doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_DEPARTMENT_MANAGER.PATH)}
-          className={pageName === PAGES.CUSTOMER_DEPARTMENT_MANAGER.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_DEPARTMENT_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_DEPARTMENT_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <BankOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban DN</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_BUSINESS.PATH)}
-          className={pageName === PAGES.CUSTOMER_APPROVE_BUSINESS.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_APPROVE_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_APPROVE_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <FontAwesomeIcon icon={faStamp} />
           <span className={'menu-sidebar-label'}

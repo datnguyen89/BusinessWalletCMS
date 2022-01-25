@@ -26,15 +26,12 @@ import HomePage from './pages/WebApp/HomePage'
 import LoginPage from './pages/WebApp/LoginPage'
 import NotPermissionPage from './pages/WebApp/NotPermissionPage'
 import NotFoundPage from './pages/WebApp/NotFoundPage'
-import Business_CustomerProfilePage from './pages/BusinessManager/Business_CustomerProfilePage'
-import Business_UserManagerPage from './pages/BusinessManager/Business_UserManagerPage'
-import Business_DepartmentManagerPage from './pages/BusinessManager/Business_DepartmentManagerPage'
-import Business_ApproveBusinessPage from './pages/BusinessManager/Business_ApproveBusinessPage'
-import Customer_CreateCustomerPage from './pages/CustomerManager/Customer_CreateCustomerPage'
-import Customer_CreateUserBusinessPage from './pages/CustomerManager/Customer_CreateUserBusinessPage'
-import Customer_ApproveBusinessPage from './pages/CustomerManager/Customer_ApproveBusinessPage'
 import TestPage from './pages/WebApp/TestPage'
-import Customer_DepartmentManagerPage from './pages/CustomerManager/Customer_DepartmentManagerPage'
+
+import Customer_CreateCustomerPage from './pages/BusinessManager/Customer_CreateCustomerPage'
+import Business_UserManagerPage from './pages/BusinessManager/Business_UserManagerPage'
+import Customer_DepartmentManagerPage from './pages/BusinessManager/Customer_DepartmentManagerPage'
+import Customer_ApproveBusinessPage from './pages/BusinessManager/Customer_ApproveBusinessPage'
 
 
 const history = createBrowserHistory()
@@ -109,20 +106,13 @@ const App = () => {
           <Switch>
             <Route exact path={PAGES.LOGIN.PATH} component={LoginPage} /> {/*Đăng nhập*/}
             <Route exact path={PAGES.HOME.PATH} component={HomePage} />
-            
-            <Route exact path={PAGES.BUSINESS_CUSTOMER_PROFILE.PATH} component={Business_CustomerProfilePage} />
+
+            <Route exact path={PAGES.BUSINESS_PROFILE_MANAGER.PATH} component={Customer_CreateCustomerPage} />
             <Route exact path={PAGES.BUSINESS_USER_MANAGER.PATH} component={Business_UserManagerPage} />
-            <Route exact path={PAGES.BUSINESS_DEPARTMENT.PATH} component={Business_DepartmentManagerPage} />
-            <Route exact path={PAGES.BUSINESS_APPROVE_BUSINESS.PATH} component={Business_ApproveBusinessPage} />
-            
-            <Route exact path={PAGES.CUSTOMER_CREATE_CUSTOMER.PATH} component={Customer_CreateCustomerPage} />
-            <Route exact path={PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH} component={Customer_CreateUserBusinessPage} />
-            <Route exact path={PAGES.CUSTOMER_APPROVE_BUSINESS.PATH} component={Customer_ApproveBusinessPage} />
-            <Route exact path={PAGES.CUSTOMER_DEPARTMENT_MANAGER.PATH} component={Customer_DepartmentManagerPage} />
+            <Route exact path={PAGES.BUSINESS_DEPARTMENT_MANAGER.PATH} component={Customer_DepartmentManagerPage} />
+            <Route exact path={PAGES.BUSINESS_APPROVE_MANAGER.PATH} component={Customer_ApproveBusinessPage} />
+
             <Route exact path={PAGES.TEST.PATH} component={TestPage} />
-
-
-
             <Route exact path={PAGES.NOT_PERMISSION.PATH} component={NotPermissionPage} /> {/*Không có quyền truy cập*/}
             <Route component={NotFoundPage} />
           </Switch>
