@@ -34,7 +34,7 @@ const UploadCropModule = props => {
       return false
     }
     if (file.size > 5242880) {
-      message.error('Dung lượng ảnh phải nhỏ hơn 6MB')
+      message.error('Dung lượng ảnh phải nhỏ hơn 5MB')
       return false
     }
     return true
