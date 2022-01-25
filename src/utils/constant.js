@@ -16,38 +16,26 @@ export const PAGES = {
     NAME: 'not-permission',
     PATH: '/not-permission',
   },
-  BUSINESS_CUSTOMER_PROFILE: {
-    NAME: 'business-customer-profile',
-    PATH: '/business-customer-profile',
+
+
+  BUSINESS_PROFILE_MANAGER: {
+    NAME: 'business-profile-manager',
+    PATH: '/business-profile-manager',
   },
   BUSINESS_USER_MANAGER: {
     NAME: 'business-user-manager',
     PATH: '/business-user-manager',
   },
-  BUSINESS_DEPARTMENT: {
-    NAME: 'business-department',
-    PATH: '/business-department',
+  BUSINESS_DEPARTMENT_MANAGER: {
+    NAME: 'business-department-manager',
+    PATH: '/business-department-manager',
   },
-  BUSINESS_APPROVE_BUSINESS: {
-    NAME: 'business-approve-business',
-    PATH: '/business-approve-business',
+  BUSINESS_APPROVE_MANAGER: {
+    NAME: 'business-approve-manager',
+    PATH: '/business-approve-manager',
   },
-  CUSTOMER_CREATE_CUSTOMER: {
-    NAME: 'customer-create-customer-business',
-    PATH: '/customer-create-customer-business',
-  },
-  CUSTOMER_CREATE_USER_BUSINESS: {
-    NAME: 'customer-create-user-business',
-    PATH: '/customer-create-user-business',
-  },
-  CUSTOMER_APPROVE_BUSINESS: {
-    NAME: 'customer-approve-business',
-    PATH: '/customer-approve-business',
-  },
-  CUSTOMER_DEPARTMENT_MANAGER: {
-    NAME: 'customer-department-manager',
-    PATH: '/customer-department-manager',
-  },
+
+
 }
 
 export const SIDEBAR_WIDTH_EXPAND = 240

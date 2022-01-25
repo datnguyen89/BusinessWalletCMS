@@ -37,70 +37,32 @@ const MainSideBar = props => {
             : 'Quản lý doanh nghiệp'}
         </GroupMenuTitle>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.BUSINESS_CUSTOMER_PROFILE.PATH)}
-          className={pageName === PAGES.BUSINESS_CUSTOMER_PROFILE.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_PROFILE_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_PROFILE_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
-          <BookOutlined />
+          <FontAwesomeIcon icon={faUserTie} />
           <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Hồ sơ khách hàng</span>
+                style={{ display: isCollapse ? 'none' : 'block' }}>Hồ sơ doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
           onClick={() => handleClickMenu(PAGES.BUSINESS_USER_MANAGER.PATH)}
           className={pageName === PAGES.BUSINESS_USER_MANAGER.NAME ? 'active' : ''}
-          color={appTheme.solidColor}>
-          <UserOutlined />
-          <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Người dùng</span>
-        </MenuSidebarItem>
-        <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.BUSINESS_DEPARTMENT.PATH)}
-          className={pageName === PAGES.BUSINESS_DEPARTMENT.NAME ? 'active' : ''}
-          color={appTheme.solidColor}>
-          <ApartmentOutlined />
-          <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban</span>
-        </MenuSidebarItem>
-        <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.BUSINESS_APPROVE_BUSINESS.PATH)}
-          className={pageName === PAGES.BUSINESS_APPROVE_BUSINESS.NAME ? 'active' : ''}
-          color={appTheme.solidColor}>
-          <AuditOutlined />
-          <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Duyệt thông tin DN</span>
-        </MenuSidebarItem>
-
-        <GroupMenuTitle textAlign={commonStore.isCollapse ? 'center' : 'left'}>
-          {commonStore.isCollapse
-            ? <FontAwesomeIcon size={'lg'} color={'#6634E0'} icon={faUserCog} />
-            : 'Quản lý khách hàng'}
-        </GroupMenuTitle>
-        <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_CUSTOMER.PATH)}
-          className={pageName === PAGES.CUSTOMER_CREATE_CUSTOMER.NAME ? 'active' : ''}
-          color={appTheme.solidColor}>
-          <FontAwesomeIcon icon={faUserTie} />
-          <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>KH doanh nghiệp</span>
-        </MenuSidebarItem>
-        <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH)}
-          className={pageName === PAGES.CUSTOMER_CREATE_USER_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <UsergroupAddOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>User doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_DEPARTMENT_MANAGER.PATH)}
-          className={pageName === PAGES.CUSTOMER_DEPARTMENT_MANAGER.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_DEPARTMENT_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_DEPARTMENT_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <BankOutlined />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban DN</span>
         </MenuSidebarItem>
         <MenuSidebarItem
-          onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_BUSINESS.PATH)}
-          className={pageName === PAGES.CUSTOMER_APPROVE_BUSINESS.NAME ? 'active' : ''}
+          onClick={() => handleClickMenu(PAGES.BUSINESS_APPROVE_MANAGER.PATH)}
+          className={pageName === PAGES.BUSINESS_APPROVE_MANAGER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
           <FontAwesomeIcon icon={faStamp} />
           <span className={'menu-sidebar-label'}
