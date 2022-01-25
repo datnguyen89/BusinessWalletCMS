@@ -34,6 +34,7 @@ import Customer_CreateCustomerPage from './pages/CustomerManager/Customer_Create
 import Customer_CreateUserBusinessPage from './pages/CustomerManager/Customer_CreateUserBusinessPage'
 import Customer_ApproveBusinessPage from './pages/CustomerManager/Customer_ApproveBusinessPage'
 import TestPage from './pages/WebApp/TestPage'
+import Customer_DepartmentManagerPage from './pages/CustomerManager/Customer_DepartmentManagerPage'
 
 
 const history = createBrowserHistory()
@@ -117,6 +118,7 @@ const App = () => {
             <Route exact path={PAGES.CUSTOMER_CREATE_CUSTOMER.PATH} component={Customer_CreateCustomerPage} />
             <Route exact path={PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH} component={Customer_CreateUserBusinessPage} />
             <Route exact path={PAGES.CUSTOMER_APPROVE_BUSINESS.PATH} component={Customer_ApproveBusinessPage} />
+            <Route exact path={PAGES.CUSTOMER_DEPARTMENT_MANAGER.PATH} component={Customer_DepartmentManagerPage} />
             <Route exact path={PAGES.TEST.PATH} component={TestPage} />
 
 

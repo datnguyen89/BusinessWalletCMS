@@ -1,27 +1,18 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import {
-  GroupMenuTitle,
-
-  MainSideBarWrapper,
-  MenuSidebarArea,
-  MenuSidebarItem,
-} from './MainSideBarStyled'
+import { GroupMenuTitle, MainSideBarWrapper, MenuSidebarArea, MenuSidebarItem } from './MainSideBarStyled'
 import { DEVICE, PAGES, SIDEBAR_WIDTH_COLLAPSE, SIDEBAR_WIDTH_EXPAND } from '../../utils/constant'
-import IMAGES from '../../images'
 import {
   ApartmentOutlined,
   AuditOutlined,
+  BankOutlined,
   BookOutlined,
-  CaretLeftOutlined,
-  IdcardOutlined,
-  UnlockOutlined,
-  UsergroupAddOutlined, UserOutlined,
+  UsergroupAddOutlined,
+  UserOutlined,
 } from '@ant-design/icons'
-import { Link, useHistory } from 'react-router-dom'
-import ICONS from '../../icons'
+import { useHistory } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserTie, faUserCog, faStamp, faBuilding } from '@fortawesome/free-solid-svg-icons'
 
 const MainSideBar = props => {
   const { commonStore } = props
@@ -40,7 +31,11 @@ const MainSideBar = props => {
       display={device === DEVICE.MOBILE ? 'none' : 'flex'}
       width={isCollapse ? SIDEBAR_WIDTH_COLLAPSE : SIDEBAR_WIDTH_EXPAND}>
       <MenuSidebarArea>
-        <GroupMenuTitle>{commonStore.isCollapse ? '' : 'Quản lý doanh nghiệp'}</GroupMenuTitle>
+        <GroupMenuTitle textAlign={commonStore.isCollapse ? 'center' : 'left'}>
+          {commonStore.isCollapse
+            ? <FontAwesomeIcon size={'lg'} color={'#6634E0'} icon={faBuilding} />
+            : 'Quản lý doanh nghiệp'}
+        </GroupMenuTitle>
         <MenuSidebarItem
           onClick={() => handleClickMenu(PAGES.BUSINESS_CUSTOMER_PROFILE.PATH)}
           className={pageName === PAGES.BUSINESS_CUSTOMER_PROFILE.NAME ? 'active' : ''}
@@ -74,28 +69,40 @@ const MainSideBar = props => {
                 style={{ display: isCollapse ? 'none' : 'block' }}>Duyệt thông tin DN</span>
         </MenuSidebarItem>
 
-        <GroupMenuTitle>{commonStore.isCollapse ? '' : 'Quản lý khách hàng'}</GroupMenuTitle>
+        <GroupMenuTitle textAlign={commonStore.isCollapse ? 'center' : 'left'}>
+          {commonStore.isCollapse
+            ? <FontAwesomeIcon size={'lg'} color={'#6634E0'} icon={faUserCog} />
+            : 'Quản lý khách hàng'}
+        </GroupMenuTitle>
         <MenuSidebarItem
           onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_CUSTOMER.PATH)}
           className={pageName === PAGES.CUSTOMER_CREATE_CUSTOMER.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
-          <AuditOutlined />
+          <FontAwesomeIcon icon={faUserTie} />
           <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Tạo KH doanh nghiệp</span>
+                style={{ display: isCollapse ? 'none' : 'block' }}>KH doanh nghiệp</span>
         </MenuSidebarItem>
         <MenuSidebarItem
           onClick={() => handleClickMenu(PAGES.CUSTOMER_CREATE_USER_BUSINESS.PATH)}
           className={pageName === PAGES.CUSTOMER_CREATE_USER_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
-          <AuditOutlined />
+          <UsergroupAddOutlined />
           <span className={'menu-sidebar-label'}
-                style={{ display: isCollapse ? 'none' : 'block' }}>Tạo User doanh nghiệp</span>
+                style={{ display: isCollapse ? 'none' : 'block' }}>User doanh nghiệp</span>
+        </MenuSidebarItem>
+        <MenuSidebarItem
+          onClick={() => handleClickMenu(PAGES.CUSTOMER_DEPARTMENT_MANAGER.PATH)}
+          className={pageName === PAGES.CUSTOMER_DEPARTMENT_MANAGER.NAME ? 'active' : ''}
+          color={appTheme.solidColor}>
+          <BankOutlined />
+          <span className={'menu-sidebar-label'}
+                style={{ display: isCollapse ? 'none' : 'block' }}>Phòng ban DN</span>
         </MenuSidebarItem>
         <MenuSidebarItem
           onClick={() => handleClickMenu(PAGES.CUSTOMER_APPROVE_BUSINESS.PATH)}
           className={pageName === PAGES.CUSTOMER_APPROVE_BUSINESS.NAME ? 'active' : ''}
           color={appTheme.solidColor}>
-          <AuditOutlined />
+          <FontAwesomeIcon icon={faStamp} />
           <span className={'menu-sidebar-label'}
                 style={{ display: isCollapse ? 'none' : 'block' }}>Duyệt thông tin DN</span>
         </MenuSidebarItem>

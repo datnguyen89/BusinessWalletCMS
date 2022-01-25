@@ -44,6 +44,10 @@ export const PAGES = {
     NAME: 'customer-approve-business',
     PATH: '/customer-approve-business',
   },
+  CUSTOMER_DEPARTMENT_MANAGER: {
+    NAME: 'customer-department-manager',
+    PATH: '/customer-department-manager',
+  },
 }
 
 export const SIDEBAR_WIDTH_EXPAND = 240
