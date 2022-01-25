@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { CustomerApproveBusinessCustomerModalWrapper, ImgWrapper } from '../Customer_ApproveBusinessPageStyled'
 import { Button, Col, Descriptions, Divider, Form, Input, Modal, Row, Tabs } from 'antd'
-import { RowCenterDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
+import { ColorText, RowCenterDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, StopOutlined } from '@ant-design/icons'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -42,19 +42,27 @@ const CustomerApproveBusinessCustomerModal = props => {
               <Descriptions.Item label={'Loại giấy tờ'}>GPKD</Descriptions.Item>
               <Descriptions.Item label={'Ngày cấp'}>20/01/2021</Descriptions.Item>
               <Descriptions.Item label={'Nơi cấp'}>Sở tài nguyên và môi trường</Descriptions.Item>
-              <Descriptions.Item label={'Ngày hết hạn'}></Descriptions.Item>
+              <Descriptions.Item label={'Ngày hết hạn'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
               <Descriptions.Item label={'Di động'}>0987654321</Descriptions.Item>
               <Descriptions.Item label={'Email'}>x@gmail.com</Descriptions.Item>
-              <Descriptions.Item label={'ĐT cố định'}></Descriptions.Item>
-              <Descriptions.Item label={'Fax'}></Descriptions.Item>
+              <Descriptions.Item label={'ĐT cố định'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Fax'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
               <Descriptions.Item label={'Loại hình doanh nghiệp'}>Công ty cổ phần</Descriptions.Item>
               <Descriptions.Item label={'Lĩnh vực kinh doanh'}>Thương mại dịch vụ</Descriptions.Item>
               <Descriptions.Item label={'Nhóm khách hàng'}>Nội bộ</Descriptions.Item>
               <Descriptions.Item label={'Chi nhánh mở HĐ'}>Hà Nội 1</Descriptions.Item>
-              <Descriptions.Item span={2} label={'Địa chỉ ĐKKD'}>27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà
-                Nội</Descriptions.Item>
-              <Descriptions.Item span={2} label={'Địa chỉ giao dịch'}>27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà
-                Nội</Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ ĐKKD'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ giao dịch'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
             </Descriptions>
             <SlickSlider>
               <ImgWrapper>
@@ -69,13 +77,112 @@ const CustomerApproveBusinessCustomerModal = props => {
             </SlickSlider>
           </TabPane>
           <TabPane tab='Thông tin người đại diện' key='2'>
-            2
+            <Descriptions
+              className={'mt-16 mb-16'}
+              labelStyle={{ width: '15%' }}
+              bordered
+              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+              size={'small'}>
+              <Descriptions.Item label={'Số giấy tờ'}>0123456789</Descriptions.Item>
+              <Descriptions.Item label={'Đại diện'}>Đại diện theo pháp luật</Descriptions.Item>
+              <Descriptions.Item label={'Họ và tên'}>Nguyễn Văn A</Descriptions.Item>
+              <Descriptions.Item label={'Giới tính'}>Nam</Descriptions.Item>
+              <Descriptions.Item label={'Ngày sinh'}>20/01/2021</Descriptions.Item>
+              <Descriptions.Item label={'Quốc tịch'}>Việt Nam</Descriptions.Item>
+              <Descriptions.Item label={'Loại giấy tờ'}>CCCD</Descriptions.Item>
+              <Descriptions.Item label={'Ngày cấp'}>20/01/2021</Descriptions.Item>
+              <Descriptions.Item label={'Nơi cấp'}>Sở tài nguyên và môi trường</Descriptions.Item>
+              <Descriptions.Item label={'Ngày hết hạn'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Di động'}>0987654321</Descriptions.Item>
+              <Descriptions.Item label={'Email'}>x@gmail.com</Descriptions.Item>
+              <Descriptions.Item label={'ĐT cố định'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Chức vụ'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Nghề nghiệp'}>Kinh doanh</Descriptions.Item>
+              <Descriptions.Item label={'Dân tộc'}>Kinh</Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ thường trú'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ hiện tại'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
+            </Descriptions>
+            <SlickSlider>
+              <ImgWrapper>
+                <img src={IMAGES.DUMB_IMG1} />
+              </ImgWrapper>
+              <ImgWrapper>
+                <img src={IMAGES.DUMB_IMG2} />
+              </ImgWrapper>
+              <ImgWrapper>
+                <img src={IMAGES.DUMB_IMG3} />
+              </ImgWrapper>
+            </SlickSlider>
           </TabPane>
           <TabPane tab='Thông tin kế toán trưởng' key='3'>
-            3
+            <Descriptions
+              className={'mt-16 mb-16'}
+              labelStyle={{ width: '15%' }}
+              bordered
+              column={{ xxl: 2, xl: 2, lg: 2, md: 2, sm: 2, xs: 2 }}
+              size={'small'}>
+              <Descriptions.Item label={'Số giấy tờ'}>0123456789</Descriptions.Item>
+              <Descriptions.Item label={'Vai trò'}>Kế toán trưởng</Descriptions.Item>
+              <Descriptions.Item label={'Họ và tên'}>Nguyễn Thị A</Descriptions.Item>
+              <Descriptions.Item label={'Giới tính'}>Nữ</Descriptions.Item>
+              <Descriptions.Item label={'Ngày sinh'}>20/01/2021</Descriptions.Item>
+              <Descriptions.Item label={'Quốc tịch'}>Việt Nam</Descriptions.Item>
+              <Descriptions.Item label={'Loại giấy tờ'}>CMND</Descriptions.Item>
+              <Descriptions.Item label={'Ngày cấp'}>20/01/2021</Descriptions.Item>
+              <Descriptions.Item label={'Nơi cấp'}>Sở tài nguyên và môi trường</Descriptions.Item>
+              <Descriptions.Item label={'Ngày hết hạn'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Di động'}>0987654321</Descriptions.Item>
+              <Descriptions.Item label={'Email'}>x@gmail.com</Descriptions.Item>
+              <Descriptions.Item label={'ĐT cố định'}>
+                <ColorText color={'#ccc'}>Chưa có thông tin</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Chức vụ'}>
+                <ColorText color={'#ccc'}>Kế toán trưởng</ColorText>
+              </Descriptions.Item>
+              <Descriptions.Item label={'Nghề nghiệp'}>Kế toán</Descriptions.Item>
+              <Descriptions.Item label={'Dân tộc'}>Kinh</Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ thường trú'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
+              <Descriptions.Item span={2} label={'Địa chỉ hiện tại'}>
+                27 Thái Thịnh, P.Ngã Tư Sở, Q.Đống Đa, TP.Hà Nội
+              </Descriptions.Item>
+            </Descriptions>
+            <SlickSlider>
+              <ImgWrapper>
+                <img src={IMAGES.DUMB_IMG1} />
+              </ImgWrapper>
+              <ImgWrapper>
+                <img src={IMAGES.DUMB_IMG2} />
+              </ImgWrapper>
+              <ImgWrapper>
+                <embed
+                  src={IMAGES.DUMB_PDF1}
+                  type='application/pdf'
+                  frameBorder='0'
+                  scrolling='auto'
+                  height='800px'
+                  width='100%'
+                />
+              </ImgWrapper>
+            </SlickSlider>
           </TabPane>
         </Tabs>
+
         <Divider>Thông tin phê duyệt</Divider>
+
         <Form
           colon={false}>
           <Row justify={'center'}>

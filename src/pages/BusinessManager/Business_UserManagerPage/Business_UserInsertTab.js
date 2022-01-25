@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { UserInsertTabWrapper } from './Business_UserManagerPageStyled'
@@ -24,6 +24,7 @@ import validator from '../../../validator'
 import moment from 'moment'
 import helper from '../../../utils/helper'
 import { ACTION } from '../../../utils/constant'
+import ConditionDisplay from '../../../components/ConditionDisplay'
 
 const { Search } = Input
 const { Option } = Select
@@ -32,7 +33,6 @@ const Business_UserInsertTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
   const [formInsertUser] = Form.useForm()
-  const [action, setAction] = useState(ACTION.INSERT)
   const [visible, setVisible] = useState(null)
   const [fullNameLength, setFullNameLength] = useState(0)
   const [userNameLength, setUserNameLength] = useState(0)
@@ -42,13 +42,10 @@ const Business_UserInsertTab = props => {
   const onSearch = value => {
     if (value) {
       setVisible(true)
-      formInsertUser.resetFields()
-      formInsertUser.setFieldsValue({
-        secure: '1',
-      })
+      resetFormInsertUser()
     } else {
       setVisible(false)
-      formInsertUser.resetFields()
+      resetFormInsertUser()
     }
   }
   const mockupData = [
@@ -56,20 +53,20 @@ const Business_UserInsertTab = props => {
       id: 1,
       fullName: ' test1',
       department: 'Kỹ thuật 1',
-      phone: '987654321',
+      phone: '0987654322',
       email: 'user@gmail.com',
-      userName: 'Tên đăng nhập',
-      userRole: 'Tạo lập',
+      userName: 'userName1',
+      userRole: ['Tạo lập'],
       status: 'Hoạt động',
     },
     {
       id: 2,
       fullName: ' test 2',
       department: 'Kỹ thuật 2',
-      phone: '987654322',
+      phone: '0987654323',
       email: 'user2@gmail.com',
-      userName: 'Tên đăng nhập2',
-      userRole: 'Phê duyệt',
+      userName: 'userName1',
+      userRole: ['Phê duyệt'],
       status: 'Tạm dừng',
     },
 
@@ -127,16 +124,24 @@ const Business_UserInsertTab = props => {
 
   const onFinish = (formCollection) => {
     console.log(formCollection)
+    if (formCollection.id > 0) {
+      // Update
+
+    } else {
+      // Insert
+
+    }
   }
 
   const handleClickEdit = (record) => {
-    commonStore.setAppLoading(true)
+    // commonStore.setAppLoading(true)
     formInsertUser.setFieldsValue({
+      id: record.id,
+      phoneNumber: record.phone,
       fullName: record.fullName,
       department: record.department,
       userName: record.userName,
       role: record.userRole,
-
     })
   }
 
@@ -178,11 +183,16 @@ const Business_UserInsertTab = props => {
     }
   }
 
-  // const options = [
-  //   { label: 'Apple', value: '1' },
-  //   { label: 'Pear', value: '2' },
-  //   { label: 'Orange', value: '3' },
-  // ];
+  const resetFormInsertUser = () => {
+    formInsertUser.setFieldsValue({
+      id: 0,
+      secure: '1',
+    })
+  }
+
+  useEffect(() => {
+    resetFormInsertUser()
+  }, [])
 
   return (
     <UserInsertTabWrapper>
@@ -206,7 +216,7 @@ const Business_UserInsertTab = props => {
         </Col>
       </Row>
 
-      <ConditionRender visible={visible}>
+      <ConditionDisplay visible={visible}>
         <Divider />
         <Descriptions
           labelStyle={{ width: '15%' }}
@@ -233,7 +243,6 @@ const Business_UserInsertTab = props => {
         </HeaderBackground>
 
         <Form
-          // validateTrigger={false}
           onFinish={onFinish}
           style={{ marginTop: 24 }}
           labelAlign={'left'}
@@ -242,16 +251,10 @@ const Business_UserInsertTab = props => {
           colon={false}
           requiredMark={true}
           form={formInsertUser}>
+          <Form.Item className={'hidden'} name={'id'}>
+            <Input />
+          </Form.Item>
           <Row justify={'center'} gutter={[64, 16]}>
-            {/*<Col span={9}>*/}
-            {/*  <Form.Item*/}
-            {/*    name={'checTest'}*/}
-            {/*    rules={[{ required: true, message: 'Vui lòng chọn' }]}*/}
-            {/*    label={'test'}*/}
-            {/*  >*/}
-            {/*    <Checkbox.Group options={options} defaultValue={['1']} />*/}
-            {/*  </Form.Item>*/}
-            {/*</Col>*/}
             <Col span={9}>
               <Form.Item
                 name={'fullName'}
@@ -391,7 +394,7 @@ const Business_UserInsertTab = props => {
             <Button size={'large'} type={'primary'} htmlType={'submit'}><SaveOutlined /> Lưu thông tin</Button>
           </RowCenterDiv>
         </Form>
-      </ConditionRender>
+      </ConditionDisplay>
       {
         visible === false &&
         <>
