@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
+import PropTypes from 'prop-types'
 import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select } from 'antd'
-import { CustomerAccountingStepThreeWrapper } from '../Customer_CreateCustomerPageStyled'
+import { CustomerRepresentationStepTwoWrapper } from '../BusinessProfileManagerPageStyled'
 import moment from 'moment'
 import UploadModule from '../../../../components/UploadModule'
-import {
-  CheckOutlined,
-  CloudUploadOutlined,
-  DoubleLeftOutlined, DoubleRightOutlined,
-  LeftOutlined,
-  RetweetOutlined,
-} from '@ant-design/icons'
+import { CloudUploadOutlined, DoubleRightOutlined, LeftOutlined, RetweetOutlined } from '@ant-design/icons'
 import { RowCenterDiv, RowFlexEndDiv } from '../../../../components/CommonStyled/CommonStyled'
 
-const CustomerAccountingStepThree = props => {
+const CustomerRepresentationStepTwo = props => {
   const { commonStore, nextStep, prevStep } = props
   const { appTheme } = commonStore
-  const [formAccountingInfo] = Form.useForm()
+  const [formRepresentationInfo] = Form.useForm()
 
   const [fileToUpload1, setFileToUpload1] = useState(null)
   const [fileToPreview1, setFileToPreview1] = useState(null)
@@ -40,7 +34,7 @@ const CustomerAccountingStepThree = props => {
 
   const onFinish = (formCollection) => {
     console.log(formCollection)
-    console.log('done')
+    nextStep()
   }
 
   const disabledDateFuture = (current) => {
@@ -52,32 +46,32 @@ const CustomerAccountingStepThree = props => {
     console.log(value)
   }
 
-  const resetFormAccountingInfo = () => {
-    formAccountingInfo.setFieldsValue({
-      accounting_soGiayTo: undefined,
-      accounting_loaiKeToan: undefined,
-      accounting_hoVaTen: undefined,
-      accounting_gioiTinh: undefined,
-      accounting_ngaySinh: undefined,
-      accounting_quocTich: '1',
-      accounting_loaiGiayTo: '1',
-      accounting_ngayCap: undefined,
-      accounting_noiCap: undefined,
-      accounting_ngayHetHan: undefined,
-      accounting_diDong: undefined,
-      accounting_email: undefined,
-      accounting_dtCoDinh: undefined,
-      accounting_chucVu: undefined,
-      accounting_ngheNghiep: undefined,
-      accounting_danToc: undefined,
-      accounting_diaChiThuongTru: undefined,
-      accounting_cityThuongTru: undefined,
-      accounting_districtThuongTru: undefined,
-      accounting_wardsThuongTru: undefined,
-      accounting_diaChiHienTai: undefined,
-      accounting_cityHienTai: undefined,
-      accounting_districtHienTai: undefined,
-      accounting_wardsHienTai: undefined,
+  const resetFormRepresentationInfo = () => {
+    formRepresentationInfo.setFieldsValue({
+      representation_soGiayTo: undefined,
+      representation_hinhThucDaiDien: undefined,
+      representation_hoVaTen: undefined,
+      representation_gioiTinh: undefined,
+      representation_ngaySinh: undefined,
+      representation_quocTich: '1',
+      representation_loaiGiayTo: '1',
+      representation_ngayCap: undefined,
+      representation_noiCap: undefined,
+      representation_ngayHetHan: undefined,
+      representation_diDong: undefined,
+      representation_email: undefined,
+      representation_dtCoDinh: undefined,
+      representation_chucVu: undefined,
+      representation_ngheNghiep: undefined,
+      representation_danToc: undefined,
+      representation_diaChiThuongTru: undefined,
+      representation_cityThuongTru: undefined,
+      representation_districtThuongTru: undefined,
+      representation_wardsThuongTru: undefined,
+      representation_diaChiHienTai: undefined,
+      representation_cityHienTai: undefined,
+      representation_districtHienTai: undefined,
+      representation_wardsHienTai: undefined,
     })
     setFileToUpload1(null)
     setFileToPreview1(null)
@@ -88,11 +82,11 @@ const CustomerAccountingStepThree = props => {
   }
 
   useEffect(() => {
-    resetFormAccountingInfo()
+    resetFormRepresentationInfo()
   }, [])
   return (
-    <CustomerAccountingStepThreeWrapper>
-      <Divider style={{ color: appTheme.solidColor }}>Thông tin người phụ trách kế toán</Divider>
+    <CustomerRepresentationStepTwoWrapper>
+      <Divider style={{ color: appTheme.solidColor }}>Thông tin người đại diện</Divider>
 
       <Form
         validateTrigger={false}
@@ -102,12 +96,12 @@ const CustomerAccountingStepThree = props => {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         colon={false}
-        form={formAccountingInfo}>
+        form={formRepresentationInfo}>
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
-              label={'Số giấy tờ'} name={'accounting_soGiayTo'}>
+              label={'Số giấy tờ'} name={'representation_soGiayTo'}>
               <Input.Search maxLength={20} placeholder={'Nhập nội dung'} suffix={`${soGiayToLength}/20`} enterButton
                             onSearch={handleSearchDKKD}
                             onChange={e => setSoGiayToLength(e.currentTarget.value.length)} />
@@ -115,12 +109,11 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn loại kế toán' }]}
-              labelCol={{ span: 0 }} wrapperCol={{ span: 24 }}
-              label={''} name={'accounting_loaiKeToan'}>
+              rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
+              label={'Đại diện'} name={'representation_hinhThucDaiDien'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
-                <Radio value={'1'}>Kế toán trưởng</Radio>
-                <Radio value={'2'}>Người phụ trách kế toán</Radio>
+                <Radio value={'1'}>Đại diện theo pháp luật</Radio>
+                <Radio value={'2'}>Đại diện ủy quyền</Radio>
               </Radio.Group>
             </Form.Item>
           </Col>
@@ -129,7 +122,7 @@ const CustomerAccountingStepThree = props => {
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
-              label={'Họ và tên'} name={'accounting_hoVaTen'}>
+              label={'Họ và tên'} name={'representation_hoVaTen'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${hoVaTenLength}/100`}
                      onChange={e => setHoVaTenLength(e.currentTarget.value.length)} />
             </Form.Item>
@@ -137,8 +130,8 @@ const CustomerAccountingStepThree = props => {
 
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Giới tính'} name={'accounting_gioiTinh'}>
+              rules={[{ required: true, message: 'Vui lòng chọn giới tính' }]}
+              label={'Giới tính'} name={'representation_gioiTinh'}>
               <Select placeholder={'Vui lòng chọn'}>
                 <Select.Option value={'1'}>Nam</Select.Option>
                 <Select.Option value={'0'}>Nữ</Select.Option>
@@ -149,15 +142,15 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
-              label={'Ngày sinh'} name={'accounting_ngaySinh'}>
+              rules={[{ required: true, message: 'Vui lòng chọn ngày sinh' }]}
+              label={'Ngày sinh'} name={'representation_ngaySinh'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
-              label={'Quốc tịch'} name={'accounting_quocTich'}>
+              rules={[{ required: true, message: 'Vui lòng chọn quốc tịch' }]}
+              label={'Quốc tịch'} name={'representation_quocTich'}>
               <Select placeholder={'Chọn quốc tịch'}>
                 <Select.Option value={'1'}>Việt Nam</Select.Option>
                 <Select.Option value={'2'}>Lào</Select.Option>
@@ -168,8 +161,8 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Loại giấy tờ'} name={'accounting_loaiGiayTo'}>
+              rules={[{ required: true, message: 'Vui lòng chọn' }]}
+              label={'Loại giấy tờ'} name={'representation_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
                 <Select.Option value={'1'}>Căn cước công dân</Select.Option>
                 <Select.Option value={'2'}>Chứng minh nhân dân</Select.Option>
@@ -179,8 +172,8 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
-              label={'Ngày cấp'} name={'accounting_ngayCap'}>
+              rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
+              label={'Ngày cấp'} name={'representation_ngayCap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
@@ -188,15 +181,15 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Nơi cấp'} name={'accounting_noiCap'}>
+              rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
+              label={'Nơi cấp'} name={'representation_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${noiCapLength}/100`}
                      onChange={e => setNoiCapLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              label={'Ngày hết hạn'} name={'accounting_ngayHetHan'}>
+              label={'Ngày hết hạn'} name={'representation_ngayHetHan'}>
               <DatePicker format={'DD/MM/YYYY'} style={{ width: '100%' }} />
             </Form.Item>
           </Col>
@@ -204,15 +197,15 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Di động'} name={'accounting_diDong'}>
+              rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
+              label={'Di động'} name={'representation_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${diDongLength}/20`}
                      onChange={e => setDiDongLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              label={'Email'} name={'accounting_email'}>
+              label={'Email'} name={'representation_email'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${emailLength}/100`}
                      onChange={e => setEmailLength(e.currentTarget.value.length)} />
             </Form.Item>
@@ -221,14 +214,14 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
-              label={'ĐT cố định'} name={'accounting_dtCoDinh'}>
+              label={'ĐT cố định'} name={'representation_dtCoDinh'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${dtCoDinhLength}/20`}
                      onChange={e => setDtCoDinhLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              label={'Chức vụ'} name={'accounting_chucVu'}>
+              label={'Chức vụ'} name={'representation_chucVu'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${chucVuLength}/20`}
                      onChange={e => setChucVuLength(e.currentTarget.value.length)} />
             </Form.Item>
@@ -238,27 +231,27 @@ const CustomerAccountingStepThree = props => {
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
-              label={'Nghề nghiệp'} name={'accounting_ngheNghiep'}>
+              label={'Nghề nghiệp'} name={'representation_ngheNghiep'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${ngheNgiepLength}/100`}
                      onChange={e => setNgheNgiepLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Dân tộc'} name={'accounting_danToc'}>
+              rules={[{ required: true, message: 'Vui lòng nhập dân tộc' }]}
+              label={'Dân tộc'} name={'representation_danToc'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${danTocLength}/100`}
                      onChange={e => setDanTocLength(e.currentTarget.value.length)} />
             </Form.Item>
           </Col>
-        </Row>
+        </Row>        
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col span={10}>
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Địa chỉ thường trú'} name={'accounting_diaChiThuongTru'}>
+              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ thường trú' }]}
+              label={'Địa chỉ thường trú'} name={'representation_diaChiThuongTru'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiThuongTruLength}/100`}
                      onChange={e => setDiaChiThuongTruLength(e.currentTarget.value.length)} />
             </Form.Item>
@@ -268,7 +261,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng chọn ' }]}
-              label={''} name={'accounting_cityThuongTru'}>
+              label={''} name={'representation_cityThuongTru'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -280,7 +273,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'accounting_districtThuongTru'}>
+              label={''} name={'representation_districtThuongTru'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -292,7 +285,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'accounting_wardsThuongTru'}>
+              label={''} name={'representation_wardsThuongTru'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -305,8 +298,8 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={'Địa chỉ hiện tại'} name={'accounting_diaChiHienTai'}>
+              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ hiện tại' }]}
+              label={'Địa chỉ hiện tại'} name={'representation_diaChiHienTai'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiHienTaiLength}/100`}
                      onChange={e => setDiaChiHienTaiLength(e.currentTarget.value.length)} />
             </Form.Item>
@@ -316,7 +309,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'accounting_cityHienTai'}>
+              label={''} name={'representation_cityHienTai'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -328,7 +321,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'accounting_districtHienTai'}>
+              label={''} name={'representation_districtHienTai'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -340,7 +333,7 @@ const CustomerAccountingStepThree = props => {
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
-              label={''} name={'accounting_wardsHienTai'}>
+              label={''} name={'representation_wardsHienTai'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
                 <Select.Option value={'2'}>Loại 2</Select.Option>
@@ -407,7 +400,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col span={24}>
             <Form.Item labelCol={{ span: 3 }} wrapperCol={{ span: 21 }}
-                       label={<span className={'custom-required'}>Quyết định bổ nhiệm</span>}>
+                       label={<span className={'custom-required'}>Văn bản ủy quyền</span>}>
               <UploadModule
                 uploadButton={
                   <Button type={'link'} className={'mb-16'}><CloudUploadOutlined />
@@ -440,7 +433,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col span={8}>
             <RowCenterDiv>
-              <Button type={'default'} onClick={() => resetFormAccountingInfo()}><RetweetOutlined /> Làm rỗng</Button>
+              <Button type={'default'} onClick={() => resetFormRepresentationInfo()}><RetweetOutlined /> Làm rỗng</Button>
             </RowCenterDiv>
           </Col>
           <Col span={8}>
@@ -452,12 +445,13 @@ const CustomerAccountingStepThree = props => {
         </Row>
       </Form>
 
-    </CustomerAccountingStepThreeWrapper>
+    </CustomerRepresentationStepTwoWrapper>
   )
 }
 
-CustomerAccountingStepThree.propTypes = {
+CustomerRepresentationStepTwo.propTypes = {
+  nextStep: PropTypes.func,
   prevStep: PropTypes.func,
 }
 
-export default inject('commonStore')(observer(CustomerAccountingStepThree))
+export default inject('commonStore')(observer(CustomerRepresentationStepTwo))

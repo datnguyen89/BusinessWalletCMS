@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CustomerRegisterBusinessListTabWrapper } from '../Customer_CreateCustomerPageStyled'
+import { CustomerRegisterBusinessListTabWrapper } from '../BusinessProfileManagerPageStyled'
 
 const CustomerRegisterBusinessListTab = props => {
   return (
     <CustomerRegisterBusinessListTabWrapper>
-
+      Danh sách đăng ký
     </CustomerRegisterBusinessListTabWrapper>
   )
 }

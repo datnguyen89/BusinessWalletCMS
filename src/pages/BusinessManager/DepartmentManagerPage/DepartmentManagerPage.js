@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CustomerDepartmentManagerPageWrapper } from './Customer_DepartmentManagerPageStyled'
+import { CustomerDepartmentManagerPageWrapper } from './DepartmentManagerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 

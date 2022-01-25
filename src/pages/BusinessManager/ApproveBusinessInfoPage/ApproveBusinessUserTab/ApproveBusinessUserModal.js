@@ -5,7 +5,7 @@ import { RowCenterDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, StopOutlined } from '@ant-design/icons'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import { BusinessUserManagerModalWrapper } from '../Customer_ApproveBusinessPageStyled'
+import { BusinessUserManagerModalWrapper } from '../ApproveBusinessInfoPageStyled'
 
 const { TabPane } = Tabs
 

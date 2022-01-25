@@ -2,15 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
   ApproveBusinessInfoPageWrapper,
-} from './Customer_ApproveBusinessPageStyled'
+} from './ApproveBusinessInfoPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
-import Customer_ApproveBusinessCustomerTab from './Customer_ApproveBusinessCustomerTab/Customer_ApproveBusinessCustomerTab'
-import CustomerApproveBusinessUserTab from './Customer_ApproveBusinessUserTab/Customer_ApproveBusinessUserTab'
+import Customer_ApproveBusinessCustomerTab from './ApproveBusinessCustomerTab/ApproveBusinessCustomerTab'
+import CustomerApproveBusinessUserTab from './ApproveBusinessUserTab/ApproveBusinessUserTab'
 const { TabPane } = Tabs;
 
-const Customer_ApproveBusinessPage = props => {
+const ApproveBusinessInfoPage = props => {
   return (
     <DefaultLayout>
       <Helmet>
@@ -31,8 +31,8 @@ const Customer_ApproveBusinessPage = props => {
   )
 }
 
-Customer_ApproveBusinessPage.propTypes = {
+ApproveBusinessInfoPage.propTypes = {
 
 }
 
-export default Customer_ApproveBusinessPage
+export default ApproveBusinessInfoPage

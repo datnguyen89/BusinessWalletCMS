@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { UserInsertTabWrapper } from '../Business_UserManagerPageStyled'
+import { UserInsertTabWrapper } from '../BusinessUserManagerPageStyled'
 import {
   Button, Checkbox,
   Col,
@@ -29,7 +29,7 @@ import ConditionDisplay from '../../../../components/ConditionDisplay'
 const { Search } = Input
 const { Option } = Select
 
-const Business_UserInsertTab = props => {
+const BusinessUserInsertTab = props => {
   const { commonStore } = props
   const { appTheme } = commonStore
   const [formInsertUser] = Form.useForm()
@@ -436,6 +436,6 @@ const Business_UserInsertTab = props => {
   )
 }
 
-Business_UserInsertTab.propTypes = {}
+BusinessUserInsertTab.propTypes = {}
 
-export default inject('commonStore')(observer(Business_UserInsertTab))
+export default inject('commonStore')(observer(BusinessUserInsertTab))

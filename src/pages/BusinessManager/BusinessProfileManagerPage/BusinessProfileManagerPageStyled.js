@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import CustomerRepresentationStepTwo from './Customer_RegisterBusinessTab/Customer_RepresentationStepTwo'
-import CustomerAccountingStepThree from './Customer_RegisterBusinessTab/Customer_AccountingStepThree'
+import CustomerRepresentationStepTwo from './BusinessProfileRegisterFormTab/RepresentationStepTwo'
+import CustomerAccountingStepThree from './BusinessProfileRegisterFormTab/AccountingStepThree'
 
 export const CreateCustomerPageWrapper = styled.div`
   padding: 32px;

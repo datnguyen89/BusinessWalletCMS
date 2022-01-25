@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   CustomerApproveBusinessCustomerTabWrapper,
-} from '../Customer_ApproveBusinessPageStyled'
-import CustomerApproveBusinessCustomerModal from './Customer_ApproveBusinessCustomerModal'
+} from '../ApproveBusinessInfoPageStyled'
+import CustomerApproveBusinessCustomerModal from './ApproveBusinessCustomerModal'
 import { Button, Col, Row, DatePicker, Form, Input, Select, Divider, Table, Pagination } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'

@@ -3,19 +3,19 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
-import { UserManagerPageWrapper } from './Business_UserManagerPageStyled'
+import { UserManagerPageWrapper } from './BusinessUserManagerPageStyled'
 import { Tabs } from 'antd'
-import UserInsertTab from './Business_UserInsertTab/Business_UserInsertTab'
-import Business_UserListRequestTab from './Business_UserListRequestTab/Business_UserListRequestTab'
+import UserInsertTab from './BusinessUserInsertTab/BusinessUserInsertTab'
+import BusinessUserListRequestTab from './BusinessUserListRequestTab/BusinessUserListRequestTab'
 const { TabPane } = Tabs;
 
-const Business_UserManagerPage = props => {
+const BusinessUserManagerPage = props => {
   const { commonStore } = props
 
   return (
     <DefaultLayout>
       <Helmet>
-        <title>Quản lý người dùng</title>
+        <title>User Doanh nghiệp</title>
       </Helmet>
       <UserManagerPageWrapper>
         <Tabs defaultActiveKey="1">
@@ -23,7 +23,7 @@ const Business_UserManagerPage = props => {
             <UserInsertTab />
           </TabPane>
           <TabPane tab="Danh sách lập lệnh" key="2">
-            <Business_UserListRequestTab />
+            <BusinessUserListRequestTab />
           </TabPane>
         </Tabs>
       </UserManagerPageWrapper>
@@ -31,6 +31,6 @@ const Business_UserManagerPage = props => {
   )
 }
 
-Business_UserManagerPage.propTypes = {}
+BusinessUserManagerPage.propTypes = {}
 
-export default inject('commonStore')(observer(Business_UserManagerPage))
+export default inject('commonStore')(observer(BusinessUserManagerPage))

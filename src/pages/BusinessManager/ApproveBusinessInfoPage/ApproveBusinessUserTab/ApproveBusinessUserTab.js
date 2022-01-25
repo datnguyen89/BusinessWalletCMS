@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { UserListRequestTabWrapper } from '../Business_UserManagerPageStyled'
+import { CustomerApproveBusinessUserTabWrapper } from '../ApproveBusinessInfoPageStyled'
 import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
-import BusinessDetailUserRequestModal from './Business_DetailUserRequestModal'
+import Customer_ApproveBusinessUserModal from './ApproveBusinessUserModal'
 
 const { RangePicker } = DatePicker
 
@@ -57,8 +57,7 @@ const testData = [
     trangThai: 'Chờ duyệt',
   },
 ]
-
-const Business_UserListRequestTab = props => {
+const CustomerApproveBusinessUserTab = props => {
   const [formApproveBusinessUser] = Form.useForm()
   const [visibleApproveBusinessUserModal, setVisibleApproveBusinessUserModal] = useState(false)
 
@@ -105,15 +104,15 @@ const Business_UserListRequestTab = props => {
       title: 'Thời gian tạo',
       render: (item, row, index) => item.ngayTao,
     },
-   
-    // {
-    //   title: 'Thao tác',
-    //   align: 'center',
-    //   render: (item, row, index) =>
-    //     <SettingOutlined
-    //       style={{ cursor: 'pointer' }}
-    //       onClick={() => handleClickShowDetailRequest(item.id)} />,
-    // },
+
+    {
+      title: 'Thao tác',
+      align: 'center',
+      render: (item, row, index) =>
+        <SettingOutlined
+          style={{ cursor: 'pointer' }}
+          onClick={() => handleClickShowDetailRequest(item.id)} />,
+    },
   ]
 
   const handleClickShowDetailRequest = (id) => {
@@ -123,9 +122,8 @@ const Business_UserListRequestTab = props => {
   const handleChangePagination = (pageIndex, pageSize) => {
     console.log(pageIndex, pageSize)
   }
-
   return (
-    <UserListRequestTabWrapper>
+    <CustomerApproveBusinessUserTabWrapper>
       <Form
         labelAlign={'left'}
         labelCol={{ span: 6 }}
@@ -195,13 +193,15 @@ const Business_UserListRequestTab = props => {
         </PaginationLabel>
         <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
       </RowSpaceBetweenDiv>
-      <BusinessDetailUserRequestModal
+      <Customer_ApproveBusinessUserModal
         visible={visibleApproveBusinessUserModal}
         onClose={() => setVisibleApproveBusinessUserModal(false)} />
-    </UserListRequestTabWrapper>
+    </CustomerApproveBusinessUserTabWrapper>
   )
 }
 
-Business_UserListRequestTab.propTypes = {}
+CustomerApproveBusinessUserTab.propTypes = {
+  
+}
 
-export default Business_UserListRequestTab
+export default CustomerApproveBusinessUserTab

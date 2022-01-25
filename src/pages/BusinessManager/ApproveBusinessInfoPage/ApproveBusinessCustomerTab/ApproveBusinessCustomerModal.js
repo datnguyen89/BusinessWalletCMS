@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CustomerApproveBusinessCustomerModalWrapper, ImgWrapper } from '../Customer_ApproveBusinessPageStyled'
+import { CustomerApproveBusinessCustomerModalWrapper, ImgWrapper } from '../ApproveBusinessInfoPageStyled'
 import { Button, Col, Descriptions, Divider, Form, Input, Modal, Row, Tabs } from 'antd'
 import { ColorText, RowCenterDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, StopOutlined } from '@ant-design/icons'

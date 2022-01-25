@@ -1,18 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { CreateCustomerPageWrapper } from './Customer_CreateCustomerPageStyled'
+import { CreateCustomerPageWrapper } from './BusinessProfileManagerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
-import Customer_RegisterBusinessTab from './Customer_RegisterBusinessTab/Customer_RegisterBusinessTab'
-import Customer_RegisterBusinessListTab from './Customer_RegisterBusinessListTab/Customer_RegisterBusinessListTab'
+import Customer_RegisterBusinessTab from './BusinessProfileRegisterFormTab/BusinessProfileRegisterFormTab'
+import BusinessProfileRegisterListTab from './BusinessProfileRegisterListTab/BusinessProfileRegisterListTab'
 const { TabPane } = Tabs;
 
-const Customer_CreateCustomerPage = props => {
+const BusinessProfileManagerPage = props => {
   return (
     <DefaultLayout>
       <Helmet>
-        <title>Tạo khách hàng doanh nghiệp</title>
+        <title>Hồ sơ doanh nghiệp</title>
       </Helmet>
       <CreateCustomerPageWrapper>
         <Tabs defaultActiveKey="1">
@@ -20,7 +20,7 @@ const Customer_CreateCustomerPage = props => {
             <Customer_RegisterBusinessTab />
           </TabPane>
           <TabPane tab="Danh sách đăng ký" key="2">
-            <Customer_RegisterBusinessListTab />
+            <BusinessProfileRegisterListTab />
           </TabPane>
         </Tabs>
       </CreateCustomerPageWrapper>
@@ -29,8 +29,8 @@ const Customer_CreateCustomerPage = props => {
   )
 }
 
-Customer_CreateCustomerPage.propTypes = {
+BusinessProfileManagerPage.propTypes = {
 
 }
 
-export default Customer_CreateCustomerPage
+export default BusinessProfileManagerPage

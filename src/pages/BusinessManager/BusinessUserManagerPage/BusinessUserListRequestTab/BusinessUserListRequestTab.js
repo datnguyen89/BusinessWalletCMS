@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { CustomerApproveBusinessUserTabWrapper } from '../Customer_ApproveBusinessPageStyled'
+import { UserListRequestTabWrapper } from '../BusinessUserManagerPageStyled'
 import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
-import Customer_ApproveBusinessUserModal from './Customer_ApproveBusinessUserModal'
 
 const { RangePicker } = DatePicker
 
@@ -57,9 +56,9 @@ const testData = [
     trangThai: 'Chờ duyệt',
   },
 ]
-const CustomerApproveBusinessUserTab = props => {
+
+const BusinessUserListRequestTab = props => {
   const [formApproveBusinessUser] = Form.useForm()
-  const [visibleApproveBusinessUserModal, setVisibleApproveBusinessUserModal] = useState(false)
 
   const columns = [
     {
@@ -105,25 +104,15 @@ const CustomerApproveBusinessUserTab = props => {
       render: (item, row, index) => item.ngayTao,
     },
 
-    {
-      title: 'Thao tác',
-      align: 'center',
-      render: (item, row, index) =>
-        <SettingOutlined
-          style={{ cursor: 'pointer' }}
-          onClick={() => handleClickShowDetailRequest(item.id)} />,
-    },
   ]
 
-  const handleClickShowDetailRequest = (id) => {
-    setVisibleApproveBusinessUserModal(true)
-  }
 
   const handleChangePagination = (pageIndex, pageSize) => {
     console.log(pageIndex, pageSize)
   }
+
   return (
-    <CustomerApproveBusinessUserTabWrapper>
+    <UserListRequestTabWrapper>
       <Form
         labelAlign={'left'}
         labelCol={{ span: 6 }}
@@ -193,15 +182,11 @@ const CustomerApproveBusinessUserTab = props => {
         </PaginationLabel>
         <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
       </RowSpaceBetweenDiv>
-      <Customer_ApproveBusinessUserModal
-        visible={visibleApproveBusinessUserModal}
-        onClose={() => setVisibleApproveBusinessUserModal(false)} />
-    </CustomerApproveBusinessUserTabWrapper>
+
+    </UserListRequestTabWrapper>
   )
 }
 
-CustomerApproveBusinessUserTab.propTypes = {
-  
-}
+BusinessUserListRequestTab.propTypes = {}
 
-export default CustomerApproveBusinessUserTab
+export default BusinessUserListRequestTab

@@ -28,10 +28,10 @@ import NotPermissionPage from './pages/WebApp/NotPermissionPage'
 import NotFoundPage from './pages/WebApp/NotFoundPage'
 import TestPage from './pages/WebApp/TestPage'
 
-import Customer_CreateCustomerPage from './pages/BusinessManager/Customer_CreateCustomerPage'
-import Business_UserManagerPage from './pages/BusinessManager/Business_UserManagerPage'
-import Customer_DepartmentManagerPage from './pages/BusinessManager/Customer_DepartmentManagerPage'
-import Customer_ApproveBusinessPage from './pages/BusinessManager/Customer_ApproveBusinessPage'
+import BusinessProfileManagerPage from './pages/BusinessManager/BusinessProfileManagerPage'
+import Business_UserManagerPage from './pages/BusinessManager/BusinessUserManagerPage'
+import Customer_DepartmentManagerPage from './pages/BusinessManager/DepartmentManagerPage'
+import ApproveBusinessInfoPage from './pages/BusinessManager/ApproveBusinessInfoPage'
 
 
 const history = createBrowserHistory()
@@ -107,10 +107,10 @@ const App = () => {
             <Route exact path={PAGES.LOGIN.PATH} component={LoginPage} /> {/*Đăng nhập*/}
             <Route exact path={PAGES.HOME.PATH} component={HomePage} />
 
-            <Route exact path={PAGES.BUSINESS_PROFILE_MANAGER.PATH} component={Customer_CreateCustomerPage} />
+            <Route exact path={PAGES.BUSINESS_PROFILE_MANAGER.PATH} component={BusinessProfileManagerPage} />
             <Route exact path={PAGES.BUSINESS_USER_MANAGER.PATH} component={Business_UserManagerPage} />
             <Route exact path={PAGES.BUSINESS_DEPARTMENT_MANAGER.PATH} component={Customer_DepartmentManagerPage} />
-            <Route exact path={PAGES.BUSINESS_APPROVE_MANAGER.PATH} component={Customer_ApproveBusinessPage} />
+            <Route exact path={PAGES.BUSINESS_APPROVE_MANAGER.PATH} component={ApproveBusinessInfoPage} />
 
             <Route exact path={PAGES.TEST.PATH} component={TestPage} />
             <Route exact path={PAGES.NOT_PERMISSION.PATH} component={NotPermissionPage} /> {/*Không có quyền truy cập*/}
