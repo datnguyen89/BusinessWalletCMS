@@ -497,4 +497,10 @@ export const GlobalStyle = createGlobalStyle`
   .slick-dots {
     bottom: 0;
   }
+  // Modal confirm
+  .ant-modal-confirm-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 `
