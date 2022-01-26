@@ -135,7 +135,7 @@ const CustomerDepartmentManagerPage = props => {
             form={formFilterDepartment}
             colon={false}>
             <Form.Item name={'dkkdMST'} label={''}>
-              <Input placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
+              <Input style={{ width: 300 }} showCount maxLength={20} placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
             </Form.Item>
             <Form.Item>
               <Button type={'default'}>Tra cứu</Button>
@@ -162,7 +162,8 @@ const CustomerDepartmentManagerPage = props => {
           <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
         </RowSpaceBetweenDiv>
         {contextHolder}
-        <CreateDepartmentModal visible={visibleDepartmentDetailModal} onClose={() => setVisibleDepartmentDetailModal(false)} />
+        <CreateDepartmentModal visible={visibleDepartmentDetailModal}
+                               onClose={() => setVisibleDepartmentDetailModal(false)} />
       </CustomerDepartmentManagerPageWrapper>
     </DefaultLayout>
 

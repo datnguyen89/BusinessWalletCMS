@@ -23,11 +23,11 @@ class CommonStore {
   }
 
   // App theme
-  @observable appTheme = THEME_LIST[0]
+  @observable appTheme = JSON.parse(localStorage.getItem('appTheme')) || THEME_LIST[0]
   @action setTheme = name => {
     let newTheme = THEME_LIST.find(item => item.name === name)
-    console.log(newTheme)
     if (newTheme) {
+      localStorage.setItem('appTheme', JSON.stringify(newTheme))
       this.appTheme = newTheme
     } else {
       this.appTheme = THEME_LIST[0]

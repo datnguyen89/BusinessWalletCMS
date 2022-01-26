@@ -6,7 +6,6 @@ export const HeaderUserAreaWrapper = styled.a`
   align-items: center;
 
   .header-user-area {
-    width: 320px;
   }
 
   &:hover {
@@ -43,11 +42,12 @@ export const DropdownUserSetting = styled.div`
 `
 export const ThemePickerWrapper = styled.ul`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  width: 100%;
 `
 export const ThemePickerItem = styled.li`
-  background: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
   border-radius: 50%;
   width: 24px;
   height: 24px;

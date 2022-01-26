@@ -18,7 +18,14 @@ import {
   Table,
 } from 'antd'
 import { HeaderBackground, RowCenterDiv } from '../../../../components/CommonStyled/CommonStyled'
-import { EditOutlined, SaveOutlined, SearchOutlined, UpCircleFilled, UpCircleOutlined } from '@ant-design/icons'
+import {
+  EditOutlined,
+  RetweetOutlined,
+  SaveOutlined,
+  SearchOutlined,
+  UpCircleFilled,
+  UpCircleOutlined,
+} from '@ant-design/icons'
 import ConditionRender from '../../../../components/ConditionRender'
 import validator from '../../../../validator'
 import moment from 'moment'
@@ -34,10 +41,7 @@ const BusinessUserInsertTab = props => {
   const { appTheme } = commonStore
   const [formInsertUser] = Form.useForm()
   const [visible, setVisible] = useState(null)
-  const [fullNameLength, setFullNameLength] = useState(0)
-  const [userNameLength, setUserNameLength] = useState(0)
-  const [emailLength, setEmailLength] = useState(0)
-  const [positionLength, setPositionLength] = useState(0)
+
   const [disabledChooseAccount, setDisabledChooseAccount] = useState(true)
 
   const onSearch = value => {
@@ -51,23 +55,37 @@ const BusinessUserInsertTab = props => {
   const mockupData = [
     {
       id: 1,
-      fullName: ' test1',
-      department: 'Kỹ thuật 1',
-      phone: '0987654322',
-      email: 'user@gmail.com',
+      hoVaTen: ' test1',
+      phongBan: 'Kỹ thuật 1',
       userName: 'userName1',
       userRole: 'Tạo lập',
+      userRoleId: '1',
+      diDong: '0987654322',
+      email: 'user@gmail.com',
+      baoMat: '1',
+      chucVu: 'Nhân viên',
+      ngaySinh: '30/04/1991',
+      gioiTinh: '1',
+      taiKhoanSuDung: ['1', '2'],
+      chucNangSuDung: ['1'],
       status: 'Hoạt động',
     },
     {
       id: 2,
-      fullName: ' test 2',
-      department: 'Kỹ thuật 2',
-      phone: '0987654323',
-      email: 'user2@gmail.com',
-      userName: 'userName1',
+      hoVaTen: ' test2',
+      phongBan: 'Kỹ thuật 2',
+      userName: 'userName2',
       userRole: 'Phê duyệt',
-      status: 'Tạm dừng',
+      userRoleId: '2',
+      diDong: '0987654322',
+      email: 'user@gmail.com',
+      baoMat: '2',
+      chucVu: 'Trưởng phòng',
+      ngaySinh: '30/04/1992',
+      gioiTinh: '0',
+      taiKhoanSuDung: undefined,
+      chucNangSuDung: ['1', '2'],
+      status: 'Hoạt động',
     },
 
   ]
@@ -80,18 +98,18 @@ const BusinessUserInsertTab = props => {
     },
     {
       title: 'Họ và tên',
-      render: record => record.fullName,
+      render: record => record.hoVaTen,
     },
     {
       title: 'Phòng ban',
       responsive: ['xxl', 'xl'],
-      render: record => record.department,
+      render: record => record.phongBan,
     },
 
     {
       title: 'Di động',
       responsive: ['xxl', 'xl', 'md'],
-      render: record => record.phone,
+      render: record => record.diDong,
     },
     {
       title: 'Email',
@@ -135,14 +153,24 @@ const BusinessUserInsertTab = props => {
 
   const handleClickEdit = (record) => {
     // commonStore.setAppLoading(true)
+
     formInsertUser.setFieldsValue({
       id: record.id,
-      phoneNumber: record.phone,
-      fullName: record.fullName,
-      department: record.department,
+      hoVaTen: record.hoVaTen,
+      phongBan: record.phongBan,
       userName: record.userName,
-      role: record.userRole,
+      userRole: record.userRole,
+      diDong: record.diDong,
+      email: record.email,
+      baoMat: record.baoMat,
+      chucVu: record.chucVu,
+      ngaySinh: moment(record.ngaySinh, 'DD/MM/YYYY'),
+      gioiTinh: record.gioiTinh,
+      taiKhoanSuDung: record.taiKhoanSuDung,
+      chucNangSuDung: record.chucNangSuDung,
     })
+
+    handleChangeRole(record.userRoleId)
   }
 
   const disabledDate = (current) => {
@@ -199,19 +227,22 @@ const BusinessUserInsertTab = props => {
   const resetFormInsertUser = () => {
     formInsertUser.setFieldsValue({
       id: 0,
-      fullName: undefined,
-      department: undefined,
+      hoVaTen: undefined,
+      phongBan: undefined,
       userName: undefined,
-      role: undefined,
-      phoneNumber: undefined,
+      userRole: undefined,
+      userRoleId: undefined,
+      diDong: undefined,
       email: undefined,
-      secure: '1',
-      position: undefined,
-      birth: undefined,
-      gender: undefined,
-      account: undefined,
-      module: undefined,
+      baoMat: '1',
+      chucVu: undefined,
+      ngaySinh: undefined,
+      gioiTinh: undefined,
+      taiKhoanSuDung: undefined,
+      chucNangSuDung: undefined,
+      status: undefined,
     })
+
   }
 
   useEffect(() => {
@@ -231,6 +262,8 @@ const BusinessUserInsertTab = props => {
       <Row justify={'center'} style={{ marginTop: 16 }}>
         <Col span={9}>
           <Search
+            maxLength={20}
+            showCount
             placeholder='Nhập số ĐKKD/Mã số thuế'
             enterButton={
               <>
@@ -285,17 +318,16 @@ const BusinessUserInsertTab = props => {
           <Row justify={'center'} gutter={[64, 16]}>
             <Col span={9}>
               <Form.Item
-                name={'fullName'}
+                name={'hoVaTen'}
                 rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}
                 label={'Họ tên User'}
               >
-                <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${fullNameLength}/100`}
-                       onChange={e => setFullNameLength(e.currentTarget.value.length)} />
+                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
               </Form.Item>
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'department'}
+                name={'phongBan'}
                 rules={[{ required: true, message: 'Vui lòng chọn phòng ban' }]}
                 label={'Phòng ban'}
               >
@@ -314,13 +346,12 @@ const BusinessUserInsertTab = props => {
                 ]}
                 label={'Tên đăng nhập'}
               >
-                <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${userNameLength}/20`}
-                       onChange={e => setUserNameLength(e.currentTarget.value.length)} />
+                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
               </Form.Item>
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'role'}
+                name={'userRole'}
                 rules={[{ required: true, message: 'Vui lòng chọn vai trò' }]}
                 label={'Vai trò'}
               >
@@ -333,14 +364,14 @@ const BusinessUserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'phoneNumber'}
+                name={'diDong'}
                 rules={[{
                   required: true,
                   message: 'Vui lòng nhập số điện thoại di động',
                 }, { validator: checkPhoneNumber }]}
                 label={'Di động'}
               >
-                <Input placeholder={'Nhập nội dung'} />
+                <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
               </Form.Item>
             </Col>
             <Col span={9}>
@@ -349,13 +380,12 @@ const BusinessUserInsertTab = props => {
                 rules={[{ validator: checkEmail }]}
                 label={'Email'}
               >
-                <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${emailLength}/100`}
-                       onChange={e => setEmailLength(e.currentTarget.value.length)} />
+                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
               </Form.Item>
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'secure'}
+                name={'baoMat'}
                 rules={[{ required: true, message: 'Vui chọn hình thức bảo mật' }]}
                 label={'Hình thức bảo mật'}
               >
@@ -367,16 +397,15 @@ const BusinessUserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'position'}
+                name={'chucVu'}
                 label={'Chức vụ'}
               >
-                <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${positionLength}/20`}
-                       onChange={e => setPositionLength(e.currentTarget.value.length)} />
+                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
               </Form.Item>
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'birth'}
+                name={'ngaySinh'}
                 label={'Ngày sinh'}
               >
                 <DatePicker disabledDate={disabledDate} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
@@ -384,7 +413,7 @@ const BusinessUserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'gender'}
+                name={'gioiTinh'}
                 label={'Giới tính'}
               >
                 <Select placeholder={'Vui lòng chọn'}>
@@ -395,12 +424,13 @@ const BusinessUserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'account'}
+                name={'taiKhoanSuDung'}
                 label={
                   <span className={'custom-required'}>Tài khoản sử dụng</span>
                 }
               >
-                <Select placeholder={'Tất cả'} disabled={disabledChooseAccount} mode='multiple' optionLabelProp='label'>
+                <Select placeholder={disabledChooseAccount ? '' : 'Tất cả'} disabled={disabledChooseAccount}
+                        mode='multiple' optionLabelProp='label'>
                   <Option value='1' label={'Tài khoản 1'}>Tài khoản 11</Option>
                   <Option value='2' label={'Tài khoản 2'}>Tài khoản 22</Option>
                 </Select>
@@ -408,7 +438,7 @@ const BusinessUserInsertTab = props => {
             </Col>
             <Col span={9}>
               <Form.Item
-                name={'module'}
+                name={'chucNangSuDung'}
                 label={
                   <span className={'custom-required'}>chức năng sử dụng</span>
                 }
@@ -421,6 +451,8 @@ const BusinessUserInsertTab = props => {
             </Col>
           </Row>
           <RowCenterDiv>
+            <Button size={'large'} className={'mr-16'} onClick={() => resetFormInsertUser()}><RetweetOutlined /> Làm
+              rỗng</Button>
             <Button size={'large'} type={'primary'} htmlType={'submit'}><SaveOutlined /> Lưu thông tin</Button>
           </RowCenterDiv>
         </Form>

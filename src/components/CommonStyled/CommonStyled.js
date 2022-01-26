@@ -70,8 +70,6 @@ export const HeaderDropdownWrapper = styled.div`
   box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
   border-radius: 2px;
   padding: 8px;
-  display: flex;
-  flex-wrap: wrap;
 `
 export const HeaderDropdownIconWrapper = styled.div`
   width: 24px;
@@ -88,10 +86,8 @@ export const HeaderDropdownItemText = styled.div`
   }
 `
 export const HeaderDropdownItem = styled.div`
-  width: calc(100% / ${props => props.columns || 4});
   display: flex;
   align-items: center;
-  justify-content: ${props => props.justifyContent || 'flex-start'};
   padding: 8px;
   cursor: pointer;
 

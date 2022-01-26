@@ -11,7 +11,8 @@ export const MainHeaderWrapper = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(270deg, #6634E0 -8.83%, #0465B0 74.3%);
+  //background: linear-gradient(270deg, #6634E0 -8.83%, #0465B0 74.3%);
+  background: ${props => props.gradientColor};
   z-index: 9;
 `
 export const HeaderLogoArea = styled.div`
@@ -80,15 +81,16 @@ export const HeaderTransactionItem = styled.div`
       fill: #FDCF17 !important;
     }
   }
-    @media only screen and (min-width: 1920px) {
-        .header-payment-area {
-            width: 600px;
-        }
 
-        .header-transfer-area {
-            width: 860px;
-        }
+  @media only screen and (min-width: 1920px) {
+    .header-payment-area {
+      width: 600px;
     }
+
+    .header-transfer-area {
+      width: 860px;
+    }
+  }
   @media only screen and (max-width: 1920px) {
     .header-payment-area {
       width: 600px;

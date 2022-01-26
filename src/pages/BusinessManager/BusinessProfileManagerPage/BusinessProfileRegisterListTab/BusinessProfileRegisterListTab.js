@@ -4,6 +4,7 @@ import { CustomerRegisterBusinessListTabWrapper } from '../BusinessProfileManage
 import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
+
 const { RangePicker } = DatePicker
 
 const testData = [
@@ -106,7 +107,6 @@ const CustomerRegisterBusinessListTab = props => {
   ]
 
 
-
   const handleChangePagination = (pageIndex, pageSize) => {
     console.log(pageIndex, pageSize)
   }
@@ -131,27 +131,27 @@ const CustomerRegisterBusinessListTab = props => {
             <Form.Item
               label={'Số giấy tờ'}
               name={'hoVaTen'}>
-              <Input placeholder={'Nhập nội dung'} />
+              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
-              <Input placeholder={'Nhập nội dung'} />
+              <Input showCount maxLength={100} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
-              <Input placeholder={'Nhập nội dung'} />
+              <Input showCount maxLength={100} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Trạng thái'}
-              name={'hoTenKh'}>
+              name={'trangThai'}>
               <Select placeholder={'Trạng thái'}>
                 <Select.Option value={'1'}>Hoạt động</Select.Option>
                 <Select.Option value={'2'}>Ngừng hoạt động</Select.Option>
@@ -185,8 +185,6 @@ const CustomerRegisterBusinessListTab = props => {
   )
 }
 
-CustomerRegisterBusinessListTab.propTypes = {
-  
-}
+CustomerRegisterBusinessListTab.propTypes = {}
 
 export default CustomerRegisterBusinessListTab

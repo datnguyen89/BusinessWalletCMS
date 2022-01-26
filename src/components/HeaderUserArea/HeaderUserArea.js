@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Dropdown, Menu } from 'antd'
+import { Divider, Dropdown, Menu } from 'antd'
 import UserAvatar from '../UserAvatar'
 import ICONS from '../../icons'
 import { DropdownUserSetting, HeaderUserAreaWrapper, ThemePickerItem, ThemePickerWrapper } from './HeaderUserAreaStyled'
@@ -13,6 +13,7 @@ import {
   HeaderDropdownItemText,
   HeaderDropdownWrapper,
 } from '../CommonStyled/CommonStyled'
+import { LogoutOutlined, SettingOutlined } from '@ant-design/icons'
 
 const HeaderUserArea = props => {
 
@@ -36,27 +37,36 @@ const HeaderUserArea = props => {
     <HeaderDropdownWrapper>
       <HeaderDropdownItem
         justifyContent={'center'}
-        columns={2}
         onClick={() => setVisibleChangePassword(true)}
         color={commonStore.appTheme.solidColor}>
-        <HeaderDropdownIconWrapper>
-          {ICONS.SETTING}
-        </HeaderDropdownIconWrapper>
+        <SettingOutlined style={{ fontSize: 20 }} />
         <HeaderDropdownItemText>
           Đổi mật khẩu
         </HeaderDropdownItemText>
       </HeaderDropdownItem>
       <HeaderDropdownItem
         justifyContent={'center'}
-        columns={2}
         onClick={() => handleClickMenu('/login')}
         color={commonStore.appTheme.solidColor}>
-        <HeaderDropdownIconWrapper>
-          {ICONS.LOGOUT}
-        </HeaderDropdownIconWrapper>
+        <LogoutOutlined style={{ fontSize: 20 }} />
         <HeaderDropdownItemText>
           Đăng xuất
         </HeaderDropdownItemText>
+      </HeaderDropdownItem>
+      <Divider style={{ margin: '8px 0' }} />
+      <HeaderDropdownItem
+        justifyContent={'center'}
+        color={commonStore.appTheme.solidColor}>
+        <ThemePickerWrapper>
+          {
+            THEME_LIST.map(item =>
+              <ThemePickerItem
+                onClick={() => handleChangeAppTheme(item.name)}
+                key={item.name}
+                backgroundColor={item.solidColor} />,
+            )
+          }
+        </ThemePickerWrapper>
       </HeaderDropdownItem>
     </HeaderDropdownWrapper>
   )

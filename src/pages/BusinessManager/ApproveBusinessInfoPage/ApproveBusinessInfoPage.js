@@ -6,7 +6,7 @@ import {
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
-import Customer_ApproveBusinessCustomerTab from './ApproveBusinessCustomerTab/ApproveBusinessCustomerTab'
+import ApproveBusinessCustomerTab from './ApproveBusinessCustomerTab/ApproveBusinessCustomerTab'
 import CustomerApproveBusinessUserTab from './ApproveBusinessUserTab/ApproveBusinessUserTab'
 const { TabPane } = Tabs;
 
@@ -19,7 +19,7 @@ const ApproveBusinessInfoPage = props => {
       <ApproveBusinessInfoPageWrapper>
         <Tabs defaultActiveKey="1">
           <TabPane tab="Khách hàng doanh nghiệp" key="1">
-            <Customer_ApproveBusinessCustomerTab />
+            <ApproveBusinessCustomerTab />
           </TabPane>
           <TabPane tab="User doanh nghiệp" key="2">
             <CustomerApproveBusinessUserTab />

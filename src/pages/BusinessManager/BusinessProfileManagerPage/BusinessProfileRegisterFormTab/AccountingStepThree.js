@@ -26,18 +26,6 @@ const CustomerAccountingStepThree = props => {
   const [fileToUpload3, setFileToUpload3] = useState(null)
   const [fileToPreview3, setFileToPreview3] = useState(null)
 
-  const [soGiayToLength, setSoGiayToLength] = useState(0)
-  const [hoVaTenLength, setHoVaTenLength] = useState(0)
-  const [noiCapLength, setNoiCapLength] = useState(0)
-  const [diDongLength, setDiDongLength] = useState(0)
-  const [emailLength, setEmailLength] = useState(0)
-  const [dtCoDinhLength, setDtCoDinhLength] = useState(0)
-  const [chucVuLength, setChucVuLength] = useState(0)
-  const [diaChiThuongTruLength, setDiaChiThuongTruLength] = useState(0)
-  const [diaChiHienTaiLength, setDiaChiHienTaiLength] = useState(0)
-  const [ngheNgiepLength, setNgheNgiepLength] = useState(0)
-  const [danTocLength, setDanTocLength] = useState(0)
-
   const onFinish = (formCollection) => {
     console.log(formCollection)
     console.log('done')
@@ -108,9 +96,9 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'accounting_soGiayTo'}>
-              <Input.Search maxLength={20} placeholder={'Nhập nội dung'} suffix={`${soGiayToLength}/20`} enterButton
-                            onSearch={handleSearchDKKD}
-                            onChange={e => setSoGiayToLength(e.currentTarget.value.length)} />
+              <Input.Search maxLength={20} placeholder={'Nhập nội dung'}
+                            enterButton showCount
+                            onSearch={handleSearchDKKD} />
             </Form.Item>
           </Col>
           <Col span={10}>
@@ -130,8 +118,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
               label={'Họ và tên'} name={'accounting_hoVaTen'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${hoVaTenLength}/100`}
-                     onChange={e => setHoVaTenLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
 
@@ -190,8 +177,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Nơi cấp'} name={'accounting_noiCap'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${noiCapLength}/100`}
-                     onChange={e => setNoiCapLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={10}>
@@ -206,15 +192,13 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Di động'} name={'accounting_diDong'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${diDongLength}/20`}
-                     onChange={e => setDiDongLength(e.currentTarget.value.length)} />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Email'} name={'accounting_email'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${emailLength}/100`}
-                     onChange={e => setEmailLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
         </Row>
@@ -222,15 +206,13 @@ const CustomerAccountingStepThree = props => {
           <Col span={10}>
             <Form.Item
               label={'ĐT cố định'} name={'accounting_dtCoDinh'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${dtCoDinhLength}/20`}
-                     onChange={e => setDtCoDinhLength(e.currentTarget.value.length)} />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Chức vụ'} name={'accounting_chucVu'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} suffix={`${chucVuLength}/20`}
-                     onChange={e => setChucVuLength(e.currentTarget.value.length)} />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
         </Row>
@@ -239,16 +221,14 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
               label={'Nghề nghiệp'} name={'accounting_ngheNghiep'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${ngheNgiepLength}/100`}
-                     onChange={e => setNgheNgiepLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Dân tộc'} name={'accounting_danToc'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${danTocLength}/100`}
-                     onChange={e => setDanTocLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
         </Row>
@@ -259,8 +239,7 @@ const CustomerAccountingStepThree = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ thường trú'} name={'accounting_diaChiThuongTru'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiThuongTruLength}/100`}
-                     onChange={e => setDiaChiThuongTruLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={4}>
@@ -307,8 +286,7 @@ const CustomerAccountingStepThree = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ hiện tại'} name={'accounting_diaChiHienTai'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} suffix={`${diaChiHienTaiLength}/100`}
-                     onChange={e => setDiaChiHienTaiLength(e.currentTarget.value.length)} />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
             </Form.Item>
           </Col>
           <Col span={4}>

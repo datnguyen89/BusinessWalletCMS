@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CreateDepartmentModalWrapper } from './DepartmentManagerPageStyled'
 import { Button, Col, Descriptions, Divider, Form, Input, Modal, Row, Select } from 'antd'
-import { RowCenterDiv } from '../../../components/CommonStyled/CommonStyled'
+import { RowCenterDiv, RowFlexEndDiv } from '../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, SaveOutlined, StopOutlined } from '@ant-design/icons'
 import ConditionRender from '../../../components/ConditionRender'
 
@@ -34,6 +34,7 @@ const CreateDepartmentModal = props => {
         title='Thêm mới phòng ban doanh nghiệp'
         visible={visible}>
         <Form
+          validateTrigger={false}
           labelAlign={'left'}
           labelCol={{ span: 6 }}
           wrapperCol={{ span: 18 }}
@@ -41,7 +42,7 @@ const CreateDepartmentModal = props => {
           onFinish={onFinish}
           colon={false}>
           <Form.Item label={'Số giấy tờ doanh nghiệp'}>
-            <Input.Search enterButton onSearch={handlerSearchBusiness} />
+            <Input.Search maxLength={20} showCount enterButton onSearch={handlerSearchBusiness} />
           </Form.Item>
           <ConditionRender visible={isValidDepartment}>
             <Descriptions
@@ -56,24 +57,28 @@ const CreateDepartmentModal = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
               label={'Tên phòng ban'} name={'tenPhongBan'}>
-              <Input placeholder={'Nhập nội dung'} />
+              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
               label={'Tên viết tắt'} name={'tenVietTat'}>
-              <Input placeholder={'Nhập nội dung'} />
+              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn tài khoản sử dụng' }]}
               label={'Tài khoản sử dụng'} name={'taiKhoanSuDung'}>
-              <Select placeholder={'Vui lòng chọn'} mode={'multiple'}>
+              <Select placeholder={'Tất cả'} mode={'multiple'}>
                 <Select.Option value={'1'}>Tài khoản 1</Select.Option>
                 <Select.Option value={'2'}>Tài khoản 2</Select.Option>
               </Select>
             </Form.Item>
             <Form.Item
               label={'Mô tả'} name={'moTa'}>
-              <Input.TextArea rows={4} placeholder={'Nhập nội dung'} />
+              <Input.TextArea
+                rows={2}
+                maxLength={200}
+                showCount
+                placeholder={'Nhập nội dung'} />
             </Form.Item>
             <RowCenterDiv>
               <Button className={'mr-16'}>Hủy</Button>

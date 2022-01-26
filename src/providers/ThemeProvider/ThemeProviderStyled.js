@@ -31,6 +31,9 @@ export const GlobalStyle = createGlobalStyle`
   .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: ${props => props.theme.solidColor} !important;
   }
+  .ant-tabs-tab:hover {
+    color: ${props => props.theme.solidColor} !important;
+  }
   .ant-tabs-ink-bar {
     background: ${props => props.theme.solidColor} !important;
   }
@@ -41,7 +44,9 @@ export const GlobalStyle = createGlobalStyle`
       border-color: ${props => props.theme.solidColor} !important;
     }
   }
-
+  .ant-btn-link {
+    color: ${props => props.theme.solidColor} !important;
+  }
   .ant-btn-primary {
     &:not(.ant-btn-background-ghost) {
       background: ${props => props.theme.solidColor} !important;
@@ -304,6 +309,11 @@ export const GlobalStyle = createGlobalStyle`
   /** Datepicker */
   .ant-picker:hover, .ant-picker-focused {
     border-color: ${props => props.theme.solidColor} !important;
+  }
+
+  .ant-picker-cell-in-view.ant-picker-cell-in-range::before,
+  .ant-picker-cell-in-view.ant-picker-cell-range-start:not(.ant-picker-cell-range-start-single)::before, .ant-picker-cell-in-view.ant-picker-cell-range-end:not(.ant-picker-cell-range-end-single)::before{
+    background: ${props => props.theme.solidLightColor} !important;
   }
 
   .ant-picker-focused {
