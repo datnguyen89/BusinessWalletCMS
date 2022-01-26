@@ -119,12 +119,6 @@ export const MenuSidebarItem = styled.li`
   }
 
 `
-export const MenuSidebarArea = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-`
 
 export const GroupMenuTitle = styled.h1`
   text-align: ${props => props.textAlign};

@@ -13,10 +13,10 @@ import { HeaderLogoArea, MainHeaderRight, MainHeaderRightMobile, MainHeaderWrapp
 import IMAGES from '../../images'
 import { Drawer, Menu } from 'antd'
 import HeaderUserArea from '../HeaderUserArea'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { DEVICE, PAGES, SIDEBAR_WIDTH_EXPAND } from '../../utils/constant'
-import DrawerSideBar from '../DrawerSideBar'
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
+import MenuSideBarArea from '../MenuSideBarArea'
 
 const MainHeader = props => {
   const { commonStore } = props
@@ -36,36 +36,19 @@ const MainHeader = props => {
   }
   return (
     <MainHeaderWrapper gradientColor={appTheme.gradientColor}>
-      <HeaderLogoArea width={commonStore.isCollapse ? 'auto' : '220px'}>
+      <HeaderLogoArea width={device === DEVICE.DESKTOP ? commonStore.isCollapse ? 'auto' : '220px' : 'auto'}>
         <img src={IMAGES.AUTH_LOGO} alt={''} style={{ cursor: 'pointer' }} height={48}
              onClick={() => history.push(PAGES.HOME.PATH)} />
         {
-          commonStore.isCollapse
+          device === DEVICE.DESKTOP
             ?
-            <MenuUnfoldOutlined onClick={handleToggleSideBar} />
-            :
-            <MenuFoldOutlined onClick={handleToggleSideBar} />
+            commonStore.isCollapse
+              ?
+              <MenuUnfoldOutlined onClick={handleToggleSideBar} />
+              :
+              <MenuFoldOutlined onClick={handleToggleSideBar} />
+            : null
         }
-        <FontAwesomeIcon
-          onClick={() => setVisibleMobileDrawerLeft(true)}
-          icon={faList}
-          size={'2x'}
-          style={{
-            display: device === DEVICE.MOBILE ? 'block' : 'none',
-            cursor: 'pointer',
-            color: '#fff',
-            marginLeft: 8,
-          }} />
-        <Drawer
-          title={null}
-          placement='left'
-          closable={false}
-          width={SIDEBAR_WIDTH_EXPAND}
-          style={{ padding: 0 }}
-          onClose={() => setVisibleMobileDrawerLeft(false)}
-          visible={visibleMobileDrawerLeft}>
-          <DrawerSideBar />
-        </Drawer>
       </HeaderLogoArea>
       <MainHeaderRight>
         {/*<HeaderNotifyArea>*/}
@@ -82,34 +65,12 @@ const MainHeader = props => {
           color={'#fff'}
           style={{ cursor: 'pointer' }} />
         <Drawer
-          title={'Ví doanh nghiệp'}
+          title={<Link style={{ color: appTheme.solidColor }} to={'/'}>CMS Ví doanh nghiệp</Link>}
           placement='right'
           style={{ padding: 0 }}
           onClose={() => setVisibleMobileDrawerRight(false)}
           visible={visibleMobileDrawerRight}>
-          <Menu
-            onClick={handleClickDrawerMenu}
-            style={{ width: '100%' }}
-            defaultSelectedKeys={['1']}
-            mode='inline'
-          >
-            <Menu.Item key='1'>
-              <FontAwesomeIcon style={{ marginRight: '16px' }} icon={faFileInvoiceDollar} />
-              Nạp tiền
-            </Menu.Item>
-            <Menu.Item key='2'>
-              <FontAwesomeIcon style={{ marginRight: '16px' }} icon={faExchangeAlt} />
-              Chuyển tiền
-            </Menu.Item>
-            <Menu.Item key='3'>
-              <FontAwesomeIcon style={{ marginRight: '16px' }} icon={faLink} />
-              Liên kết
-            </Menu.Item>
-            <Menu.Item key='4'>
-              <FontAwesomeIcon style={{ marginRight: '16px' }} icon={faHandHoldingUsd} />
-              Rút tiền
-            </Menu.Item>
-          </Menu>
+          <MenuSideBarArea />
         </Drawer>
       </MainHeaderRightMobile>
     </MainHeaderWrapper>

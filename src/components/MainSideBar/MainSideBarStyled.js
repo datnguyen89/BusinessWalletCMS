@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import IMAGES from '../../images'
-import { MenuSideBarTitle } from '../DrawerSideBar/DrawerSideBarStyled'
 
 export const MainSideBarWrapper = styled.aside`
   position: fixed;

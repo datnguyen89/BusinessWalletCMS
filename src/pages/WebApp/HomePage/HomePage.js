@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
+import { HomePageWrapper } from './HomePageStyled'
 
 const HomePage = props => {
   const { commonStore } = props
@@ -12,7 +13,9 @@ const HomePage = props => {
       <Helmet>
         <title>Trang chủ</title>
       </Helmet>
-         HOME PAGE
+      <HomePageWrapper>
+        Home
+      </HomePageWrapper>
     </DefaultLayout>
   )
 }
