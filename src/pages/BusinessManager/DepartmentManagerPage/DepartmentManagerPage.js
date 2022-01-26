@@ -135,7 +135,7 @@ const CustomerDepartmentManagerPage = props => {
             form={formFilterDepartment}
             colon={false}>
             <Form.Item name={'dkkdMST'} label={''}>
-              <Input style={{ width: 300 }} showCount maxLength={20} placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
+              <Input style={{ width: 300 }} showCount={true} maxLength={20} placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
             </Form.Item>
             <Form.Item>
               <Button type={'default'}>Tra cứu</Button>

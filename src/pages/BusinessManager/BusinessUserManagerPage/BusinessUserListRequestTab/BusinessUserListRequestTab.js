@@ -132,21 +132,21 @@ const BusinessUserListRequestTab = props => {
             <Form.Item
               label={'Số giấy tờ'}
               name={'hoVaTen'}>
-              <Input maxLength={20} showCount placeholder={'Nhập nội dung'} />
+              <Input maxLength={20} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
-              <Input maxLength={100} showCount placeholder={'Nhập nội dung'} />
+              <Input maxLength={100} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
-              <Input maxLength={100} showCount placeholder={'Nhập nội dung'} />
+              <Input maxLength={100} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>

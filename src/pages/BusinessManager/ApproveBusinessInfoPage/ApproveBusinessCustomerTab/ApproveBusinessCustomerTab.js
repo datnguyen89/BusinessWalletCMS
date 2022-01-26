@@ -147,21 +147,21 @@ const CustomerApproveBusinessCustomerTab = props => {
             <Form.Item
               label={'Số giấy tờ'}
               name={'soGiayTo'}>
-              <Input placeholder={'Nhập nội dung'} maxLength={20} showCount />
+              <Input placeholder={'Nhập nội dung'} maxLength={20} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
-              <Input placeholder={'Nhập nội dung'} maxLength={100} showCount />
+              <Input placeholder={'Nhập nội dung'} maxLength={100} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
-              <Input placeholder={'Nhập nội dung'} maxLength={100} showCount />
+              <Input placeholder={'Nhập nội dung'} maxLength={100} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={8}>

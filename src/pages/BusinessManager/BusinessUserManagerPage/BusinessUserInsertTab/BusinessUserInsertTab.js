@@ -263,7 +263,7 @@ const BusinessUserInsertTab = props => {
         <Col span={9}>
           <Search
             maxLength={20}
-            showCount
+            showCount={true}
             placeholder='Nhập số ĐKKD/Mã số thuế'
             enterButton={
               <>
@@ -322,7 +322,7 @@ const BusinessUserInsertTab = props => {
                 rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}
                 label={'Họ tên User'}
               >
-                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
             <Col span={9}>
@@ -346,7 +346,7 @@ const BusinessUserInsertTab = props => {
                 ]}
                 label={'Tên đăng nhập'}
               >
-                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
             <Col span={9}>
@@ -371,7 +371,7 @@ const BusinessUserInsertTab = props => {
                 }, { validator: checkPhoneNumber }]}
                 label={'Di động'}
               >
-                <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
+                <Input showCount={true} maxLength={20} placeholder={'Nhập nội dung'} />
               </Form.Item>
             </Col>
             <Col span={9}>
@@ -380,7 +380,7 @@ const BusinessUserInsertTab = props => {
                 rules={[{ validator: checkEmail }]}
                 label={'Email'}
               >
-                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+                <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
             <Col span={9}>
@@ -400,7 +400,7 @@ const BusinessUserInsertTab = props => {
                 name={'chucVu'}
                 label={'Chức vụ'}
               >
-                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+                <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
             <Col span={9}>

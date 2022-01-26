@@ -42,7 +42,7 @@ const CreateDepartmentModal = props => {
           onFinish={onFinish}
           colon={false}>
           <Form.Item label={'Số giấy tờ doanh nghiệp'}>
-            <Input.Search maxLength={20} showCount enterButton onSearch={handlerSearchBusiness} />
+            <Input.Search maxLength={20} showCount={true} enterButton onSearch={handlerSearchBusiness} />
           </Form.Item>
           <ConditionRender visible={isValidDepartment}>
             <Descriptions
@@ -57,12 +57,12 @@ const CreateDepartmentModal = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên phòng ban' }]}
               label={'Tên phòng ban'} name={'tenPhongBan'}>
-              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
+              <Input showCount={true} maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
               label={'Tên viết tắt'} name={'tenVietTat'}>
-              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
+              <Input showCount={true} maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn tài khoản sử dụng' }]}
@@ -77,7 +77,7 @@ const CreateDepartmentModal = props => {
               <Input.TextArea
                 rows={2}
                 maxLength={200}
-                showCount
+                showCount={true}
                 placeholder={'Nhập nội dung'} />
             </Form.Item>
             <RowCenterDiv>

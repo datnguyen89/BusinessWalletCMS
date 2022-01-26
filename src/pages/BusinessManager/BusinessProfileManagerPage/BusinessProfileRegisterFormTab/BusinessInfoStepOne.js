@@ -92,7 +92,7 @@ const CustomerBusinessInfoStepOne = props => {
               label={'Số ĐKKD'} name={'business_dkkd'}>
               <Input.Search maxLength={20}
                             placeholder={'Nhập nội dung'}
-                            enterButton showCount
+                            enterButton showCount={true}
                             onSearch={handleSearchDKKD} />
             </Form.Item>
           </Col>
@@ -100,7 +100,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}
               label={'Mã số thuế'} name={'business_maSoThue'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -109,14 +109,14 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên doanh nghiệp' }]}
               label={'Tên doanh nghiệp'} name={'business_tenDoanhNghiep'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
               label={'Tên viết tắt'} name={'business_tenVietTat'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -163,7 +163,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
               label={'Nơi cấp'} name={'business_noiCap'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
@@ -178,13 +178,13 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
               label={'Di động'} name={'business_diDong'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Email'} name={'business_email'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -192,13 +192,13 @@ const CustomerBusinessInfoStepOne = props => {
           <Col span={10}>
             <Form.Item
               label={'ĐT cố định'} name={'business_dtCoDinh'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Fax'} name={'business_fax'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -264,7 +264,7 @@ const CustomerBusinessInfoStepOne = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập địa chỉ ĐKKD' }]}
               label={'Địa chỉ ĐKKD'} name={'business_diaChiDKKD'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={4}>
@@ -311,7 +311,7 @@ const CustomerBusinessInfoStepOne = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập địa chỉ giao dịch' }]}
               label={'Địa chỉ giao dịch'} name={'business_diaChiGiaoDich'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={4}>

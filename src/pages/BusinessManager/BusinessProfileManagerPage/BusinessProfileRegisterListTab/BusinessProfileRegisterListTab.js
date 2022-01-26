@@ -131,21 +131,21 @@ const CustomerRegisterBusinessListTab = props => {
             <Form.Item
               label={'Số giấy tờ'}
               name={'hoVaTen'}>
-              <Input showCount maxLength={20} placeholder={'Nhập nội dung'} />
+              <Input showCount={true} maxLength={20} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
-              <Input showCount maxLength={100} placeholder={'Nhập nội dung'} />
+              <Input showCount={true} maxLength={100} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
-              <Input showCount maxLength={100} placeholder={'Nhập nội dung'} />
+              <Input showCount={true} maxLength={100} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
           <Col span={8}>

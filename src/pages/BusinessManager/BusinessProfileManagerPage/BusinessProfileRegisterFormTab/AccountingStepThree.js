@@ -97,7 +97,7 @@ const CustomerAccountingStepThree = props => {
               rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'accounting_soGiayTo'}>
               <Input.Search maxLength={20} placeholder={'Nhập nội dung'}
-                            enterButton showCount
+                            enterButton showCount={true}
                             onSearch={handleSearchDKKD} />
             </Form.Item>
           </Col>
@@ -118,7 +118,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
               label={'Họ và tên'} name={'accounting_hoVaTen'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
 
@@ -177,7 +177,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Nơi cấp'} name={'accounting_noiCap'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
@@ -192,13 +192,13 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Di động'} name={'accounting_diDong'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Email'} name={'accounting_email'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -206,13 +206,13 @@ const CustomerAccountingStepThree = props => {
           <Col span={10}>
             <Form.Item
               label={'ĐT cố định'} name={'accounting_dtCoDinh'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               label={'Chức vụ'} name={'accounting_chucVu'}>
-              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -221,14 +221,14 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
               label={'Nghề nghiệp'} name={'accounting_ngheNghiep'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={10}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Dân tộc'} name={'accounting_danToc'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
         </Row>
@@ -239,7 +239,7 @@ const CustomerAccountingStepThree = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ thường trú'} name={'accounting_diaChiThuongTru'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={4}>
@@ -286,7 +286,7 @@ const CustomerAccountingStepThree = props => {
               wrapperCol={{ span: 16 }}
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ hiện tại'} name={'accounting_diaChiHienTai'}>
-              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount />
+              <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col span={4}>
