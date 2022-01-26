@@ -4,7 +4,7 @@ import { CreateCustomerPageWrapper } from './BusinessProfileManagerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
-import Customer_RegisterBusinessTab from './BusinessProfileRegisterFormTab/BusinessProfileRegisterFormTab'
+import BusinessProfileRegisterFormTab from './BusinessProfileRegisterFormTab/BusinessProfileRegisterFormTab'
 import BusinessProfileRegisterListTab from './BusinessProfileRegisterListTab/BusinessProfileRegisterListTab'
 const { TabPane } = Tabs;
 
@@ -17,7 +17,7 @@ const BusinessProfileManagerPage = props => {
       <CreateCustomerPageWrapper>
         <Tabs defaultActiveKey="1">
           <TabPane tab="Đăng ký doanh nghiệp" key="1">
-            <Customer_RegisterBusinessTab />
+            <BusinessProfileRegisterFormTab />
           </TabPane>
           <TabPane tab="Danh sách đăng ký" key="2">
             <BusinessProfileRegisterListTab />
