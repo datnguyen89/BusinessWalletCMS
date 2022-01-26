@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CreateDepartmentModalWrapper } from './DepartmentManagerPageStyled'
-import { Button, Col, Descriptions, Divider, Form, Input, Modal, Row, Select } from 'antd'
+import { Button, Col, Descriptions, Divider, Empty, Form, Input, Modal, Row, Select } from 'antd'
 import { RowCenterDiv, RowFlexEndDiv } from '../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, SaveOutlined, StopOutlined } from '@ant-design/icons'
 import ConditionRender from '../../../components/ConditionRender'
@@ -9,7 +9,7 @@ import ConditionRender from '../../../components/ConditionRender'
 const CreateDepartmentModal = props => {
   const { visible, onClose } = props
   const [formCreateDepartment] = Form.useForm()
-  const [isValidDepartment, setIsValidDepartment] = useState(false)
+  const [isValidDepartment, setIsValidDepartment] = useState(null)
 
   const onFinish = (formCollection) => {
     console.log(formCollection)
@@ -84,6 +84,9 @@ const CreateDepartmentModal = props => {
               <Button className={'mr-16'}>Hủy</Button>
               <Button type={'primary'} htmlType={'submit'}><SaveOutlined /> Lưu thông tin</Button>
             </RowCenterDiv>
+          </ConditionRender>
+          <ConditionRender visible={isValidDepartment === false}>
+            <Empty description={'Không có dữ liệu'} />
           </ConditionRender>
         </Form>
       </Modal>

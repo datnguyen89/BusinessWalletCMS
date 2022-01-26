@@ -69,7 +69,7 @@ export const THEME_LIST = [
   {
     name: 'pink',
     borderRadius: '8px',
-    solidColor: 'rgb(244, 67, 54)',
+    solidColor: '#FE5196',
     solidLightColor: 'rgb(254, 237, 235)',
     gradientColor: 'linear-gradient(108.84deg, #F77062 0%, #FE5196 100%)',
     shadowColor: '0 2px 10px rgba(254, 81, 150, 0.5)',
