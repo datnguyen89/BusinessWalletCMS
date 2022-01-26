@@ -11,6 +11,7 @@ import {
   RowSpaceBetweenDiv,
 } from '../../../components/CommonStyled/CommonStyled'
 import { CloudDownloadOutlined, DeleteOutlined, SettingOutlined } from '@ant-design/icons'
+import CreateDepartmentModal from './CreateDepartmentModal'
 
 const testData = [
   {
@@ -48,11 +49,10 @@ const testData = [
 ]
 
 
-
 const CustomerDepartmentManagerPage = props => {
 
   const [formFilterDepartment] = Form.useForm()
-  const [modal, contextHolder] = Modal.useModal();
+  const [modal, contextHolder] = Modal.useModal()
   const [visibleDepartmentDetailModal, setVisibleDepartmentDetailModal] = useState(false)
 
   const onFinish = (formCollection) => {
@@ -70,10 +70,10 @@ const CustomerDepartmentManagerPage = props => {
       okText: 'Xác nhận',
       cancelText: 'Hủy',
       onOk() {
-        console.log('OK');
+        console.log('OK')
       },
       onCancel() {
-        console.log('Cancel');
+        console.log('Cancel')
       },
 
     })
@@ -117,7 +117,6 @@ const CustomerDepartmentManagerPage = props => {
   ]
 
 
-
   const handleChangePagination = (pageIndex, pageSize) => {
     console.log(pageIndex, pageSize)
   }
@@ -142,7 +141,7 @@ const CustomerDepartmentManagerPage = props => {
               <Button type={'default'}>Tra cứu</Button>
             </Form.Item>
             <Form.Item>
-              <Button type={'primary'}>Thêm mới</Button>
+              <Button type={'primary'} onClick={() => setVisibleDepartmentDetailModal(true)}>Thêm mới</Button>
             </Form.Item>
           </Form>
         </RowCenterDiv>
@@ -163,7 +162,7 @@ const CustomerDepartmentManagerPage = props => {
           <Pagination defaultCurrent={1} total={500} onChange={handleChangePagination} />
         </RowSpaceBetweenDiv>
         {contextHolder}
-
+        <CreateDepartmentModal visible={visibleDepartmentDetailModal} onClose={() => setVisibleDepartmentDetailModal(false)} />
       </CustomerDepartmentManagerPageWrapper>
     </DefaultLayout>
 
