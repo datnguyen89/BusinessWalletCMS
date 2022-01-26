@@ -63,29 +63,7 @@ export const MenuSidebarArea = styled.ul`
   justify-content: flex-start;
   flex-grow: 1;
 `
-export const MenuSidebarItem = styled.li`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  margin: 12px 12px 0 12px;
 
-  &:hover, &.active {
-    background: #4C68EF;
-    border-radius: 5px;
-    color: #fff;
-
-    svg path {
-      fill: #fff !important;
-    }
-  }
-
-  .menu-sidebar-label {
-    margin-left: 12px;
-    padding-top: 2px;
-
-  }
-`
 export const SocialIconWrapper = styled.div`
   display: flex;
   justify-content: center;

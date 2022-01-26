@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import IMAGES from '../../images'
+import { MenuSideBarTitle } from '../DrawerSideBar/DrawerSideBarStyled'
 
 export const MainSideBarWrapper = styled.aside`
   position: fixed;
@@ -15,43 +16,14 @@ export const MainSideBarWrapper = styled.aside`
   text-align: center;
   border-right: 1px solid #ccc;
 
+  transition: all 0.3s;
+  
   .expand-sidebar-icon {
     margin: 16px 0;
     cursor: pointer;
     color: #4C68EF;
   }
 
-  
+
 `
 
-export const MenuSidebarArea = styled.ul`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  flex-grow: 1;
-`
-export const MenuSidebarItem = styled.li`
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 8px;
-  margin: 8px 12px 0 12px;
-
-  &:hover, &.active {
-    background: #ffffff;
-    color: ${props => props.color};
-
-    svg path {
-      fill: ${props => props.color} !important;
-    }
-  }
-
-  .menu-sidebar-label {
-    margin-left: 12px;
-    padding-top: 2px;
-  }
-`
-export const GroupMenuTitle = styled.h1`
-  text-align: ${props => props.textAlign};
-  margin: 8px 12px 0 12px;
-`

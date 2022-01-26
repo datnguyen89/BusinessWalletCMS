@@ -19,13 +19,10 @@ const MainBody = props => {
   }
 
   return (
-    <>
-      <MainBodyWrapper marginLeft={renderContentMargin}>
-        {children}
-        <LoadingOverLay />
-      </MainBodyWrapper>
-
-    </>
+    <MainBodyWrapper marginLeft={renderContentMargin}>
+      {children}
+      <LoadingOverLay />
+    </MainBodyWrapper>
 
   )
 }

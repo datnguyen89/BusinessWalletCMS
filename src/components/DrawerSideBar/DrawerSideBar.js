@@ -5,13 +5,13 @@ import {
   BankInfoArea,
   DrawerSideBarWrapper,
   MenuSidebarArea,
-  MenuSidebarItem,
   SocialIconWrapper,
 } from './DrawerSideBarStyled'
 import { SIDEBAR_WIDTH_EXPAND } from '../../utils/constant'
 import IMAGES from '../../images'
 import { Link, useHistory } from 'react-router-dom'
 import ICONS from '../../icons'
+import { MenuSidebarItem } from '../CommonStyled/CommonStyled'
 
 const DrawerSideBar = props => {
   const { commonStore } = props

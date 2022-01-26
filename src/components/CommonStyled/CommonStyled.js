@@ -1,17 +1,7 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const AuthShadowBox = styled.div`
-  background: #FFFFFF;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: ${props => props.width ? props.width : 'auto'};
-  padding: 24px;
 
-  a {
-    color: ${props => props.color};
-  }
-`
 export const PaginationLabel = styled.span`
   color: #767676;
   @media only screen and (max-width: 768px) {
@@ -50,13 +40,6 @@ export const ColorTitle = styled.h1`
   margin-top: ${props => props.marginTop || 0};
   margin-bottom: ${props => props.marginBottom || '16px'};
   text-align: ${props => props.textAlign || 'left'};
-`
-export const WhiteRoundedBox = styled.div`
-  background: #fff;
-  border-radius: ${props => props.borderRadius || '8px'};
-  padding: ${props => props.padding || '16px'};
-  margin: ${props => props.margin || '0'};
-  border: ${props => props.border || '1px solid #ccc'};
 `
 export const ColorText = styled.span`
   color: ${props => props.color || '#333'};
@@ -107,4 +90,43 @@ export const HeaderBackground = styled.h1`
   svg, img {
     margin-right: 8px;
   }
+`
+export const MenuSideBarTitle = styled.span`
+  margin-left: 12px;
+  padding-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  display: ${props => props.isCollapse ? 'none' : 'block'};
+`
+export const MenuSidebarItem = styled.li`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin: 8px 12px 0 12px;
+
+  &:hover, &.active {
+    background: #ffffff;
+    color: ${props => props.color};
+
+    svg path {
+      fill: ${props => props.color} !important;
+    }
+
+    ${MenuSideBarTitle} {
+      color: ${props => props.color};
+    }
+  }
+
+`
+export const MenuSidebarArea = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1;
+`
+
+export const GroupMenuTitle = styled.h1`
+  text-align: ${props => props.textAlign};
+  margin: 8px 12px 0 12px;
 `
