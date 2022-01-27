@@ -13,10 +13,11 @@ import {
   RetweetOutlined,
 } from '@ant-design/icons'
 import { RowCenterDiv, RowFlexEndDiv } from '../../../../components/CommonStyled/CommonStyled'
+import { DEVICE } from '../../../../utils/constant'
 
 const CustomerAccountingStepThree = props => {
   const { commonStore, nextStep, prevStep } = props
-  const { appTheme } = commonStore
+  const { appTheme, device } = commonStore
   const [formAccountingInfo] = Form.useForm()
 
   const [fileToUpload1, setFileToUpload1] = useState(null)
@@ -87,12 +88,12 @@ const CustomerAccountingStepThree = props => {
         onFinish={onFinish}
         style={{ marginTop: 32 }}
         labelAlign={'left'}
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
+        labelCol={{ xxl: 8, xl: 8, lg: 24, md: 24, sm: 24, xs: 24 }}
+        wrapperCol={{ xxl: 16, xl: 16, lg: 24, md: 24, sm: 24, xs: 24 }}
         colon={false}
         form={formAccountingInfo}>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'accounting_soGiayTo'}>
@@ -101,7 +102,7 @@ const CustomerAccountingStepThree = props => {
                             onSearch={handleSearchDKKD} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn loại kế toán' }]}
               labelCol={{ span: 0 }} wrapperCol={{ span: 24 }}
@@ -114,7 +115,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
               label={'Họ và tên'} name={'accounting_hoVaTen'}>
@@ -122,7 +123,7 @@ const CustomerAccountingStepThree = props => {
             </Form.Item>
           </Col>
 
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Giới tính'} name={'accounting_gioiTinh'}>
@@ -134,14 +135,14 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Ngày sinh'} name={'accounting_ngaySinh'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Quốc tịch'} name={'accounting_quocTich'}>
@@ -153,7 +154,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Loại giấy tờ'} name={'accounting_loaiGiayTo'}>
@@ -164,7 +165,7 @@ const CustomerAccountingStepThree = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Ngày cấp'} name={'accounting_ngayCap'}>
@@ -173,14 +174,14 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Nơi cấp'} name={'accounting_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Ngày hết hạn'} name={'accounting_ngayHetHan'}>
               <DatePicker format={'DD/MM/YYYY'} style={{ width: '100%' }} />
@@ -188,14 +189,14 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Di động'} name={'accounting_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Email'} name={'accounting_email'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
@@ -203,13 +204,13 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               label={'ĐT cố định'} name={'accounting_dtCoDinh'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Chức vụ'} name={'accounting_chucVu'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
@@ -217,14 +218,14 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
               label={'Nghề nghiệp'} name={'accounting_ngheNghiep'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Dân tộc'} name={'accounting_danToc'}>
@@ -233,7 +234,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
@@ -242,7 +243,7 @@ const CustomerAccountingStepThree = props => {
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -254,7 +255,7 @@ const CustomerAccountingStepThree = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -266,7 +267,7 @@ const CustomerAccountingStepThree = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -280,7 +281,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
@@ -289,7 +290,7 @@ const CustomerAccountingStepThree = props => {
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -301,7 +302,7 @@ const CustomerAccountingStepThree = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -313,7 +314,7 @@ const CustomerAccountingStepThree = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={4}>
+          <Col xxl={4} xl={4} lg={8} md={8} sm={8} xs={24}>
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
@@ -412,18 +413,24 @@ const CustomerAccountingStepThree = props => {
             }
           </Col>
         </Row>
-        <Row className={'mt-32'}>
-          <Col span={8}>
-            <Button type={'default'} onClick={() => prevStep()}><LeftOutlined /> Quay lại</Button>
+        <Row className={'mt-32'} gutter={[16, 16]}>
+          <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={24}>
+            <Button block={device === DEVICE.MOBILE} type={'default'} onClick={() => prevStep()}>
+              <LeftOutlined /> Quay lại
+            </Button>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={24}>
             <RowCenterDiv>
-              <Button type={'default'} onClick={() => resetFormAccountingInfo()}><RetweetOutlined /> Làm rỗng</Button>
+              <Button block={device === DEVICE.MOBILE} type={'default'} onClick={() => resetFormAccountingInfo()}>
+                <RetweetOutlined /> Làm rỗng
+              </Button>
             </RowCenterDiv>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={24}>
             <RowFlexEndDiv>
-              <Button type={'primary'} htmlType={'submit'}><DoubleRightOutlined /> Tiếp tục</Button>
+              <Button block={device === DEVICE.MOBILE} type={'primary'} htmlType={'submit'}>
+                <DoubleRightOutlined /> Tiếp tục
+              </Button>
               {/*<Button type={'primary'} onClick={() => nextStep()}><DoubleRightOutlined /> Tiếp tục1</Button>*/}
             </RowFlexEndDiv>
           </Col>
