@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
-import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select, Space } from 'antd'
+import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select, Space, Spin } from 'antd'
 import { CustomerRepresentationStepTwoWrapper } from '../BusinessProfileManagerPageStyled'
 import moment from 'moment'
 import UploadModule from '../../../../components/UploadModule'
@@ -381,14 +381,7 @@ const CustomerRepresentationStepTwo = props => {
             {
               fileToUpload3?.type === 'application/pdf'
                 ?
-                <embed
-                  src={fileToPreview3}
-                  type='application/pdf'
-                  frameBorder='0'
-                  scrolling='auto'
-                  height='900px'
-                  width='100%'
-                />
+                <PDFViewer loader={<Spin />} document={{ url: fileToPreview3 }} />
                 :
                 fileToPreview3
                 && <img className={'previewImg'} src={fileToPreview3} alt={''} />

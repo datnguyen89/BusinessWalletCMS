@@ -7,7 +7,7 @@ import RepresentationStepTwo from './RepresentationStepTwo'
 import AccountingStepThree from './AccountingStepThree'
 
 const CustomerRegisterBusinessTab = props => {
-  const [processStep, setProcessStep] = useState(0)
+  const [processStep, setProcessStep] = useState(2)
 
   return (
     <CustomerRegisterBusinessTabWrapper>

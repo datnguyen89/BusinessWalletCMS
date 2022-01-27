@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select } from 'antd'
+import { Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select, Space, Spin } from 'antd'
 import { CustomerAccountingStepThreeWrapper } from '../BusinessProfileManagerPageStyled'
 import moment from 'moment'
 import UploadModule from '../../../../components/UploadModule'
@@ -105,14 +105,16 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn loại kế toán' }]}
-              labelCol={{ span: 0 }} wrapperCol={{ span: 24 }}
-              label={''} name={'accounting_loaiKeToan'}>
+              rules={[{ required: true, message: 'Vui lòng chọn hình loại kế toán' }]}
+              label={'Kế toán'} name={'accounting_loaiKeToan'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
-                <Radio value={'1'}>Kế toán trưởng</Radio>
-                <Radio value={'2'}>Người phụ trách kế toán</Radio>
+                <Space style={{ width: '100%' }} direction={device === DEVICE.MOBILE ? 'vertical' : 'horizontal'}>
+                  <Radio value={'1'}>Kế toán trưởng</Radio>
+                  <Radio value={'2'}>Người phụ trách kế toán</Radio>
+                </Space>
               </Radio.Group>
             </Form.Item>
+
           </Col>
         </Row>
         <Row gutter={[16, 16]} justify={'space-between'}>
