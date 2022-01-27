@@ -18,7 +18,7 @@ const BusinessUserManagerPage = props => {
         <title>User Doanh nghiệp</title>
       </Helmet>
       <UserManagerPageWrapper>
-        <Tabs defaultActiveKey="1">
+        <Tabs defaultActiveKey="2">
           <TabPane tab="Thêm mới User" key="1">
             <UserInsertTab />
           </TabPane>

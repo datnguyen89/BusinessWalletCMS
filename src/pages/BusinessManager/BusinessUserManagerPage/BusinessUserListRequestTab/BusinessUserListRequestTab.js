@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { inject, observer } from 'mobx-react'
 import { UserListRequestTabWrapper } from '../BusinessUserManagerPageStyled'
 import { Button, Col, DatePicker, Divider, Form, Input, Pagination, Row, Select, Table } from 'antd'
 import { CloudDownloadOutlined, SearchOutlined, SettingOutlined } from '@ant-design/icons'
 import { PaginationLabel, RowFlexEndDiv, RowSpaceBetweenDiv } from '../../../../components/CommonStyled/CommonStyled'
+import { DEVICE } from '../../../../utils/constant'
 
 const { RangePicker } = DatePicker
 
@@ -58,6 +60,8 @@ const testData = [
 ]
 
 const BusinessUserListRequestTab = props => {
+  const { commonStore } = props
+  const { device } = commonStore
   const [formApproveBusinessUser] = Form.useForm()
 
   const columns = [
@@ -120,7 +124,7 @@ const BusinessUserListRequestTab = props => {
         form={formApproveBusinessUser}
         colon={false}>
         <Row gutter={[32, 32]} justify={'space-between'}>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <Form.Item label={'Ngày tạo'} name={'rangerFilterDate'}>
               <RangePicker
                 style={{ width: '100%' }}
@@ -128,28 +132,28 @@ const BusinessUserListRequestTab = props => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Số giấy tờ'}
               name={'hoVaTen'}>
               <Input maxLength={20} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
               <Input maxLength={100} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
               <Input maxLength={100} showCount={true} placeholder={'Nhập nội dung'} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Trạng thái'}
               name={'hoTenKh'}>
@@ -159,9 +163,11 @@ const BusinessUserListRequestTab = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={8} lg={12} md={24} sm={24} xs={24}>
             <RowFlexEndDiv>
-              <Button type={'primary'}><SearchOutlined /> Tra cứu</Button>
+              <Button block={device === DEVICE.MOBILE} type={'primary'}>
+                <SearchOutlined /> Tra cứu
+              </Button>
             </RowFlexEndDiv>
           </Col>
         </Row>
@@ -172,6 +178,7 @@ const BusinessUserListRequestTab = props => {
       </RowFlexEndDiv>
       <Table
         bordered={true}
+        scroll={{ x: 1400 }}
         dataSource={testData}
         columns={columns}
         rowKey={record => record.id}
@@ -189,4 +196,4 @@ const BusinessUserListRequestTab = props => {
 
 BusinessUserListRequestTab.propTypes = {}
 
-export default BusinessUserListRequestTab
+export default inject('commonStore')(observer(BusinessUserListRequestTab))

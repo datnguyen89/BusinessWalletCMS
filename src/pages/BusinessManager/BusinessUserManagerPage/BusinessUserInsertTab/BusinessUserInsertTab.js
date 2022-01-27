@@ -30,7 +30,7 @@ import ConditionRender from '../../../../components/ConditionRender'
 import validator from '../../../../validator'
 import moment from 'moment'
 import helper from '../../../../utils/helper'
-import { ACTION } from '../../../../utils/constant'
+import { ACTION, DEVICE } from '../../../../utils/constant'
 import ConditionDisplay from '../../../../components/ConditionDisplay'
 
 const { Search } = Input
@@ -38,7 +38,7 @@ const { Option } = Select
 
 const BusinessUserInsertTab = props => {
   const { commonStore } = props
-  const { appTheme } = commonStore
+  const { appTheme, device } = commonStore
   const [formInsertUser] = Form.useForm()
   const [visible, setVisible] = useState(null)
 
@@ -260,7 +260,7 @@ const BusinessUserInsertTab = props => {
         Thông tin doanh nghiệp
       </HeaderBackground>
       <Row justify={'center'} style={{ marginTop: 16 }}>
-        <Col span={9}>
+        <Col xxl={9} xl={12} lg={16} md={24} sm={24} xs={24}>
           <Search
             maxLength={20}
             showCount={true}
@@ -280,9 +280,9 @@ const BusinessUserInsertTab = props => {
       <ConditionDisplay visible={visible}>
         <Divider />
         <Descriptions
-          labelStyle={{ width: '15%' }}
+          labelStyle={{ width: '30%' }}
           bordered
-          column={2}
+          column={{ xxl: 2, xl: 2, lg: 1, md: 1, sm: 1, xs: 1 }}
           size={'small'}>
           <Descriptions.Item label={'Công ty'}>Công ty MBF</Descriptions.Item>
           <Descriptions.Item label={'Mã số thuế'}>12343212312313</Descriptions.Item>
@@ -296,7 +296,7 @@ const BusinessUserInsertTab = props => {
           dataSource={mockupData}
           columns={columns}
           rowKey={record => record.id}
-          scroll={{ y: 222 }}
+          scroll={{ y: 222, x: 1400 }}
           pagination={false} />
         <HeaderBackground backgroundColor={appTheme.solidLightColor}>
           <UpCircleFilled fill={appTheme.solidColor} />
@@ -316,7 +316,7 @@ const BusinessUserInsertTab = props => {
             <Input />
           </Form.Item>
           <Row justify={'center'} gutter={[64, 16]}>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'hoVaTen'}
                 rules={[{ required: true, message: 'Vui lòng nhập họ tên' }]}
@@ -325,7 +325,7 @@ const BusinessUserInsertTab = props => {
                 <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'phongBan'}
                 rules={[{ required: true, message: 'Vui lòng chọn phòng ban' }]}
@@ -337,7 +337,7 @@ const BusinessUserInsertTab = props => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'userName'}
                 rules={[
@@ -349,7 +349,7 @@ const BusinessUserInsertTab = props => {
                 <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'userRole'}
                 rules={[{ required: true, message: 'Vui lòng chọn vai trò' }]}
@@ -362,7 +362,7 @@ const BusinessUserInsertTab = props => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'diDong'}
                 rules={[{
@@ -374,7 +374,7 @@ const BusinessUserInsertTab = props => {
                 <Input showCount={true} maxLength={20} placeholder={'Nhập nội dung'} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'email'}
                 rules={[{ validator: checkEmail }]}
@@ -383,7 +383,7 @@ const BusinessUserInsertTab = props => {
                 <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'baoMat'}
                 rules={[{ required: true, message: 'Vui chọn hình thức bảo mật' }]}
@@ -395,7 +395,7 @@ const BusinessUserInsertTab = props => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'chucVu'}
                 label={'Chức vụ'}
@@ -403,7 +403,7 @@ const BusinessUserInsertTab = props => {
                 <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'ngaySinh'}
                 label={'Ngày sinh'}
@@ -411,7 +411,7 @@ const BusinessUserInsertTab = props => {
                 <DatePicker disabledDate={disabledDate} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'gioiTinh'}
                 label={'Giới tính'}
@@ -422,7 +422,7 @@ const BusinessUserInsertTab = props => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'taiKhoanSuDung'}
                 label={
@@ -436,7 +436,7 @@ const BusinessUserInsertTab = props => {
                 </Select>
               </Form.Item>
             </Col>
-            <Col span={9}>
+            <Col xxl={9} xl={12} lg={18} md={24} sm={24} xs={24}>
               <Form.Item
                 name={'chucNangSuDung'}
                 label={
@@ -451,9 +451,13 @@ const BusinessUserInsertTab = props => {
             </Col>
           </Row>
           <RowCenterDiv>
-            <Button size={'large'} className={'mr-16'} onClick={() => resetFormInsertUser()}><RetweetOutlined /> Làm
-              rỗng</Button>
-            <Button size={'large'} type={'primary'} htmlType={'submit'}><SaveOutlined /> Lưu thông tin</Button>
+            <Button size={device === DEVICE.MOBILE ? 'small' : 'large'} className={'mr-16'} onClick={() => resetFormInsertUser()}>
+              <RetweetOutlined /> Làm rỗng
+            </Button>
+
+            <Button size={device === DEVICE.MOBILE ? 'small' : 'large'} type={'primary'} htmlType={'submit'}>
+              <SaveOutlined /> Lưu thông tin
+            </Button>
           </RowCenterDiv>
         </Form>
       </ConditionDisplay>
