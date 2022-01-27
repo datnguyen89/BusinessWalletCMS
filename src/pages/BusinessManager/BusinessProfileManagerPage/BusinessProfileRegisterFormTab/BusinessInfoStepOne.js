@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-import { Button, Col, DatePicker, Divider, Form, Input, Row, Select } from 'antd'
+import { Button, Col, DatePicker, Divider, Form, Input, Row, Select, Spin } from 'antd'
 import { CustomerBusinessInfoStepOneWrapper } from '../BusinessProfileManagerPageStyled'
 import { CloudUploadOutlined, RetweetOutlined, RightOutlined } from '@ant-design/icons'
 import 'antd/dist/antd.css'
@@ -9,6 +9,7 @@ import { RowCenterDiv, RowFlexEndDiv } from '../../../../components/CommonStyled
 import moment from 'moment'
 import UploadModule from '../../../../components/UploadModule'
 import { DEVICE } from '../../../../utils/constant'
+import PDFViewer from 'mgr-pdf-viewer-react'
 
 const CustomerBusinessInfoStepOne = props => {
   const { commonStore, nextStep } = props
@@ -82,7 +83,7 @@ const CustomerBusinessInfoStepOne = props => {
         onFinish={onFinish}
         style={{ marginTop: 32 }}
         labelAlign={'left'}
-        labelCol={{ xxl: 8, xl: 8, lg: 24, md: 24, sm: 24, xs:24 }}
+        labelCol={{ xxl: 8, xl: 8, lg: 24, md: 24, sm: 24, xs: 24 }}
         wrapperCol={{ xxl: 16, xl: 16, lg: 24, md: 24, sm: 24, xs: 24 }}
         colon={false}
         form={formBusinessInfo}>
@@ -369,14 +370,7 @@ const CustomerBusinessInfoStepOne = props => {
             {
               fileToUpload1?.type === 'application/pdf'
                 ?
-                <embed
-                  src={fileToPreview1}
-                  type='application/pdf'
-                  frameBorder='0'
-                  scrolling='auto'
-                  height='900px'
-                  width='100%'
-                />
+                <PDFViewer loader={<Spin />} document={{ url: fileToPreview1 }} />
                 :
                 fileToPreview1
                 && <img className={'previewImg'} src={fileToPreview1} alt={''} />
@@ -396,21 +390,14 @@ const CustomerBusinessInfoStepOne = props => {
             {
               fileToUpload2?.type === 'application/pdf'
                 ?
-                <embed
-                  src={fileToPreview2}
-                  type='application/pdf'
-                  frameBorder='0'
-                  scrolling='auto'
-                  height='900px'
-                  width='100%'
-                />
+                <PDFViewer loader={<Spin />} document={{ url: fileToPreview2 }} />
                 :
                 fileToPreview2
                 && <img className={'previewImg'} src={fileToPreview2} alt={''} />
             }
           </Col>
         </Row>
-        <Row className={'mt-32'} gutter={[16,16]}>
+        <Row className={'mt-32'} gutter={[16, 16]}>
           <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={24}>
 
           </Col>

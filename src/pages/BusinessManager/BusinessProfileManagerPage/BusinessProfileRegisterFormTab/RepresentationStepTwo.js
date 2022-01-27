@@ -8,6 +8,7 @@ import UploadModule from '../../../../components/UploadModule'
 import { CloudUploadOutlined, DoubleRightOutlined, LeftOutlined, RetweetOutlined } from '@ant-design/icons'
 import { RowCenterDiv, RowFlexEndDiv } from '../../../../components/CommonStyled/CommonStyled'
 import { DEVICE } from '../../../../utils/constant'
+import PDFViewer from 'mgr-pdf-viewer-react'
 
 const CustomerRepresentationStepTwo = props => {
   const { commonStore, nextStep, prevStep } = props
@@ -338,14 +339,7 @@ const CustomerRepresentationStepTwo = props => {
             {
               fileToUpload1?.type === 'application/pdf'
                 ?
-                <embed
-                  src={fileToPreview1}
-                  type='application/pdf'
-                  frameBorder='0'
-                  scrolling='auto'
-                  height='900px'
-                  width='100%'
-                />
+                <PDFViewer loader={<Spin />} document={{ url: fileToPreview1 }} />
                 :
                 fileToPreview1
                 && <img className={'previewImg'} src={fileToPreview1} alt={''} />
@@ -366,14 +360,7 @@ const CustomerRepresentationStepTwo = props => {
             {
               fileToUpload2?.type === 'application/pdf'
                 ?
-                <embed
-                  src={fileToPreview2}
-                  type='application/pdf'
-                  frameBorder='0'
-                  scrolling='auto'
-                  height='900px'
-                  width='100%'
-                />
+                <PDFViewer loader={<Spin />} document={{ url: fileToPreview2 }} />
                 :
                 fileToPreview2
                 && <img className={'previewImg'} src={fileToPreview2} alt={''} />
