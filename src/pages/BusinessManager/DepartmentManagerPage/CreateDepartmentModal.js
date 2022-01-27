@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { inject, observer } from 'mobx-react'
 import { CreateDepartmentModalWrapper } from './DepartmentManagerPageStyled'
 import { Button, Col, Descriptions, Divider, Empty, Form, Input, Modal, Row, Select } from 'antd'
 import { RowCenterDiv, RowFlexEndDiv } from '../../../components/CommonStyled/CommonStyled'
 import { CheckSquareOutlined, SaveOutlined, StopOutlined } from '@ant-design/icons'
 import ConditionRender from '../../../components/ConditionRender'
+import { DEVICE } from '../../../utils/constant'
 
 const CreateDepartmentModal = props => {
-  const { visible, onClose } = props
+  const { visible, onClose, commonStore } = props
+  const { device } = commonStore
   const [formCreateDepartment] = Form.useForm()
   const [isValidDepartment, setIsValidDepartment] = useState(null)
 
@@ -26,7 +29,7 @@ const CreateDepartmentModal = props => {
   return (
     <CreateDepartmentModalWrapper>
       <Modal
-        width={'60%'}
+        width={'90%'}
         style={{ top: '50px' }}
         maskClosable={false}
         onCancel={() => onClose()}
@@ -36,8 +39,8 @@ const CreateDepartmentModal = props => {
         <Form
           validateTrigger={false}
           labelAlign={'left'}
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 18 }}
+          labelCol={{ xxl: 6, xl: 6, lg: 6, md: 6, sm: 8, xs: 24 }}
+          wrapperCol={{ xxl: 18, xl: 18, lg: 18, md: 18, sm: 16, xs: 24 }}
           form={formCreateDepartment}
           onFinish={onFinish}
           colon={false}>
@@ -47,7 +50,7 @@ const CreateDepartmentModal = props => {
           <ConditionRender visible={isValidDepartment}>
             <Descriptions
               className={'mb-24'}
-              labelStyle={{ width: '25%' }}
+              labelStyle={{ width: device === DEVICE.MOBILE ? '33.33%' : '25%' }}
               bordered
               column={1}
               size={'small'}>
@@ -99,4 +102,4 @@ CreateDepartmentModal.propTypes = {
   onClose: PropTypes.func.isRequired,
 }
 
-export default CreateDepartmentModal
+export default inject('commonStore')(observer(CreateDepartmentModal))

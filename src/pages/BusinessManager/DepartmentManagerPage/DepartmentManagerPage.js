@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
 import { CustomerDepartmentManagerPageWrapper } from './DepartmentManagerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
 import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
-import { Button, Divider, Form, Input, Modal, Pagination, Table } from 'antd'
+import { Button, Col, Divider, Form, Input, Modal, Pagination, Row, Table } from 'antd'
 import {
   ColorTitle, PaginationLabel,
   RowCenterDiv,
@@ -12,6 +13,7 @@ import {
 } from '../../../components/CommonStyled/CommonStyled'
 import { CloudDownloadOutlined, DeleteOutlined, SettingOutlined } from '@ant-design/icons'
 import CreateDepartmentModal from './CreateDepartmentModal'
+import { DEVICE } from '../../../utils/constant'
 
 const testData = [
   {
@@ -50,6 +52,8 @@ const testData = [
 
 
 const CustomerDepartmentManagerPage = props => {
+  const { commonStore } = props
+  const { device } = commonStore
 
   const [formFilterDepartment] = Form.useForm()
   const [modal, contextHolder] = Modal.useModal()
@@ -128,28 +132,41 @@ const CustomerDepartmentManagerPage = props => {
       </Helmet>
       <CustomerDepartmentManagerPageWrapper>
         <ColorTitle>Quản lý phòng ban doanh nghiệp</ColorTitle>
-        <RowCenterDiv>
-          <Form
-            layout={'inline'}
-            onFinish={onFinish}
-            form={formFilterDepartment}
-            colon={false}>
-            <Form.Item name={'dkkdMST'} label={''}>
-              <Input style={{ width: 300 }} showCount={true} maxLength={20} placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
-            </Form.Item>
-            <Form.Item>
-              <Button type={'default'}>Tra cứu</Button>
-            </Form.Item>
-            <Form.Item>
-              <Button type={'primary'} onClick={() => setVisibleDepartmentDetailModal(true)}>Thêm mới</Button>
-            </Form.Item>
-          </Form>
-        </RowCenterDiv>
+        <Form
+          onFinish={onFinish}
+          form={formFilterDepartment}
+          colon={false}>
+          <Row gutter={[16, 16]} justify={'center'}>
+            <Col xxl={8} xl={8} lg={12} md={12} sm={24} xs={24}>
+              <Form.Item name={'dkkdMST'} label={''}>
+                <Input showCount={true} maxLength={20} placeholder={'Số ĐKKD/MST Doanh nghiệp'} />
+              </Form.Item>
+            </Col>
+            <Col xxl={2} xl={4} lg={4} md={6} sm={24} xs={24}>
+              <Form.Item>
+                <Button block type={'default'}>
+                  Tra cứu
+                </Button>
+              </Form.Item>
+            </Col>
+            <Col xxl={2} xl={4} lg={4} md={6} sm={24} xs={24}>
+              <Form.Item>
+                <Button
+                  block
+                  type={'primary'}
+                  onClick={() => setVisibleDepartmentDetailModal(true)}>
+                  Thêm mới
+                </Button>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
         <Divider />
         <RowFlexEndDiv margin={'0 0 24px 0'}>
           <Button><CloudDownloadOutlined /> Xuất dữ liệu</Button>
         </RowFlexEndDiv>
         <Table
+          scroll={{ x: 1400 }}
           bordered={true}
           dataSource={testData}
           columns={columns}
@@ -172,4 +189,4 @@ const CustomerDepartmentManagerPage = props => {
 
 CustomerDepartmentManagerPage.propTypes = {}
 
-export default CustomerDepartmentManagerPage
+export default inject('commonStore')(observer(CustomerDepartmentManagerPage))
