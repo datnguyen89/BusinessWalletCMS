@@ -131,7 +131,7 @@ const CustomerApproveBusinessUserTab = props => {
         form={formApproveBusinessUser}
         colon={false}>
         <Row gutter={[32, 32]} justify={'space-between'}>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <Form.Item label={'Ngày tạo'} name={'rangerFilterDate'}>
               <RangePicker
                 style={{ width: '100%' }}
@@ -139,28 +139,28 @@ const CustomerApproveBusinessUserTab = props => {
               />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Số giấy tờ'}
               name={'hoVaTen'}>
               <Input placeholder={'Nhập nội dung'} maxLength={20} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Họ tên KH'}
               name={'hoTenKh'}>
               <Input placeholder={'Nhập nội dung'} maxLength={100} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Người tạo'}
               name={'nguoiTao'}>
               <Input placeholder={'Nhập nội dung'} maxLength={100} showCount={true} />
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <Form.Item
               label={'Trạng thái'}
               name={'hoTenKh'}>
@@ -170,7 +170,7 @@ const CustomerApproveBusinessUserTab = props => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={8}>
+          <Col xxl={8} xl={12} lg={12} md={24} sm={24} xs={24}>
             <RowFlexEndDiv>
               <Button type={'primary'}><SearchOutlined /> Tra cứu</Button>
             </RowFlexEndDiv>
@@ -182,6 +182,7 @@ const CustomerApproveBusinessUserTab = props => {
         <Button><CloudDownloadOutlined /> Xuất dữ liệu</Button>
       </RowFlexEndDiv>
       <Table
+        scroll={{ x: 1400 }}
         bordered={true}
         dataSource={testData}
         columns={columns}
@@ -200,8 +201,6 @@ const CustomerApproveBusinessUserTab = props => {
   )
 }
 
-CustomerApproveBusinessUserTab.propTypes = {
-  
-}
+CustomerApproveBusinessUserTab.propTypes = {}
 
 export default CustomerApproveBusinessUserTab
