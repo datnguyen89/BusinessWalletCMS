@@ -51,7 +51,9 @@ const DemoLine = () => {
     data,
     xField: 'year',
     yField: 'value',
-    label: {},
+    label: {
+
+    },
     point: {
       size: 5,
       shape: 'diamond',
