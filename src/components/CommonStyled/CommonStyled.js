@@ -43,6 +43,7 @@ export const ColorTitle = styled.h1`
 `
 export const ColorText = styled.span`
   color: ${props => props.color || '#333'};
+  background: ${props => props.background || 'transparent'};
   font-weight: ${props => props.fontWeight || 'normal'};
   padding: ${props => props.padding || '0'};
   margin: ${props => props.margin || '0'};

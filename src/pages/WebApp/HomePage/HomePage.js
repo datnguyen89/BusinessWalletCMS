@@ -20,17 +20,19 @@ import TopSellingTable from '../../../components/TopSellingTable/TopSellingTable
 const HomePage = props => {
   const { commonStore } = props
 
+
+
   return (
     <DefaultLayout>
       <Helmet>
         <title>Trang chủ</title>
       </Helmet>
       <HomePageWrapper>
-        <ColorTitle fontSize={'16px'}>Trang chủ</ColorTitle>
+        <ColorTitle fontSize={'16px'} background={'transparent'}>Dashboard</ColorTitle>
         <Row gutter={[16, 16]}>
-          <Col span={10}>
+          <Col xxl={10} xl={24} lg={24} md={24} sm={24} xs={24}>
             <Row gutter={[16, 16]}>
-              <Col span={12}>
+              <Col xxl={12} xl={12} lg={12} md={12} sm={12} xs={24}>
                 <CardDashboard
                   title={'Khách hàng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faUserTie} />}
@@ -39,7 +41,7 @@ const HomePage = props => {
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
               </Col>
-              <Col span={12}>
+              <Col xxl={12} xl={12} lg={12} md={12} sm={12} xs={24}>
                 <CardDashboard
                   title={'Đơn hàng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faFileContract} />}
@@ -48,7 +50,7 @@ const HomePage = props => {
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
               </Col>
-              <Col span={12}>
+              <Col xxl={12} xl={12} lg={12} md={12} sm={12} xs={24}>
                 <CardDashboard
                   title={'Doanh thu'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faDollarSign} />}
@@ -57,7 +59,7 @@ const HomePage = props => {
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
               </Col>
-              <Col span={12}>
+              <Col xxl={12} xl={12} lg={12} md={12} sm={12} xs={24}>
                 <CardDashboard
                   title={'Tăng trưởng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faChartLine} />}
@@ -68,37 +70,37 @@ const HomePage = props => {
               </Col>
             </Row>
           </Col>
-          <Col span={14}>
+          <Col xxl={14} xl={24} lg={24} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>COLUMN CHART</ColorTitle>
               <ColumnChart />
             </HomeWhiteBox>
           </Col>
-          <Col span={14}>
+          <Col xxl={14} xl={12} lg={24} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>LINE CHART</ColorTitle>
               <LineChart />
             </HomeWhiteBox>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>BAR CHART</ColorTitle>
               <BarChart />
             </HomeWhiteBox>
           </Col>
-          <Col span={10}>
+          <Col xxl={10} xl={24} lg={24} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>TOP SELLING PRODUCT</ColorTitle>
               <TopSellingTable />
             </HomeWhiteBox>
           </Col>
-          <Col span={7}>
+          <Col xxl={7} xl={12} lg={12} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>DONUT CHART</ColorTitle>
               <DonutChart />
             </HomeWhiteBox>
           </Col>
-          <Col span={7}>
+          <Col xxl={7} xl={12} lg={12} md={24} sm={24} xs={24}>
             <HomeWhiteBox>
               <ColorTitle margin={'0 0 24px 0'}>RECENT ACTIVITY</ColorTitle>
               <Timeline>

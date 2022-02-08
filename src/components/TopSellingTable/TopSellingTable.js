@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
+import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
 import { Table, Tag } from 'antd'
+import { DEVICE } from '../../utils/constant'
 
 const TopSellingTable = props => {
+
+  const { commonStore } = props
+  const { device } = commonStore
 
   const [pagination, setPagination] = useState({
     current: 1,
@@ -26,6 +31,7 @@ const TopSellingTable = props => {
       title: 'Address',
       dataIndex: 'address',
       key: 'address',
+      responsive: ['md']
     },
     {
       title: 'Tags',
@@ -126,6 +132,7 @@ const TopSellingTable = props => {
   return (
     <div>
       <Table
+        size={device === DEVICE.DESKTOP ? 'large' : 'small'}
         columns={columns}
         rowKey={record => record.key}
         dataSource={data}
@@ -137,4 +144,4 @@ const TopSellingTable = props => {
 
 TopSellingTable.propTypes = {}
 
-export default TopSellingTable
+export default inject('commonStore')(observer(TopSellingTable))

@@ -42,7 +42,7 @@ const ColumnChart = props => {
     xField: 'service',
     yField: 'customer',
     height: 230,
-    autoFit: false,
+    autoFit: true,
     minColumnWidth: 32,
     maxColumnWidth: 32,
     label: {

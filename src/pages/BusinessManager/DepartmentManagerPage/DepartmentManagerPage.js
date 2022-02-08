@@ -131,7 +131,7 @@ const CustomerDepartmentManagerPage = props => {
         <title>Phòng ban doanh nghiệp</title>
       </Helmet>
       <CustomerDepartmentManagerPageWrapper>
-        <ColorTitle>Quản lý phòng ban doanh nghiệp</ColorTitle>
+        <ColorTitle margin={'0 0 32px 0'}>Quản lý phòng ban doanh nghiệp</ColorTitle>
         <Form
           onFinish={onFinish}
           form={formFilterDepartment}
