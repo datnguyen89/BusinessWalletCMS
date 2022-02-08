@@ -48,6 +48,7 @@ export const ColorText = styled.span`
   padding: ${props => props.padding || '0'};
   margin: ${props => props.margin || '0'};
   font-size: ${props => props.fontSize || '1.4rem'};
+  font-weight: ${props => props.fontWeight || 400};
 `
 export const HeaderDropdownWrapper = styled.div`
   background: #fff;

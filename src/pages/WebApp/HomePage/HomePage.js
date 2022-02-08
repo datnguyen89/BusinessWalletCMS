@@ -19,8 +19,7 @@ import TopSellingTable from '../../../components/TopSellingTable/TopSellingTable
 
 const HomePage = props => {
   const { commonStore } = props
-
-
+  const { appTheme } = commonStore
 
   return (
     <DefaultLayout>
@@ -36,7 +35,9 @@ const HomePage = props => {
                 <CardDashboard
                   title={'Khách hàng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faUserTie} />}
-                  content={'6.789'}
+                  content={
+                    <ColorText fontSize={16} fontWeight={700} color={appTheme.solidColor}>6.789</ColorText>
+                  }
                   icon={<ArrowUpOutlined />}
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
@@ -45,7 +46,9 @@ const HomePage = props => {
                 <CardDashboard
                   title={'Đơn hàng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faFileContract} />}
-                  content={'1.234'}
+                  content={
+                    <ColorText fontSize={16} fontWeight={700} color={appTheme.solidColor}>6.789</ColorText>
+                  }
                   icon={<ArrowUpOutlined />}
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
@@ -54,7 +57,9 @@ const HomePage = props => {
                 <CardDashboard
                   title={'Doanh thu'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faDollarSign} />}
-                  content={'6.789.000'}
+                  content={
+                    <ColorText fontSize={16} fontWeight={700} color={appTheme.solidColor}>6.789.000</ColorText>
+                  }
                   icon={<ArrowUpOutlined />}
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
@@ -63,7 +68,9 @@ const HomePage = props => {
                 <CardDashboard
                   title={'Tăng trưởng'}
                   avatar={<FontAwesomeIcon size={'2x'} icon={faChartLine} />}
-                  content={'6.789 %'}
+                  content={
+                    <ColorText fontSize={16} fontWeight={700} color={appTheme.solidColor}>6.789 %</ColorText>
+                  }
                   icon={<ArrowUpOutlined />}
                   numberColor={'rgb(10, 207, 151)'}
                   number={'5.27'} />
