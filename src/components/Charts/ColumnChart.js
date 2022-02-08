@@ -41,6 +41,10 @@ const ColumnChart = props => {
     data,
     xField: 'service',
     yField: 'customer',
+    height: 230,
+    autoFit: false,
+    minColumnWidth: 32,
+    maxColumnWidth: 32,
     label: {
       position: 'middle',
       // 'top', 'bottom', 'middle',
@@ -64,7 +68,11 @@ const ColumnChart = props => {
       },
     },
   };
-  return <Column {...config} />;
+  return (
+    <div>
+      <Column {...config} />
+    </div>
+  )
 }
 
 ColumnChart.propTypes = {

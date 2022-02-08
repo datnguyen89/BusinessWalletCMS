@@ -66,10 +66,14 @@ const DonutChart = props => {
     },
     legend: {
       // title: '',
-      position: 'bottom',
+      position: 'right',
     },
   }
-  return <Pie {...config} />
+  return (
+    <div>
+      <Pie {...config} />
+    </div>
+  )
 }
 
 DonutChart.propTypes = {}

@@ -87,7 +87,12 @@ const LineChart = props => {
       },
     ],
   }
-  return <Line {...config} />
+  return (
+    <div>
+      <Line {...config} />
+    </div>
+  )
+
 }
 
 LineChart.propTypes = {

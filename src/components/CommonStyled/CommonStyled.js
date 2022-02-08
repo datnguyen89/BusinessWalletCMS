@@ -34,12 +34,12 @@ export const RowSpaceBetweenDiv = styled.div`
   }
 `
 export const ColorTitle = styled.h1`
-  padding: 8px;
+  padding: ${props => props.padding || '8px'};
+  margin: ${props => props.margin || 0};
   color: ${props => props.color || '#848788'};
   background: ${props => props.background || '#F6F6F6'};
-  margin-top: ${props => props.marginTop || 0};
-  margin-bottom: ${props => props.marginBottom || '16px'};
   text-align: ${props => props.textAlign || 'left'};
+  font-size: ${props => props.fontSize || '14px'};
 `
 export const ColorText = styled.span`
   color: ${props => props.color || '#333'};

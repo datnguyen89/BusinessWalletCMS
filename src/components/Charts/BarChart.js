@@ -55,7 +55,11 @@ const BarChart = props => {
       },
     },
   }
-  return <Bar {...config} />
+  return (
+    <div>
+      <Bar {...config} />
+    </div>
+  )
 }
 
 BarChart.propTypes = {}
