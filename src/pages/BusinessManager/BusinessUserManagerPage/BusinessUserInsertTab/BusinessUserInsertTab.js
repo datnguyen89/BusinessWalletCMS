@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { UserInsertTabWrapper } from '../BusinessUserManagerPageStyled'
 import {
-  Button, Checkbox,
+  Button,
   Col,
   DatePicker,
   Descriptions,
@@ -11,30 +10,107 @@ import {
   Empty,
   Form,
   Input,
-  message,
   Row,
   Select,
   Space,
   Table,
+  TreeSelect,
 } from 'antd'
 import { HeaderBackground, RowCenterDiv } from '../../../../components/CommonStyled/CommonStyled'
-import {
-  EditOutlined,
-  RetweetOutlined,
-  SaveOutlined,
-  SearchOutlined,
-  UpCircleFilled,
-  UpCircleOutlined,
-} from '@ant-design/icons'
-import ConditionRender from '../../../../components/ConditionRender'
-import validator from '../../../../validator'
+import { EditOutlined, RetweetOutlined, SaveOutlined, SearchOutlined, UpCircleFilled } from '@ant-design/icons'
 import moment from 'moment'
-import helper from '../../../../utils/helper'
-import { ACTION, DEVICE } from '../../../../utils/constant'
+import { DEVICE } from '../../../../utils/constant'
 import ConditionDisplay from '../../../../components/ConditionDisplay'
 
 const { Search } = Input
 const { Option } = Select
+
+const { SHOW_CHILD } = TreeSelect
+
+const treeData = [
+  {
+    title: 'Tạo lập',
+    value: '1',
+    children: [
+      {
+        title: 'Khởi tạo giao dịch',
+        value: '2',
+        children: [
+          {
+            title: 'Trạng thái chờ duyệt',
+            value: '3',
+          },
+        ],
+      },
+      {
+        title: 'Quản lý giao dịch tạo lập',
+        value: '4',
+        children: [
+          {
+            title: 'Sửa',
+            value: '5',
+          },
+          {
+            title: 'Xóa',
+            value: '6',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Phê duyệt',
+    value: '11',
+    children: [
+      {
+        title: 'Quản lý giao dịch',
+        value: '22',
+        children: [
+          {
+            title: 'Phê duyệt',
+            value: '33',
+          },
+        ],
+      },
+    ],
+  },
+]
+const mockupData = [
+  {
+    id: 1,
+    hoVaTen: ' test1',
+    phongBan: 'Kỹ thuật 1',
+    userName: 'userName1',
+    userRole: 'Tạo lập',
+    userRoleId: '1',
+    diDong: '0987654322',
+    email: 'user@gmail.com',
+    baoMat: '1',
+    chucVu: 'Nhân viên',
+    ngaySinh: '30/04/1991',
+    gioiTinh: '1',
+    taiKhoanSuDung: ['1', '2'],
+    chucNangSuDung: ['5'],
+    status: 'Hoạt động',
+  },
+  {
+    id: 2,
+    hoVaTen: ' test2',
+    phongBan: 'Kỹ thuật 2',
+    userName: 'userName2',
+    userRole: 'Phê duyệt',
+    userRoleId: '2',
+    diDong: '0987654322',
+    email: 'user@gmail.com',
+    baoMat: '2',
+    chucVu: 'Trưởng phòng',
+    ngaySinh: '30/04/1992',
+    gioiTinh: '0',
+    taiKhoanSuDung: undefined,
+    chucNangSuDung: ['5','6'],
+    status: 'Hoạt động',
+  },
+]
 
 const BusinessUserInsertTab = props => {
   const { commonStore } = props
@@ -52,43 +128,7 @@ const BusinessUserInsertTab = props => {
       setVisible(false)
     }
   }
-  const mockupData = [
-    {
-      id: 1,
-      hoVaTen: ' test1',
-      phongBan: 'Kỹ thuật 1',
-      userName: 'userName1',
-      userRole: 'Tạo lập',
-      userRoleId: '1',
-      diDong: '0987654322',
-      email: 'user@gmail.com',
-      baoMat: '1',
-      chucVu: 'Nhân viên',
-      ngaySinh: '30/04/1991',
-      gioiTinh: '1',
-      taiKhoanSuDung: ['1', '2'],
-      chucNangSuDung: ['1'],
-      status: 'Hoạt động',
-    },
-    {
-      id: 2,
-      hoVaTen: ' test2',
-      phongBan: 'Kỹ thuật 2',
-      userName: 'userName2',
-      userRole: 'Phê duyệt',
-      userRoleId: '2',
-      diDong: '0987654322',
-      email: 'user@gmail.com',
-      baoMat: '2',
-      chucVu: 'Trưởng phòng',
-      ngaySinh: '30/04/1992',
-      gioiTinh: '0',
-      taiKhoanSuDung: undefined,
-      chucNangSuDung: ['1', '2'],
-      status: 'Hoạt động',
-    },
 
-  ]
   const columns = [
     {
       title: 'STT',
@@ -172,7 +212,17 @@ const BusinessUserInsertTab = props => {
 
     handleChangeRole(record.userRoleId)
   }
-
+  const tProps = {
+    treeData,
+    allowClear: true,
+    treeDefaultExpandAll: true,
+    treeCheckable: true,
+    showCheckedStrategy: SHOW_CHILD,
+    placeholder: 'Tất cả',
+    style: {
+      width: '100%',
+    },
+  }
   const disabledDate = (current) => {
     // Không được chọn ngày sinh ở tương lai
     return current && current > moment().startOf('day').add(1, 'days')
@@ -440,18 +490,16 @@ const BusinessUserInsertTab = props => {
               <Form.Item
                 name={'chucNangSuDung'}
                 label={
-                  <span className={'custom-required'}>chức năng sử dụng</span>
+                  <span className={'custom-required'}>Chức năng sử dụng</span>
                 }
               >
-                <Select placeholder={'Tất cả'} mode='multiple' optionLabelProp='label'>
-                  <Option value='1' label={'Chức năng 1'}>Chức năng 11</Option>
-                  <Option value='2' label={'Chức năng 2'}>Chức năng 22</Option>
-                </Select>
+                <TreeSelect {...tProps} />
               </Form.Item>
             </Col>
           </Row>
           <RowCenterDiv>
-            <Button size={device === DEVICE.MOBILE ? 'small' : 'large'} className={'mr-16'} onClick={() => resetFormInsertUser()}>
+            <Button size={device === DEVICE.MOBILE ? 'small' : 'large'} className={'mr-16'}
+                    onClick={() => resetFormInsertUser()}>
               <RetweetOutlined /> Làm rỗng
             </Button>
 
