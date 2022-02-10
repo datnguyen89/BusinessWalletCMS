@@ -31,9 +31,10 @@ const DefaultLayout = props => {
         <MainSideBar />
         <MainBody>
           {children}
+          <MainFooter />
         </MainBody>
       </MainContent>
-      <MainFooter />
+
     </DefaultLayoutWrapper>
   )
 }
