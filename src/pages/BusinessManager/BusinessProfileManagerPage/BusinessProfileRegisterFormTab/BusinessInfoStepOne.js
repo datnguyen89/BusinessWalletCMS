@@ -12,7 +12,11 @@ import { DEVICE } from '../../../../utils/constant'
 import PDFViewer from 'mgr-pdf-viewer-react'
 
 const CustomerBusinessInfoStepOne = props => {
-  const { commonStore, nextStep } = props
+  const {
+    commonStore,
+    enterpriseStore,
+    nextStep,
+  } = props
   const { appTheme, device } = commonStore
   const [formBusinessInfo] = Form.useForm()
 
@@ -22,7 +26,7 @@ const CustomerBusinessInfoStepOne = props => {
   const [fileToPreview2, setFileToPreview2] = useState(null)
 
   const onFinish = (formCollection) => {
-    console.log(formCollection)
+    enterpriseStore.setFormDataStep1(formCollection)
     nextStep()
   }
 
@@ -90,7 +94,7 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số ĐKKD' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập số ĐKKD' }]}
               label={'Số ĐKKD'} name={'business_dkkd'}>
               <Input.Search maxLength={20}
                             placeholder={'Nhập nội dung'}
@@ -100,7 +104,7 @@ const CustomerBusinessInfoStepOne = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập mã số thuế' }]}
               label={'Mã số thuế'} name={'business_maSoThue'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -109,14 +113,14 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập tên doanh nghiệp' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập tên doanh nghiệp' }]}
               label={'Tên doanh nghiệp'} name={'business_tenDoanhNghiep'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập tên viết tắt' }]}
               label={'Tên viết tắt'} name={'business_tenVietTat'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -125,14 +129,14 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ngày thành lập' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ngày thành lập' }]}
               label={'Ngày thành lập'} name={'business_ngayThanhLap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Quốc gia'} name={'business_quocGia'}>
               <Select placeholder={'Chọn quốc gia'}>
                 <Select.Option value={'1'}>Việt Nam</Select.Option>
@@ -144,7 +148,7 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Loại giấy tờ'} name={'business_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
                 <Select.Option value={'1'}>ĐKKD</Select.Option>
@@ -154,7 +158,7 @@ const CustomerBusinessInfoStepOne = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
               label={'Ngày cấp'} name={'business_ngayCap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
@@ -163,7 +167,7 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
               label={'Nơi cấp'} name={'business_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -178,7 +182,7 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
               label={'Di động'} name={'business_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -207,7 +211,7 @@ const CustomerBusinessInfoStepOne = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn loại hình doanh nghiệp' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn loại hình doanh nghiệp' }]}
               label={'Loại hình doanh nghiệp'} name={'business_loaiHinhDoanhNghiep'}>
               <Select placeholder={'Vui lòng chọn'}>
                 <Select.Option value={'1'}>Doanh nghiệp tư nhân</Select.Option>
@@ -222,7 +226,7 @@ const CustomerBusinessInfoStepOne = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn lĩnh vực kinh doanh' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn lĩnh vực kinh doanh' }]}
               label={'Lĩnh vực kinh doanh'} name={'business_linhVucKinhDoanh'}>
               <Select placeholder={'Vui lòng chọn'}>
                 <Select.Option value={'1'}>Kinh doanh tài chính</Select.Option>
@@ -264,7 +268,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ ĐKKD' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập địa chỉ ĐKKD' }]}
               label={'Địa chỉ ĐKKD'} name={'business_diaChiDKKD'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -273,7 +277,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_cityDKKD'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -285,7 +289,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_districtDKKD'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -297,7 +301,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_wardsDKKD'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -311,7 +315,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ giao dịch' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập địa chỉ giao dịch' }]}
               label={'Địa chỉ giao dịch'} name={'business_diaChiGiaoDich'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -320,7 +324,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_cityGiaoDich'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -332,7 +336,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_districtGiaoDich'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -344,7 +348,7 @@ const CustomerBusinessInfoStepOne = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'business_wardsGiaoDich'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -427,4 +431,4 @@ CustomerBusinessInfoStepOne.propTypes = {
   nextStep: PropTypes.func,
 }
 
-export default inject('commonStore')(observer(CustomerBusinessInfoStepOne))
+export default inject('commonStore', 'enterpriseStore')(observer(CustomerBusinessInfoStepOne))

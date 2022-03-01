@@ -17,8 +17,13 @@ import { DEVICE } from '../../../../utils/constant'
 import PDFViewer from 'mgr-pdf-viewer-react'
 
 const CustomerAccountingStepThree = props => {
-  const { commonStore, nextStep, prevStep } = props
+  const {
+    commonStore,
+    enterpriseStore,
+    prevStep,
+  } = props
   const { appTheme, device } = commonStore
+  const { formDataStep1, formDataStep2 } = enterpriseStore
   const [formAccountingInfo] = Form.useForm()
 
   const [fileToUpload1, setFileToUpload1] = useState(null)
@@ -29,8 +34,113 @@ const CustomerAccountingStepThree = props => {
   const [fileToPreview3, setFileToPreview3] = useState(null)
 
   const onFinish = (formCollection) => {
-    console.log(formCollection)
-    console.log('done')
+    let submitData = { ...formCollection, ...formDataStep1, ...formDataStep2 }
+    console.log('submitData', submitData)
+    let payload = {
+      AccountName: '0963493006',
+      Mobile: '0963493006',
+      Password: '123456', // tạo doanh nghiệp k cần
+      Fullname: 'Cuong Tau City',
+      AccountType: '21',
+      Email: 'tuong@gmail.com',
+      DeviceType: '13',
+      SecureType: '1',
+      CreatedUser: 'tuongtm',
+      BusinessCertification: '0200456506', // số đăng ký kinh doanh
+      // Thông tin doanh nghiệp
+      AccountProfileInfo: {
+        CreatedDate: '31/01/2022',
+        BirthDay: '01/01/2022',
+        Address: 'Căn505BCCA5KĐTMĐạiKimĐịnhCông,HoàngMai,HàNội',
+        LocationID: '100100000',
+        DistrictID: '100100800',
+        Nationality: '100000000',
+        National: '100000000',
+        WardID: '100100700',
+        Passport: '0200456505',                       // Giấy tờ doanh nghiệp
+        PassportDate: '01/01/2022',                   // Giấy tờ doanh nghiệp
+        PassportExpiredDate: '01/01/2022',            // Giấy tờ doanh nghiệp
+        PassportPlace: 'SởkếhoạchvàđầutưThànhPhốHàNội',// Giấy tờ doanh nghiệp
+        BusinessName: 'Côngty cổphàn SIVICO',
+        ShortName: 'SJS.,CO',
+        BusinessNameEng: 'SIVICOJOINSTOCKCOMPANY',
+        TaxCode: '0100686209-022',
+        BusinessCertification: '0200456506',
+
+        BusinessCenterLocationID: '100100000',      // Địa chỉ đăng ký giao dich
+        BusinessCenterDistrictID: '100100800',      // Địa chỉ đăng ký giao dich
+        BusinessCenterWardID: '100000000',          // Địa chỉ đăng ký giao dich
+        BusinessCenterAddress: '27 thái thịnh',   // Địa chỉ đăng ký kinh doanh
+
+        TradingLocationID: '100100000', // Địa chỉ đăng ký kinh doanh
+        TradingDistrictID: '100100800', // Địa chỉ đăng ký kinh doanh
+        TradingWardID: '100000000',     // Địa chỉ đăng ký kinh doanh
+        TradingAddress: '27 Thái thịnh',
+
+        Branch: 'Chi nhánh test',
+        BusinessType: '4',  // loại hình kinh doanh
+        BusinessAreas: '1', // lĩnh vực kinh doanh
+        Phone: '031.3591234',
+        Mobile: '0963493004',
+        Fax: '031.3742779',
+        DocumentType: 'ĐKKD',
+        // Thông tin ngườI đại diện
+        Representative: {
+          FullName: 'Nguyễn Văn A',
+          BirthDay: '14/03/1970',
+          Address: 'Căn505BCCA5KĐTMĐạiKimĐịnhCông,HoàngMai,HàNội',
+          LocationID: '100100000', // địa chỉ thường chú
+          DistrictID: '100100800', // địa chỉ thường chú
+          WardID: '100100700',  // địa chỉ thường chú
+          National: '100000000', // quốc gia
+
+          Passport: '001090017811',
+          PassportDate: '01/01/2022',
+          PassportPlace: 'QUẢNLÝHÀNHCHÍNHVỀTRẬTTỰXÃHỘI',
+          PassportExpire: '01/01/2050',
+          Gender: 1,
+          Position: 'TổngGiámĐốc',
+          DocumentType: 'NEWID',
+
+          PermanentLocationID: '100100000', // địa chỉ thường chú
+          PermanentDistrictID: '100100600',  // địa chỉ thường chú
+          PermanentWardID: '100100616', // địa chỉ thường chú
+          PermanentAddress: '27 TháiThịnh', // địa chỉ thường chú
+
+          JobId: '33',
+          JobName: 'Kế toán',
+          Phone: '',
+          Mobile: '0963493001',
+          Fax: '',
+        },
+        // Thông tin kế toán
+        ChiefAccountant: {
+          FullName: 'Nguyễn THị B',
+          BirthDay: '24/03/1972',
+          Address: 'Căn505BCCA5KĐTMĐạiKimĐịnhCông,HoàngMai,HàNội',
+          LocationID: '100100000',
+          DistrictID: '100100800',
+          National: '100000000',
+          WardID: '100100700',
+          Passport: '001090017812',
+          PassportDate: '01/01/2022',
+          PassportPlace: 'QUẢNLÝHÀNHCHÍNHVỀTRẬTTỰXÃHỘI',
+          PassportExpire: '01/01/2050',
+          Gender: '2',
+          Position: 'KếToánTrưởng',
+          DocumentType: 'NEWID',
+          PermanentLocationID: '100100000',
+          PermanentDistrictID: '100100600',
+          PermanentWardID: '100100616',
+          PermanentAddress: '27 TháiThịnh',
+          JobId: '33',
+          JobName: 'Giám đốc',
+          Phone: '',
+          Mobile: '0963493002',
+          Fax: '',
+        },
+      },
+    }
   }
 
   const disabledDateFuture = (current) => {
@@ -96,7 +206,7 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'accounting_soGiayTo'}>
               <Input.Search maxLength={20} placeholder={'Nhập nội dung'}
                             enterButton showCount={true}
@@ -105,7 +215,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn hình loại kế toán' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn hình loại kế toán' }]}
               label={'Kế toán'} name={'accounting_loaiKeToan'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
                 <Space style={{ width: '100%' }} direction={device === DEVICE.MOBILE ? 'vertical' : 'horizontal'}>
@@ -120,7 +230,7 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
               label={'Họ và tên'} name={'accounting_hoVaTen'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -128,7 +238,7 @@ const CustomerAccountingStepThree = props => {
 
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Giới tính'} name={'accounting_gioiTinh'}>
               <Select placeholder={'Vui lòng chọn'}>
                 <Select.Option value={'1'}>Nam</Select.Option>
@@ -140,14 +250,14 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Ngày sinh'} name={'accounting_ngaySinh'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Quốc tịch'} name={'accounting_quocTich'}>
               <Select placeholder={'Chọn quốc tịch'}>
                 <Select.Option value={'1'}>Việt Nam</Select.Option>
@@ -159,7 +269,7 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Loại giấy tờ'} name={'accounting_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
                 <Select.Option value={'1'}>Căn cước công dân</Select.Option>
@@ -170,7 +280,7 @@ const CustomerAccountingStepThree = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={'Ngày cấp'} name={'accounting_ngayCap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
@@ -179,7 +289,7 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Nơi cấp'} name={'accounting_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -194,7 +304,7 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Di động'} name={'accounting_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -223,14 +333,14 @@ const CustomerAccountingStepThree = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
               label={'Nghề nghiệp'} name={'accounting_ngheNghiep'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Dân tộc'} name={'accounting_danToc'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -241,7 +351,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ thường trú'} name={'accounting_diaChiThuongTru'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -250,7 +360,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'accounting_cityThuongTru'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -262,7 +372,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'accounting_districtThuongTru'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -274,7 +384,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'accounting_wardsThuongTru'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -288,7 +398,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={'Địa chỉ hiện tại'} name={'accounting_diaChiHienTai'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -297,7 +407,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'accounting_cityHienTai'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -309,7 +419,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'accounting_districtHienTai'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -321,7 +431,7 @@ const CustomerAccountingStepThree = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'accounting_wardsHienTai'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -418,9 +528,8 @@ const CustomerAccountingStepThree = props => {
           <Col xxl={8} xl={8} lg={8} md={8} sm={8} xs={24}>
             <RowFlexEndDiv>
               <Button block={device === DEVICE.MOBILE} type={'primary'} htmlType={'submit'}>
-                <DoubleRightOutlined /> Tiếp tục
+                <DoubleRightOutlined /> Xác nhận
               </Button>
-              {/*<Button type={'primary'} onClick={() => nextStep()}><DoubleRightOutlined /> Tiếp tục1</Button>*/}
             </RowFlexEndDiv>
           </Col>
         </Row>
@@ -434,4 +543,4 @@ CustomerAccountingStepThree.propTypes = {
   prevStep: PropTypes.func,
 }
 
-export default inject('commonStore')(observer(CustomerAccountingStepThree))
+export default inject('commonStore', 'enterpriseStore')(observer(CustomerAccountingStepThree))

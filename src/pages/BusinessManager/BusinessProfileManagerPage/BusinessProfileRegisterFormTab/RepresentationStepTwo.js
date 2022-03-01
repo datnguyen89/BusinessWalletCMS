@@ -11,7 +11,12 @@ import { DEVICE } from '../../../../utils/constant'
 import PDFViewer from 'mgr-pdf-viewer-react'
 
 const CustomerRepresentationStepTwo = props => {
-  const { commonStore, nextStep, prevStep } = props
+  const {
+    commonStore,
+    enterpriseStore,
+    nextStep,
+    prevStep,
+  } = props
   const { appTheme, device } = commonStore
   const [formRepresentationInfo] = Form.useForm()
 
@@ -23,7 +28,7 @@ const CustomerRepresentationStepTwo = props => {
   const [fileToPreview3, setFileToPreview3] = useState(null)
 
   const onFinish = (formCollection) => {
-    console.log(formCollection)
+    enterpriseStore.setFormDataStep2(formCollection)
     nextStep()
   }
 
@@ -90,7 +95,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập số giấy tờ' }]}
               label={'Số giấy tờ'} name={'representation_soGiayTo'}>
               <Input.Search maxLength={20} placeholder={'Nhập nội dung'}
                             enterButton showCount={true}
@@ -99,7 +104,7 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn hình thức đại diện' }]}
               label={'Đại diện'} name={'representation_hinhThucDaiDien'}>
               <Radio.Group style={{ width: '100%', display: 'flex', justifyContent: 'space-around' }}>
                 <Space style={{ width: '100%' }} direction={device === DEVICE.MOBILE ? 'vertical' : 'horizontal'}>
@@ -113,7 +118,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập họ và tên' }]}
               label={'Họ và tên'} name={'representation_hoVaTen'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -121,7 +126,7 @@ const CustomerRepresentationStepTwo = props => {
 
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn giới tính' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn giới tính' }]}
               label={'Giới tính'} name={'representation_gioiTinh'}>
               <Select placeholder={'Vui lòng chọn'}>
                 <Select.Option value={'1'}>Nam</Select.Option>
@@ -133,14 +138,14 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ngày sinh' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ngày sinh' }]}
               label={'Ngày sinh'} name={'representation_ngaySinh'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn quốc tịch' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn quốc tịch' }]}
               label={'Quốc tịch'} name={'representation_quocTich'}>
               <Select placeholder={'Chọn quốc tịch'}>
                 <Select.Option value={'1'}>Việt Nam</Select.Option>
@@ -152,7 +157,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn' }]}
               label={'Loại giấy tờ'} name={'representation_loaiGiayTo'}>
               <Select placeholder={'Chọn loại giấy tờ'}>
                 <Select.Option value={'1'}>Căn cước công dân</Select.Option>
@@ -163,7 +168,7 @@ const CustomerRepresentationStepTwo = props => {
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ngày cấp' }]}
               label={'Ngày cấp'} name={'representation_ngayCap'}>
               <DatePicker disabledDate={disabledDateFuture} style={{ width: '100%' }} format={'DD/MM/YYYY'} />
             </Form.Item>
@@ -172,7 +177,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập nơi cấp' }]}
               label={'Nơi cấp'} name={'representation_noiCap'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -187,7 +192,7 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập số di động' }]}
               label={'Di động'} name={'representation_diDong'}>
               <Input maxLength={20} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -216,14 +221,14 @@ const CustomerRepresentationStepTwo = props => {
         <Row gutter={[16, 16]} justify={'space-between'}>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập nghề nghiệp' }]}
               label={'Nghề nghiệp'} name={'representation_ngheNghiep'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
           </Col>
           <Col xxl={10} xl={12} lg={24} md={24} sm={24} xs={24}>
             <Form.Item
-              rules={[{ required: true, message: 'Vui lòng nhập dân tộc' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập dân tộc' }]}
               label={'Dân tộc'} name={'representation_danToc'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -234,7 +239,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ thường trú' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập địa chỉ thường trú' }]}
               label={'Địa chỉ thường trú'} name={'representation_diaChiThuongTru'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -243,7 +248,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng chọn ' }]}
+              // rules={[{ required: true, message: 'Vui lòng chọn ' }]}
               label={''} name={'representation_cityThuongTru'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -255,7 +260,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'representation_districtThuongTru'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -267,7 +272,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'representation_wardsThuongTru'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -281,7 +286,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
-              rules={[{ required: true, message: 'Vui lòng nhập địa chỉ hiện tại' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập địa chỉ hiện tại' }]}
               label={'Địa chỉ hiện tại'} name={'representation_diaChiHienTai'}>
               <Input maxLength={100} placeholder={'Nhập nội dung'} showCount={true} />
             </Form.Item>
@@ -290,7 +295,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'representation_cityHienTai'}>
               <Select placeholder={'Tỉnh/Thành phố'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -302,7 +307,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'representation_districtHienTai'}>
               <Select placeholder={'Quận/Huyện'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -314,7 +319,7 @@ const CustomerRepresentationStepTwo = props => {
             <Form.Item
               labelCol={{ span: 0 }}
               wrapperCol={{ span: 24 }}
-              rules={[{ required: true, message: 'Vui lòng nhập ' }]}
+              // rules={[{ required: true, message: 'Vui lòng nhập ' }]}
               label={''} name={'representation_wardsHienTai'}>
               <Select placeholder={'Phường/Xã'}>
                 <Select.Option value={'1'}>Loại 1</Select.Option>
@@ -421,4 +426,4 @@ CustomerRepresentationStepTwo.propTypes = {
   prevStep: PropTypes.func,
 }
 
-export default inject('commonStore')(observer(CustomerRepresentationStepTwo))
+export default inject('commonStore', 'enterpriseStore')(observer(CustomerRepresentationStepTwo))

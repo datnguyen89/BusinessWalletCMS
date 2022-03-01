@@ -1,23 +1,20 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
-import { Divider, Dropdown, Menu } from 'antd'
+import { Divider, Dropdown } from 'antd'
 import UserAvatar from '../UserAvatar'
 import ICONS from '../../icons'
 import { DropdownUserSetting, HeaderUserAreaWrapper, ThemePickerItem, ThemePickerWrapper } from './HeaderUserAreaStyled'
 import { useHistory } from 'react-router-dom'
 import ChangePasswordModal from '../ChangePasswordModal'
-import { PAGES, THEME_LIST, TRANSFERS } from '../../utils/constant'
-import {
-  HeaderDropdownIconWrapper,
-  HeaderDropdownItem,
-  HeaderDropdownItemText,
-  HeaderDropdownWrapper,
-} from '../CommonStyled/CommonStyled'
+import { PAGES, THEME_LIST } from '../../utils/constant'
+import { HeaderDropdownItem, HeaderDropdownItemText, HeaderDropdownWrapper } from '../CommonStyled/CommonStyled'
 import { LogoutOutlined, SettingOutlined } from '@ant-design/icons'
 
 const HeaderUserArea = props => {
 
   const { commonStore, authenticationStore } = props
+
+  const { jwtDecode } = authenticationStore
 
   const history = useHistory()
   const handleClickLogout = () => {
@@ -36,6 +33,8 @@ const HeaderUserArea = props => {
   const handleChangeAppTheme = themeName => {
     commonStore.setTheme(themeName)
   }
+
+
 
   const menu = (
     <HeaderDropdownWrapper>
@@ -83,7 +82,7 @@ const HeaderUserArea = props => {
                 getPopupContainer={() => document.getElementById('user-menu-wrapper')}>
         <DropdownUserSetting>
           <UserAvatar avatarUrl={null} />
-          <span>Administrator</span>
+          <span>{jwtDecode?.name}</span>
           <img src={ICONS.WHITE_ARROW_DOWN} alt={''} height={8} />
         </DropdownUserSetting>
       </Dropdown>

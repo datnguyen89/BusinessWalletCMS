@@ -17,6 +17,7 @@ import { createBrowserHistory } from 'history'
 import { Provider } from 'mobx-react'
 import commonStore from './stores/commonStore.js'
 import authenticationStore from './stores/authenticationStore.js'
+import enterpriseStore from './stores/enterpriseStore.js'
 
 //moment
 import moment from 'moment'
@@ -61,7 +62,7 @@ moment.updateLocale('vi', {
 const rootStores = {
   commonStore,
   authenticationStore,
-
+  enterpriseStore,
 }
 
 // axios.defaults.timeout = 20000
