@@ -1,9 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
 import { Helmet } from 'react-helmet/es/Helmet'
-import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Button, Result } from 'antd'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const NotFoundPage = props => {
   const history = useHistory()
@@ -11,7 +9,7 @@ const NotFoundPage = props => {
     history.push('/')
   }
     return (
-      <DefaultLayout>
+      <>
         <Helmet>
           <title>404</title>
         </Helmet>
@@ -21,7 +19,7 @@ const NotFoundPage = props => {
           subTitle="Trang không tồn tại, vui lòng quay lại trang chủ."
           extra={<Button type="primary" onClick={handlerClickBackHome}>Về trang chủ</Button>}
         />
-      </DefaultLayout>
+      </>
     );
 };
 

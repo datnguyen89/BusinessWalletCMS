@@ -22,7 +22,7 @@ const HomePage = props => {
   const { appTheme } = commonStore
 
   return (
-    <DefaultLayout>
+    <>
       <Helmet>
         <title>Trang chủ</title>
       </Helmet>
@@ -133,7 +133,7 @@ const HomePage = props => {
           </Col>
         </Row>
       </HomePageWrapper>
-    </DefaultLayout>
+    </>
   )
 }
 

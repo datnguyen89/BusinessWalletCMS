@@ -27,11 +27,11 @@ const CardDashboard = props => {
 }
 
 CardDashboard.propTypes = {
-  title: PropTypes.string.isRequired,
-  avatar: PropTypes.node.isRequired,
-  content: PropTypes.string.isRequired,
-  icon: PropTypes.node.isRequired,
-  number: PropTypes.string.isRequired,
+  title: PropTypes.node,
+  avatar: PropTypes.node,
+  content: PropTypes.node,
+  icon: PropTypes.node,
+  number: PropTypes.string,
   numberColor: PropTypes.string,
 }
 

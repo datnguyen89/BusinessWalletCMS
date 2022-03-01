@@ -3,26 +3,92 @@ import { inject, observer } from 'mobx-react'
 import AuthLayout from '../../../layouts/AuthLayout'
 import { Button, Checkbox, Col, Divider, Form, Input, message, Row } from 'antd'
 import { FormLoginWrapper, LoginDescription, LoginPageWrapper, LoginTitle } from './LoginPageStyled'
-import { Link, useHistory } from 'react-router-dom'
-import * as forge from 'node-forge'
-import { PUBLIC_KEY } from '../../../utils/constant'
-import stringUtils from '../../../utils/stringUtils'
+import { useHistory, useLocation } from 'react-router-dom'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { ColorLink } from '../../../components/CommonStyled/CommonStyled'
-import helper from '../../../utils/helper'
+import { APP_CLIENT_ID, PAGES } from '../../../utils/constant'
+import OtpModal from '../../../components/OtpModal'
 
 const LoginPage = props => {
   const { commonStore, authenticationStore } = props
+  const { appLoading } = commonStore
   const history = useHistory()
+  const location = useLocation()
   const [formLogin] = Form.useForm()
 
-  const onFinish = (collectionForm) => {
-    console.log(collectionForm)
-    history.push('/')
+  const [visibleOtp, setVisibleOtp] = useState(false)
+  const [currPayload, setCurrPayload] = useState({})
+  const [extendData, setExtendData] = useState('')
+
+  const onFinish = (formCollection) => {
+    console.log(formCollection)
+    if (appLoading) return
+    // admin1
+    // 123456
+    let payload = {
+      ExtendData: '',
+      ActiveCode: '',
+      UserName: formCollection.userName,
+      Password: formCollection.password,
+      ClientId: APP_CLIENT_ID,
+    }
+    authenticationStore.userLogin(payload)
+      .then(res => {
+        switch (res?.responseCode) {
+          case 0:
+            history.push(location?.state?.from || PAGES.HOME.PATH)
+            break
+          case -52:
+            payload.Description = res?.description
+            setCurrPayload(payload)
+            setVisibleOtp(true)
+            setExtendData(res?.extendData)
+            break
+          default:
+            message.error(res?.description)
+            break
+        }
+      })
+  }
+
+  const handleSubmitOtp = (otp) => {
+    let payload = {
+      ExtendData: extendData,
+      ActiveCode: otp,
+      UserName: currPayload.UserName,
+      Password: currPayload.Password,
+      ClientId: APP_CLIENT_ID,
+    }
+    authenticationStore.activeDevice(payload)
+      .then(res => {
+        switch (res?.responseCode) {
+          case 0:
+            setCurrPayload({})
+            setExtendData('')
+            history.push(location?.state?.from || PAGES.HOME.PATH)
+            break
+          case -10105:
+          case -1:
+            message.error(res?.description)
+            setVisibleOtp(false)
+            setCurrPayload({})
+            setExtendData('')
+            formLogin.resetFields()
+            break
+          default:
+            message.error(res?.description)
+            break
+        }
+      })
+  }
+  const handleCancelOtp = () => {
+    setVisibleOtp(false)
+    setCurrPayload({})
+    setExtendData('')
   }
 
   return (
-    <AuthLayout>
+    <>
       <LoginPageWrapper>
         <LoginTitle color={commonStore.appTheme.solidColor}>CMS doanh nghiệp</LoginTitle>
         <LoginDescription>Đăng nhập hệ thống quản lý ví doanh nghiệp</LoginDescription>
@@ -34,7 +100,7 @@ const LoginPage = props => {
                 labelAlign={'left'}
                 labelCol={{ span: 8 }}
                 wrapperCol={{ span: 16 }}>
-            <Form.Item label={'Tên đăng nhập'} name={'username'}>
+            <Form.Item label={'Tên đăng nhập'} name={'userName'}>
               <Input prefix={<UserOutlined />} placeholder={'Tên đăng nhập'} />
             </Form.Item>
             <Form.Item label={'Mật khẩu'} name={'password'}>
@@ -56,9 +122,14 @@ const LoginPage = props => {
             <Button block type={'primary'} htmlType={'submit'}>Đăng nhập</Button>
           </Form>
         </FormLoginWrapper>
-
+        <OtpModal
+          phoneNumber={''}
+          description={currPayload.Description}
+          visible={visibleOtp}
+          onCancel={handleCancelOtp}
+          callbackOtp={handleSubmitOtp} />
       </LoginPageWrapper>
-    </AuthLayout>
+    </>
   )
 }
 

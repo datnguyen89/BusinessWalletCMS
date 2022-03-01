@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { inject, observer } from 'mobx-react'
-import DefaultLayout from '../../../layouts/DefaultLayout'
 import { Helmet } from 'react-helmet/es/Helmet'
 import { UserManagerPageWrapper } from './BusinessUserManagerPageStyled'
 import { Tabs } from 'antd'
 import UserInsertTab from './BusinessUserInsertTab/BusinessUserInsertTab'
 import BusinessUserListRequestTab from './BusinessUserListRequestTab/BusinessUserListRequestTab'
+
 const { TabPane } = Tabs;
 
 const BusinessUserManagerPage = props => {
   const { commonStore } = props
 
   return (
-    <DefaultLayout>
+    <>
       <Helmet>
         <title>User Doanh nghiệp</title>
       </Helmet>
@@ -27,7 +26,7 @@ const BusinessUserManagerPage = props => {
           </TabPane>
         </Tabs>
       </UserManagerPageWrapper>
-    </DefaultLayout>
+    </>
   )
 }
 

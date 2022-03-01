@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { apiUrl } from '../config'
 import authenticationStore from '../stores/authenticationStore'
+import commonStore from '../stores/commonStore'
 
 const source = axios.CancelToken.source()
 
@@ -11,21 +12,37 @@ export const AuthenticationRequest = {
   userLogin: (payload) => {
     return axios({
       method: 'post',
-      url: `${apiUrl}/api/login`,
+      url: `${apiUrl}/Login`,
       headers: {
         'Content-Type': 'application/json',
+        'Ip-Address': commonStore.ipAddress,
       },
-      data: { username: payload.username, password: payload.password },
+      data: payload,
     })
   },
-  userGet: (payload) => {
+  activeDevice: (payload) => {
     return axios({
-      method: 'get',
-      url: `${apiUrl}/api/auth/login`,
+      method: 'post',
+      url: `${apiUrl}/ActiveDevice`,
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authenticationStore.accessToken || ''}`,
+        'Token-Core-System': `Bearer ${authenticationStore.coreSysToken || ''}`,
+        'Ip-Address': commonStore.ipAddress,
       },
-      params: { username: payload.username, password: payload.password },
+      data: payload,
+    })
+  },
+  logout: () => {
+    return axios({
+      method: 'post',
+      url: `${apiUrl}/Logout`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authenticationStore.accessToken || ''}`,
+        'Token-Core-System': `Bearer ${authenticationStore.coreSysToken || ''}`,
+        'Ip-Address': commonStore.ipAddress,
+      },
     })
   },
 }

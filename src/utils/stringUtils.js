@@ -2,7 +2,13 @@ const stringUtils = {
 
   /** Capitalize name */
   getNameInCapitalize: string => string.replace(/(^|\s)\S/g, l => l.toUpperCase()),
-
+  randomId: (length) => {
+    let text = ''
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    for (let i = 0; i < length; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length))
+    return text
+  },
   /** Bỏ dấu tiếng Việt */
   removeVietnameseCharMark: str => {
     if (str) {

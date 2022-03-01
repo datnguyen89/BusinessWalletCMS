@@ -1,19 +1,16 @@
 import React, { useState } from 'react'
 import { inject, observer } from 'mobx-react'
-import PropTypes from 'prop-types'
 import { CustomerDepartmentManagerPageWrapper } from './DepartmentManagerPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
-import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Button, Col, Divider, Form, Input, Modal, Pagination, Row, Table } from 'antd'
 import {
-  ColorTitle, PaginationLabel,
-  RowCenterDiv,
+  ColorTitle,
+  PaginationLabel,
   RowFlexEndDiv,
   RowSpaceBetweenDiv,
 } from '../../../components/CommonStyled/CommonStyled'
-import { CloudDownloadOutlined, DeleteOutlined, SettingOutlined } from '@ant-design/icons'
+import { CloudDownloadOutlined, DeleteOutlined } from '@ant-design/icons'
 import CreateDepartmentModal from './CreateDepartmentModal'
-import { DEVICE } from '../../../utils/constant'
 
 const testData = [
   {
@@ -126,7 +123,7 @@ const CustomerDepartmentManagerPage = props => {
   }
 
   return (
-    <DefaultLayout>
+    <>
       <Helmet>
         <title>Phòng ban doanh nghiệp</title>
       </Helmet>
@@ -182,7 +179,7 @@ const CustomerDepartmentManagerPage = props => {
         <CreateDepartmentModal visible={visibleDepartmentDetailModal}
                                onClose={() => setVisibleDepartmentDetailModal(false)} />
       </CustomerDepartmentManagerPageWrapper>
-    </DefaultLayout>
+    </>
 
   )
 }

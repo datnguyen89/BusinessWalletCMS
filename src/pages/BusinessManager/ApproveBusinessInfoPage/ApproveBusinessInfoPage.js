@@ -1,18 +1,15 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import {
-  ApproveBusinessInfoPageWrapper,
-} from './ApproveBusinessInfoPageStyled'
+import { ApproveBusinessInfoPageWrapper } from './ApproveBusinessInfoPageStyled'
 import { Helmet } from 'react-helmet/es/Helmet'
-import DefaultLayout from '../../../layouts/DefaultLayout/DefaultLayout'
 import { Tabs } from 'antd'
 import ApproveBusinessCustomerTab from './ApproveBusinessCustomerTab/ApproveBusinessCustomerTab'
 import CustomerApproveBusinessUserTab from './ApproveBusinessUserTab/ApproveBusinessUserTab'
+
 const { TabPane } = Tabs;
 
 const ApproveBusinessInfoPage = props => {
   return (
-    <DefaultLayout>
+    <>
       <Helmet>
         <title>Duyệt thông tin doanh nghiệp</title>
       </Helmet>
@@ -26,7 +23,7 @@ const ApproveBusinessInfoPage = props => {
           </TabPane>
         </Tabs>
       </ApproveBusinessInfoPageWrapper>
-    </DefaultLayout>
+    </>
 
   )
 }

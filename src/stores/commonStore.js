@@ -15,6 +15,11 @@ class CommonStore {
   @action setPageName = name => {
     this.pageName = name
   }
+  // ipAddress
+  @observable ipAddress = ''
+  @action setIpAddress = ip => {
+    this.ipAddress = ip
+  }
   // Device
   @observable device = null
 

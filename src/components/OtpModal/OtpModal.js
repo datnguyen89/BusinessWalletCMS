@@ -7,7 +7,7 @@ import { Button, Col, message, Modal, Row } from 'antd'
 const _ = require('lodash')
 
 const OtpModal = props => {
-  const { visible, onCancel, callbackOtp, phoneNumber, otpLength } = props
+  const { visible, onCancel, callbackOtp, phoneNumber, description, otpLength } = props
   const [timeLeft, setTimeLeft] = useState(180)
   const [timeResend, setTimeResend] = useState(0)
   const [otp, setOtp] = useState('')
@@ -88,7 +88,8 @@ const OtpModal = props => {
       <Row justify={'center'}>
         <Col span={24}>
           <OtpDescription>
-            Mã xác thực đã được gửi qua SĐT {_.fill(phoneNumber.split(''), '*', 3, phoneNumber.length - 3)}.
+            {/*Mã xác thực đã được gửi qua SĐT {_.fill(phoneNumber?.split(''), '*', 3, phoneNumber?.length - 3)}.*/}
+            {description && description}
             <br />
             Nếu không nhận được OTP vui lòng ấn {timeResend === 0 ?
             <ResendOtp onClick={handleClickResend}>Gửi lại</ResendOtp> :
@@ -124,8 +125,9 @@ OtpModal.propTypes = {
   visible: PropTypes.bool.isRequired,
   callbackOtp: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
+  phoneNumber: PropTypes.string,
   otpLength: PropTypes.number,
+  description: PropTypes.string,
 }
 
 export default OtpModal

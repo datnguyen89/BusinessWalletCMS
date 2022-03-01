@@ -11,7 +11,7 @@ const NotPermissionPage = props => {
     history.push('/')
   }
     return (
-      <DefaultLayout>
+      <>
         <Helmet>
           <title>Trang chủ</title>
         </Helmet>
@@ -21,7 +21,7 @@ const NotPermissionPage = props => {
           subTitle="Bạn không có quyền truy cập trang này, vui lòng quay lại trang chủ."
           extra={<Button type="primary" onClick={handlerClickBackHome}>Back Home</Button>}
         />
-      </DefaultLayout>
+      </>
     );
 };
 

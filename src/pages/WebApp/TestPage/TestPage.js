@@ -98,7 +98,7 @@ const TestPageStyled = props => {
 
 
   return (
-    <DefaultLayout>
+    <>
       <Helmet>
         <title>Test</title>
       </Helmet>
@@ -116,7 +116,7 @@ const TestPageStyled = props => {
           </Form.Item>
         </Form>
       </TestPageWrapper>
-    </DefaultLayout>
+    </>
 
   )
 }
